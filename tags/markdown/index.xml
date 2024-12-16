@@ -8,14 +8,14 @@
         <language>en-us</language>
         <copyright>随.</copyright>
         <lastBuildDate>Mon, 16 Dec 2024 10:30:44 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>1216 Blog</title>
-        <link>https://demonskirito.github.io/p/1216-blog/</link>
+        <title>建站技术 | Hugo&#43;GitHub建立博客网站</title>
+        <link>https://demonskirito.github.io/p/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF-hugo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
         <pubDate>Mon, 16 Dec 2024 10:30:44 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/p/1216-blog/</guid>
-        <description>&lt;img src="https://demonskirito.github.io/cover.png" alt="Featured image of post 1216 Blog" /&gt;&lt;h1 id=&#34;建站技术--hugo--github-创建博客页面&#34;&gt;建站技术 | HUGO + GitHub 创建博客页面
+        <guid>https://demonskirito.github.io/p/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF-hugo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
+        <description>&lt;h1 id=&#34;建站技术--hugo--github-创建博客页面&#34;&gt;建站技术 | HUGO + GitHub 创建博客页面
 &lt;/h1&gt;&lt;h2 id=&#34;1前言&#34;&gt;1.前言
-&lt;/h2&gt;&lt;p&gt;我通过参考大量的hugo框架的使用，最后终于在收集整理并使用得出了较好的部署方式。
+&lt;/h2&gt;&lt;p&gt;我通过参考大量的 hugo 框架的使用，最后终于在收集整理并使用得出了较好的部署方式。
 先将我使用到的网站地址全放在前言供大家查阅与使用（并附带说明）。&lt;/p&gt;
 &lt;p&gt;简略建站的前提文章：
 &lt;a class=&#34;link&#34; href=&#34;https://letere-gzj.github.io/hugo-stack/p/hugo/custom-blog/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -24,7 +24,7 @@
 &lt;a class=&#34;link&#34; href=&#34;https://blog.reincarnatey.net/2023/build-hugo-blog-with-stack-mod/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;建站技术 | 使用 Hugo + Stack 简单搭建一个博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我主要使用了这两篇博客的内容，其中详细的使用我会娓娓道来。&lt;/p&gt;
-&lt;h2 id=&#34;2hugo下载&#34;&gt;2.hugo下载
+&lt;h2 id=&#34;2hugo-下载&#34;&gt;2.hugo 下载
 &lt;/h2&gt;&lt;p&gt;下载地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/tags&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;标签 · gohugoio/hugo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/R5Ad4q6jgEzpouk.png&#34;
@@ -38,7 +38,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;3搭建博客&#34;&gt;3.搭建博客
-&lt;/h2&gt;&lt;h3 id=&#34;31-在hugoexe所在文件夹的地址栏敲打cmd然后enter唤起命令行&#34;&gt;3.1 在&lt;strong&gt;hugo.exe&lt;/strong&gt;所在文件夹的地址栏敲打cmd，然后Enter唤起命令行
+&lt;/h2&gt;&lt;h3 id=&#34;31-在hugoexe所在文件夹的地址栏敲打-cmd然后-enter-唤起命令行&#34;&gt;3.1 在&lt;strong&gt;hugo.exe&lt;/strong&gt;所在文件夹的地址栏敲打 cmd，然后 Enter 唤起命令行
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/sMqZEmRP7gScJTX.png&#34;
 	
 	
@@ -49,7 +49,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;32-敲打命令hugo-new-site-xxxx创建hugo文件&#34;&gt;3.2 敲打命令&lt;code&gt;hugo new site xxxx&lt;/code&gt;创建hugo文件
+&lt;h3 id=&#34;32-敲打命令hugo-new-site-xxxx创建-hugo-文件&#34;&gt;3.2 敲打命令&lt;code&gt;hugo new site xxxx&lt;/code&gt;创建 hugo 文件
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/8iw3lXEfj1eHVUF.png&#34;
 	
 	
@@ -71,8 +71,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;34-敲打命令hugo-server--d启动服务访问httplocalhost1313httplocalhost1313ctrlc停止服务&#34;&gt;3.4 敲打命令&lt;code&gt;hugo server -D&lt;/code&gt;启动服务，访问&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://localhost:1313&lt;/a&gt;，Ctrl+C停止服务
+&lt;h3 id=&#34;34-敲打命令hugo-server--d启动服务访问httplocalhost1313httplocalhost1313ctrlc-停止服务&#34;&gt;3.4 敲打命令&lt;code&gt;hugo server -D&lt;/code&gt;启动服务，访问&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:1313&lt;/a&gt;，Ctrl+C 停止服务
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/hoEySN8UPfsdVDY.png&#34;
 	
 	
@@ -96,10 +96,10 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;我们这里以stack主题为例：&lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;我们这里以 stack 主题为例：&lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;发行版 · CaiJimmy/hugo-theme-stack&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这边以【&lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack/tags&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Stack主题&lt;/a&gt;】为例，将下载好的主题解压，放到&lt;code&gt;/themes&lt;/code&gt;文件夹中并将文件夹重新命名为hugo-theme-stack&lt;/p&gt;
+    &gt;Stack 主题&lt;/a&gt;】为例，将下载好的主题解压，放到&lt;code&gt;/themes&lt;/code&gt;文件夹中并将文件夹重新命名为 hugo-theme-stack&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/IzStJ5MhrxuyZ3b.png&#34;
 	
 	
@@ -120,7 +120,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;将&lt;code&gt;exampleSite&lt;/code&gt;样例数据中的 &lt;strong&gt;Content&lt;/strong&gt; 和 &lt;strong&gt;hugo.yaml&lt;/strong&gt; 复制到主文件夹中，并删掉&lt;code&gt;hugo.toml&lt;/code&gt;和&lt;code&gt;content/post/rich-content&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将&lt;code&gt;exampleSite&lt;/code&gt;样例数据中的  &lt;strong&gt;Content&lt;/strong&gt;  和  &lt;strong&gt;hugo.yaml&lt;/strong&gt;  复制到主文件夹中，并删掉&lt;code&gt;hugo.toml&lt;/code&gt;和&lt;code&gt;content/post/rich-content&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/PFKGiHQ5BMVIfwo.png&#34;
 	
 	
@@ -131,7 +131,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;再次启动hugo服务，查看主题，具体主题配置修改 &lt;strong&gt;hugo.yaml&lt;/strong&gt;，这里不细说，感兴趣可自行查找相关文章&lt;/p&gt;
+&lt;p&gt;再次启动 hugo 服务，查看主题，具体主题配置修改  &lt;strong&gt;hugo.yaml&lt;/strong&gt;，这里不细说，感兴趣可自行查找相关文章&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/toysziCeETFVMkX.png&#34;
 	
 	
@@ -143,7 +143,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;至此，在本地搭建一个博客已经完成了&lt;/p&gt;
-&lt;h3 id=&#34;36-了解hugo框架的逻辑&#34;&gt;3.6 了解hugo框架的逻辑
+&lt;h3 id=&#34;36-了解-hugo-框架的逻辑&#34;&gt;3.6 了解 hugo 框架的逻辑
 &lt;/h3&gt;&lt;p&gt;因为本人在借鉴他人的博客时，其实还是会有许多不懂的地方，所以就对结构进行了些许分析，希望能给后续读者提供一些帮助。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/thT3DbnQBrpji4H.png&#34;
 	
@@ -155,7 +155,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;在archetypes下是生成markdown文件的模板&lt;/p&gt;
+&lt;p&gt;在 archetypes 下是生成 markdown 文件的模板&lt;/p&gt;
 &lt;p&gt;可以和我的模板使用一样&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;categories.md&lt;/strong&gt; 和 &lt;strong&gt;tags.md&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -185,7 +185,7 @@
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: &amp;#34;{{ replace .Name &amp;#34;-&amp;#34; &amp;#34; &amp;#34; | title }}&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -201,7 +201,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; color: &amp;#34;#fff&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -256,7 +256,7 @@
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: &amp;#34;{{ replace .Name &amp;#34;-&amp;#34; &amp;#34; &amp;#34; | title }}&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -282,26 +282,26 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tags: [&amp;#34;&amp;#34;]
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 附录
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;### 参考文献
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;### 版权信息
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;在content下的是分类，导航栏，博客的发布首页&lt;/p&gt;
-&lt;p&gt;一般我们的博客发布都在content/post这个文件夹中&lt;/p&gt;
-&lt;p&gt;而图中的img文件夹是我们的头像的存放地址，可以直接将avatar.png替换掉，也可以像我一样放进去图片后去yaml文件中改配置类。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;在 content 下的是分类，导航栏，博客的发布首页&lt;/p&gt;
+&lt;p&gt;一般我们的博客发布都在 content/post 这个文件夹中&lt;/p&gt;
+&lt;p&gt;而图中的 img 文件夹是我们的头像的存放地址，可以直接将 avatar.png 替换掉，也可以像我一样放进去图片后去 yaml 文件中改配置类。&lt;/p&gt;
 &lt;h2 id=&#34;4hugoyaml&#34;&gt;4.hugo.yaml
 &lt;/h2&gt;&lt;h3 id=&#34;41-配置导航栏左侧的图标并能够响应&#34;&gt;4.1 配置导航栏左侧的图标并能够响应
 &lt;/h3&gt;&lt;p&gt;话不多说，先上代码&lt;/p&gt;
@@ -368,7 +368,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        icon: github
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - identifier: twitter
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -380,7 +380,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        icon: twitter
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - identifier: bilibili
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -392,7 +392,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        icon: bilibili-line
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - identifier: email
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -405,9 +405,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        icon: email
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;这是我的导航栏图标配置，在这里我使用的svg是从&lt;a class=&#34;link&#34; href=&#34;https://www.iconfont.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;iconfont-阿里巴巴矢量图标库&lt;/a&gt;获取的，svg的尺寸设置&lt;code&gt;24寸&lt;/code&gt;，颜色选择&lt;code&gt;#2c3e50&lt;/code&gt;，将下载下来的图标放到 &lt;code&gt;\assets\icons\&lt;/code&gt; 文件夹（themes下的）下，然后修改社交媒体的配置。&lt;/p&gt;
-&lt;p&gt;将所有的 &lt;code&gt;#2c3e50&lt;/code&gt; 都替换成 &lt;code&gt;currentColor&lt;/code&gt;，也就是使用样式设置的颜色。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;这是我的导航栏图标配置，在这里我使用的 svg 是从&lt;a class=&#34;link&#34; href=&#34;https://www.iconfont.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;iconfont-阿里巴巴矢量图标库&lt;/a&gt;获取的，svg 的尺寸设置&lt;code&gt;24寸&lt;/code&gt;，颜色选择&lt;code&gt;#2c3e50&lt;/code&gt;，将下载下来的图标放到  &lt;code&gt;\assets\icons\&lt;/code&gt;  文件夹（themes 下的）下，然后修改社交媒体的配置。&lt;/p&gt;
+&lt;p&gt;将所有的  &lt;code&gt;#2c3e50&lt;/code&gt;  都替换成  &lt;code&gt;currentColor&lt;/code&gt;，也就是使用样式设置的颜色。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/g4uwe8m6rLzVjIP.png&#34;
 	
 	
@@ -418,10 +418,10 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;42配置评论功能&#34;&gt;4.2配置评论功能
-&lt;/h3&gt;&lt;p&gt;博客中的评论系统是很重要的。这里我使用的是 Stack 模板支持的 &lt;strong&gt;Waline&lt;/strong&gt;，搭建很简单，可以参考 &lt;a class=&#34;link&#34; href=&#34;https://waline.js.org/guide/get-started/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;42-配置评论功能&#34;&gt;4.2 配置评论功能
+&lt;/h3&gt;&lt;p&gt;博客中的评论系统是很重要的。这里我使用的是 Stack 模板支持的  &lt;strong&gt;Waline&lt;/strong&gt;，搭建很简单，可以参考  &lt;a class=&#34;link&#34; href=&#34;https://waline.js.org/guide/get-started/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Waline 官方指南&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;配置 Waline 则可以参考这篇博客 &lt;a class=&#34;link&#34; href=&#34;https://site.zhelper.net/Hugo/hugo-comment/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;配置 Waline 则可以参考这篇博客  &lt;a class=&#34;link&#34; href=&#34;https://site.zhelper.net/Hugo/hugo-comment/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;hugo：添加评论功能（Waline） - 建站指南&lt;/a&gt;，我的 Waline 配置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -489,8 +489,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            sofa: 还没有人评论哦！快来抢沙发吧~
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;LeadCloud的部署还是非常简单的，建议使用国际版，畅通无阻啊&lt;/p&gt;
-&lt;p&gt;Vercel的部署，你需要先去登录注册后在去拉取waline的项目创建进入github中&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;LeadCloud 的部署还是非常简单的，建议使用国际版，畅通无阻啊&lt;/p&gt;
+&lt;p&gt;Vercel 的部署，你需要先去登录注册后在去拉取 waline 的项目创建进入 github 中&lt;/p&gt;
 &lt;p&gt;创建的时候页面应该如下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/16/QTucw5Bp3MksxXd.png&#34;
 	
@@ -514,7 +514,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;我是按照文献的步骤一步步来的，所以没有问题，大家安心配就行。&lt;/p&gt;
 &lt;h2 id=&#34;5使用-hugo-创建文章&#34;&gt;5.使用 Hugo 创建文章
-&lt;/h2&gt;&lt;p&gt;为了更加快捷的创建文章，我这里将命令简化为bat指令，一共三个bat&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;为了更加快捷的创建文章，我这里将命令简化为 bat 指令，一共三个 bat&lt;/p&gt;
 &lt;p&gt;创建标签.bat&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -538,7 +538,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 显示创建标签提示
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo [创建标签]
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 提示输入标签名
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set /p input=请输入标签名: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set /p input=请输入标签名:
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 检查用户是否输入内容
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;if &amp;#34;%input%&amp;#34;==&amp;#34;&amp;#34; (
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    echo 标签名不能为空，请重新运行脚本。
@@ -574,7 +574,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 显示创建类别提示
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo [创建类别]
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 提示输入类别名
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set /p input=请输入类别名: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set /p input=请输入类别名:
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 检查用户是否输入内容
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;if &amp;#34;%input%&amp;#34;==&amp;#34;&amp;#34; (
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    echo 类别名不能为空，请重新运行脚本。
@@ -610,7 +610,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 创建文章
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo [创建文章]
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 提示输入 Slug
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set /p input=请输入文章 Slug: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set /p input=请输入文章 Slug:
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:: 获取当前日期时间
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;for /f &amp;#34;tokens=2 delims==&amp;#34; %%i in (&amp;#39;wmic os get localdatetime /value ^| find &amp;#34;=&amp;#34;&amp;#39;) do set datetime=%%i
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set year=%datetime:~0,4%
@@ -642,8 +642,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --theme=stack --baseUrl=&amp;#34;https://blog.reincarnatey.net/&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;随后可以看到根目录下出现了 &lt;code&gt;public&lt;/code&gt; 文件夹，该文件夹下就是生成的静态网页。你可以将该文件夹内的文件上传到服务器，或是 push 到你的 github 仓库部署到你使用的托管服务，访问你的域名就可以看到了。&lt;/p&gt;
-&lt;h2 id=&#34;7将博客项目部署到github上&#34;&gt;7.将博客项目部署到GitHub上
+&lt;/div&gt;&lt;p&gt;随后可以看到根目录下出现了  &lt;code&gt;public&lt;/code&gt;  文件夹，该文件夹下就是生成的静态网页。你可以将该文件夹内的文件上传到服务器，或是 push 到你的 github 仓库部署到你使用的托管服务，访问你的域名就可以看到了。&lt;/p&gt;
+&lt;h2 id=&#34;7将博客项目部署到-github-上&#34;&gt;7.将博客项目部署到 GitHub 上
 &lt;/h2&gt;&lt;p&gt;先创建一个仓库&lt;/p&gt;
 &lt;p&gt;以下是我创建好后传入仓库的图片
 &lt;img src=&#34;https://s2.loli.net/2024/12/16/voW2aX7Idr1wCli.png&#34;
@@ -656,7 +656,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;创建仓库时以&amp;lt;用户名小写&amp;gt;.github.io，例如我叫Demonskirito 仓库就命名为 demonskirito.github.io&lt;/p&gt;
+&lt;p&gt;创建仓库时以&amp;lt;用户名小写&amp;gt;.github.io，例如我叫 Demonskirito 仓库就命名为 demonskirito.github.io&lt;/p&gt;
 &lt;p&gt;在项目中将已生成的静态代码的文件夹（public）上传至当前仓库即可&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -678,7 +678,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push -u origin main
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;在上传https时我经常会遇见这个问题&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;在上传 https 时我经常会遇见这个问题&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -743,13 +743,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin master
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;当我们将项目推送上github上后，我们就可以去访问demonskirito.github.io，这时你就可以发现我们成功访问我们的前端页面。&lt;/p&gt;
-&lt;p&gt;对于github的项目，我们也可以去绑定域名使用。&lt;/p&gt;
-&lt;h2 id=&#34;8github仓库绑定域名&#34;&gt;8.GitHub仓库绑定域名
-&lt;/h2&gt;&lt;h3 id=&#34;81-namecheap解析dnsgithub配置域名&#34;&gt;8.1 namecheap解析DNS、GitHub配置域名
-&lt;/h3&gt;&lt;p&gt;我使用的是外国域名的提供网站namecheap，在这里你可以买到外国域名，并配置解析dns&lt;/p&gt;
-&lt;p&gt;这里我们来详细的说说如何用namecheap解析github pages&lt;/p&gt;
-&lt;p&gt;我们在namecheap中添加CNAME记录&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;当我们将项目推送上 github 上后，我们就可以去访问 demonskirito.github.io，这时你就可以发现我们成功访问我们的前端页面。&lt;/p&gt;
+&lt;p&gt;对于 github 的项目，我们也可以去绑定域名使用。&lt;/p&gt;
+&lt;h2 id=&#34;8github-仓库绑定域名&#34;&gt;8.GitHub 仓库绑定域名
+&lt;/h2&gt;&lt;h3 id=&#34;81-namecheap-解析-dnsgithub-配置域名&#34;&gt;8.1 namecheap 解析 DNS、GitHub 配置域名
+&lt;/h3&gt;&lt;p&gt;我使用的是外国域名的提供网站 namecheap，在这里你可以买到外国域名，并配置解析 dns&lt;/p&gt;
+&lt;p&gt;这里我们来详细的说说如何用 namecheap 解析 github pages&lt;/p&gt;
+&lt;p&gt;我们在 namecheap 中添加 CNAME 记录&lt;/p&gt;
 &lt;p&gt;添加一个新的 DNS 记录：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;记录类型&lt;/strong&gt;：CNAME&lt;/li&gt;
@@ -825,15 +825,15 @@
     &gt;https://dnschecker.org&lt;/a&gt;）验证你的 DNS 配置。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;9参考文献&#34;&gt;9.参考文献
-&lt;/h2&gt;&lt;p&gt;Hugo+github部署：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Hugo+github 部署：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_52473454/article/details/131092259&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;使用Hugo+Github从0开始免费搭建个人博客_hugo github-CSDN博客&lt;/a&gt;&lt;/p&gt;
+    &gt;使用 Hugo+Github 从 0 开始免费搭建个人博客_hugo github-CSDN 博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.reincarnatey.net/2023/build-hugo-blog-with-stack-mod/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;建站技术 | 使用 Hugo + Stack 简单搭建一个博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://letere-gzj.github.io/hugo-stack/p/hugo/custom-blog/#3-github%E9%83%A8%E7%BD%B2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【Hugo】Hugo + Github 免费部署自己的博客&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;10版权信息&#34;&gt;10.版权信息
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;该博客归Demonskirito所有&lt;/strong&gt;&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;该博客归 Demonskirito 所有&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
