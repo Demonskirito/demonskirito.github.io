@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>念云的博客</title>
-        <link>https://demonskirito.github.io/</link>
+        <link>http://localhost:1313/</link>
         <description>Recent content on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Tue, 17 Dec 2024 14:40:37 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 17 Dec 2024 14:40:37 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>SpringCloud Fegin的使用</title>
-        <link>https://demonskirito.github.io/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+        <link>http://localhost:1313/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Tue, 17 Dec 2024 14:40:37 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+        <guid>http://localhost:1313/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;紧接我的上一篇博客&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/m0_73938805/article/details/143267515?spm=1001.2014.3001.5501&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -234,10 +234,10 @@
         </item>
         <item>
         <title>SpringCloud Nacos&#43;ribbon的实现方法</title>
-        <link>https://demonskirito.github.io/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</link>
+        <link>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</link>
         <pubDate>Mon, 16 Dec 2024 21:46:08 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</guid>
+        <guid>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</guid>
         <description>&lt;h2 id=&#34;前提&#34;&gt;前提
 &lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_43466788/article/details/112968827&#34; title=&#34;【SpringCloud】IDEA如何创建一个SpringCloud项目_idea新建一个springcloud项目-CSDN博客&#34;&gt; 【SpringCloud】IDEA 如何创建一个 SpringCloud 项目_idea 新建一个 springcloud 项目-CSDN 博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;根据该博客先创建一个微服务的大体框架&lt;/p&gt;
@@ -1685,10 +1685,10 @@
         </item>
         <item>
         <title>利用宝塔面板快速部署前后端代码</title>
-        <link>https://demonskirito.github.io/p/%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/</link>
+        <link>http://localhost:1313/p/%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/</link>
         <pubDate>Mon, 16 Dec 2024 21:38:47 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/p/%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/</guid>
+        <guid>http://localhost:1313/p/%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/</guid>
         <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
 &lt;/h2&gt;&lt;p&gt;在使用宝塔面板之前得先开个服务器，我这里使用的是阿里云服务器。&lt;/p&gt;
 &lt;p&gt;安全组添加一下接口：&lt;/p&gt;
@@ -2060,10 +2060,10 @@
         </item>
         <item>
         <title>建站技术 | HUGO &#43; GitHub 创建博客页面</title>
-        <link>https://demonskirito.github.io/p/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF-hugo--github-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B5%E9%9D%A2/</link>
+        <link>http://localhost:1313/p/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF-hugo--github-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B5%E9%9D%A2/</link>
         <pubDate>Mon, 16 Dec 2024 10:30:44 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/p/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF-hugo--github-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B5%E9%9D%A2/</guid>
+        <guid>http://localhost:1313/p/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF-hugo--github-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B5%E9%9D%A2/</guid>
         <description>&lt;h1 id=&#34;建站技术--hugo--github-创建博客页面&#34;&gt;建站技术 | HUGO + GitHub 创建博客页面
 &lt;/h1&gt;&lt;h2 id=&#34;1前言&#34;&gt;1.前言
 &lt;/h2&gt;&lt;p&gt;我通过参考大量的hugo框架的使用，最后终于在收集整理并使用得出了较好的部署方式。
@@ -2889,18 +2889,18 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>https://demonskirito.github.io/archives/</link>
+        <link>http://localhost:1313/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://demonskirito.github.io/archives/</guid>
+        <guid>http://localhost:1313/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>About</title>
-        <link>https://demonskirito.github.io/about/</link>
+        <link>http://localhost:1313/about/</link>
         <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://demonskirito.github.io/about/</guid>
+        <guid>http://localhost:1313/about/</guid>
         <description>&lt;p&gt;Written in Go, Hugo is an open source static site generator available under the &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/blob/master/LICENSE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Apache License 2.0.&lt;/a&gt; Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.&lt;/p&gt;
 &lt;p&gt;Hugo makes use of a variety of open source projects including:&lt;/p&gt;
@@ -2925,10 +2925,10 @@
         </item>
         <item>
         <title>Links</title>
-        <link>https://demonskirito.github.io/links/</link>
+        <link>http://localhost:1313/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://demonskirito.github.io/links/</guid>
+        <guid>http://localhost:1313/links/</guid>
         <description>&lt;p&gt;To use this feature, add &lt;code&gt;links&lt;/code&gt; section to frontmatter.&lt;/p&gt;
 &lt;p&gt;This page&amp;rsquo;s frontmatter:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2960,10 +2960,10 @@
         </item>
         <item>
         <title>Search</title>
-        <link>https://demonskirito.github.io/search/</link>
+        <link>http://localhost:1313/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://demonskirito.github.io/search/</guid>
+        <guid>http://localhost:1313/search/</guid>
         <description></description>
         </item>
         

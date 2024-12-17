@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Nacos on 念云的博客</title>
-        <link>https://demonskirito.github.io/tags/nacos/</link>
+        <link>http://localhost:1313/tags/nacos/</link>
         <description>Recent content in Nacos on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Mon, 16 Dec 2024 21:46:08 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/nacos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 16 Dec 2024 21:46:08 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/nacos/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>SpringCloud Nacos&#43;ribbon的实现方法</title>
-        <link>https://demonskirito.github.io/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</link>
+        <link>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</link>
         <pubDate>Mon, 16 Dec 2024 21:46:08 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</guid>
+        <guid>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</guid>
         <description>&lt;h2 id=&#34;前提&#34;&gt;前提
 &lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_43466788/article/details/112968827&#34; title=&#34;【SpringCloud】IDEA如何创建一个SpringCloud项目_idea新建一个springcloud项目-CSDN博客&#34;&gt; 【SpringCloud】IDEA 如何创建一个 SpringCloud 项目_idea 新建一个 springcloud 项目-CSDN 博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;根据该博客先创建一个微服务的大体框架&lt;/p&gt;
