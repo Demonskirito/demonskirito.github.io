@@ -3,27 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-12-17T14:40:37+08:00</lastmod>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-12-17T14:40:37+08:00</lastmod>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/gateway/</loc>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/spring-cloud/</loc>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2024-12-19T17:00:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/resilience4j/</loc>
+    <lastmod>2024-12-19T16:53:03+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</loc>
+    <lastmod>2024-12-19T16:53:03+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/hystrix/</loc>
+    <lastmod>2024-12-19T16:42:34+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</loc>
+    <lastmod>2024-12-19T16:42:34+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/fegin/</loc>
     <lastmod>2024-12-17T14:40:37+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-12-17T14:40:37+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/spring-cloud/</loc>
-    <lastmod>2024-12-17T14:40:37+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2024-12-17T14:40:37+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-12-17T14:40:37+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-12-17T14:40:37+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/nacos/</loc>
@@ -34,6 +52,12 @@
   </url><url>
     <loc>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2024-12-16T21:46:08+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2024-12-16T21:38:47+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/page/</loc>
+    <lastmod>2024-12-16T21:38:47+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/phpmyadmin/</loc>
     <lastmod>2024-12-16T21:38:47+08:00</lastmod>
@@ -64,12 +88,6 @@
   </url><url>
     <loc>http://localhost:1313/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/page/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/links/</loc>
   </url><url>
