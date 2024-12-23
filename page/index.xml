@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Pages on 念云的博客</title>
+        <title>念云的博客</title>
         <link>http://localhost:1313/page/</link>
-        <description>Recent content in Pages on 念云的博客</description>
+        <description>Recent content on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
@@ -13,26 +13,122 @@
         <pubDate>Mon, 16 Dec 2024 21:38:47 +0800</pubDate>
         
         <guid>http://localhost:1313/about/</guid>
-        <description>&lt;img src="http://localhost:1313/about/wallhaven-e79z7r_1920x1080.png" alt="Featured image of post About" /&gt;&lt;p&gt;Written in Go, Hugo is an open source static site generator available under the &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/blob/master/LICENSE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Apache License 2.0.&lt;/a&gt; Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.&lt;/p&gt;
-&lt;p&gt;Hugo makes use of a variety of open source projects including:&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/about/wallhaven-e79z7r_1920x1080.png" alt="Featured image of post About" /&gt;&lt;h3 id=&#34;关于我&#34;&gt;关于我
+&lt;/h3&gt;&lt;p&gt;你好，我是念云&lt;/p&gt;
+&lt;p&gt;一位编程/ACGN/摄影/剪辑的爱好者&lt;/p&gt;
+&lt;h3 id=&#34;编程&#34;&gt;编程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;常见的编程语言几乎都会，至少使用过
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/yuin/goldmark&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/yuin/goldmark&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alecthomas/chroma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/alecthomas/chroma&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/muesli/smartcrop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/muesli/smartcrop&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spf13/cobra&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/spf13/cobra&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spf13/viper&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/spf13/viper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;一般都在做全栈的开发，使用过的前端框架有 vue、uni-app，后端使用过 flask、springboot&lt;/li&gt;
+&lt;li&gt;目前常用的是  &lt;code&gt;java&lt;/code&gt;，其他编程语言已较少接触&lt;/li&gt;
+&lt;li&gt;因为对小程序很感兴趣，所以即用过微信的原生格式代码写，也用过 uni-app 写，对小程序的发布和代码规范很熟练&lt;/li&gt;
+&lt;li&gt;数据库常用的是 mysql 和 readis&lt;/li&gt;
+&lt;li&gt;为了能将页面在公网上展示，所以去熟练掌握了宝塔面板的操作和 Linux 的使用&lt;/li&gt;
+&lt;li&gt;因为自己现在的专业是数据科学与大数据技术，所以学习了一点大数据相关的技术栈，Hadoop、hive、spark、python&amp;hellip;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.&lt;/p&gt;
-&lt;p&gt;Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.&lt;/p&gt;
-&lt;p&gt;Websites built with Hugo are extremely fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.&lt;/p&gt;
-&lt;p&gt;Learn more and contribute on &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;因为对算法感兴趣，打过一段时间的 codeforce 和力扣&lt;/li&gt;
+&lt;li&gt;平时喜欢研究一些插件的使用，比如最近和同学刚完成一个利用 CSDN 图床上传图片获取 url 的软件 exe，方法和绝大多数市面上的一些插件相同，写 python 的脚本再利用 python 特有的打包方法 Pyinstaller 实现，但由于最近写博客发现 CSDN 的图床不支持外链，所以只能用用 url，其它格式就不行，例如 markdown&lt;/li&gt;
+&lt;li&gt;后端 api 文档（smart-doc）的使用和 vue 打包 electron 插件的使用就不细说了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;acgn&#34;&gt;ACGN
+&lt;/h3&gt;&lt;p&gt;ACGN 方面了解的还算多，但现在已经不会太投入了。&lt;/p&gt;
+&lt;h4 id=&#34;anime&#34;&gt;Anime
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;看过的动漫非常多，已经点不清了，喜欢的动漫有《死亡笔记》《命运石之门》《反叛的鲁路修》《东京地震 8.0》《从零开始的异世界生活》《天元突破 红莲螺岩》《86-不存在的战区》《夏目友人帐》《东京喰种》《我的青春恋爱物语果然有问题》&amp;hellip;&amp;hellip;有点多就不说了，只看自己感兴趣的&lt;/li&gt;
+&lt;li&gt;入宅番是《火影忍者》《龙珠 Z》《刀剑神域》《天降之物》和《约会大作战》&lt;/li&gt;
+&lt;li&gt;看的最久的是《妖精的尾巴》《火影忍者》《龙珠 Z》&lt;/li&gt;
+&lt;li&gt;最近的一次是在看《东京复仇者》和《强风吹拂》&lt;/li&gt;
+&lt;li&gt;虽然已经很少去看新番了，但还是会感慨动漫对我人生带来的影响和改变&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;comic&#34;&gt;Comic
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;正经漫画看的比较少，最让我震撼的动漫果然还是日本的青年漫《剑风传奇》《孤高之人》《浪客行》《冰海战记》&lt;/li&gt;
+&lt;li&gt;这几年上了大学才开始认认真真的去看漫画，有《有花无实》《我推的孩子》《少年的深渊》《青之芦苇》《地狱乐》&lt;/li&gt;
+&lt;li&gt;看过《女朋友、借我一下》，结果因为剧情太烂，中途弃坑了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;game&#34;&gt;Game
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;主要玩电脑游戏
+&lt;ul&gt;
+&lt;li&gt;Steam 游戏
+&lt;ul&gt;
+&lt;li&gt;玩的最久的是 CS，非常喜欢&lt;/li&gt;
+&lt;li&gt;魂系游戏最喜欢玩老头环，虽然今年的黑神话悟空也挺好玩的，但总觉得差点意思&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;其他游戏
+&lt;ul&gt;
+&lt;li&gt;米哈游的游戏，不捧不黑，基本只领邮件抽卡，做做每日&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;手游
+&lt;ul&gt;
+&lt;li&gt;腾讯游戏
+&lt;ul&gt;
+&lt;li&gt;火影忍者、王者荣耀都玩的还行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;novel&#34;&gt;Novel
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;几乎不怎么看小说&lt;/li&gt;
+&lt;li&gt;破灭文学小说爱好者
+&lt;ul&gt;
+&lt;li&gt;最近看完的一本书叫《窄门》，法国文学，爱情的“窄门”很不好走&lt;/li&gt;
+&lt;li&gt;最喜欢的作品是《苦役列车》和《活着》，《人间失格》和《山月记》也很好看&lt;/li&gt;
+&lt;li&gt;最近在看谷崎润一郎的《初期短篇集》&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;music&#34;&gt;Music
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;重度音乐患者，已经听了 4500 个小时了&lt;/li&gt;
+&lt;li&gt;喜欢的音乐风格有很多，一般只在网易云听歌&lt;/li&gt;
+&lt;li&gt;2024 年最喜欢的音乐
+&lt;ul&gt;
+&lt;li&gt;《The Hardest Part》&lt;/li&gt;
+&lt;li&gt;《dont let me go》&lt;/li&gt;
+&lt;li&gt;《God&amp;rsquo;s Word》&lt;/li&gt;
+&lt;li&gt;《READLINE DAY》&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;其实还有许多喜欢听的歌，但今年这些歌可能对于我来说更具有意义吧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;摄影&#34;&gt;摄影
+&lt;/h3&gt;&lt;p&gt;因为我喜欢出去玩，并且喜欢用手机去拍照，后来就接触到了相机，通过相机我将许许多多难忘的回忆封存在了照片里，为此我还特意去学习了 lr 和 ps，虽然不怎么拍人像，但风景像拍出来的照片，我还是非常喜欢的，但还没有达到自己想要的水平，所以照片并没有存放在太过正式的平台，后面可能会放在博客展示吧。&lt;/p&gt;
+&lt;p&gt;先给大家展示一张自己较为满意的吧：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/23/rYSAFcCfWOXubQe.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DSC02683&amp;mdash;1.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;剪辑&#34;&gt;剪辑
+&lt;/h3&gt;&lt;p&gt;在剪辑方面只能说是入门的级别吧，并没有系统的学过，只能在 b 站感慨大佬剪的真 nb&amp;hellip;但是还是自学过一段时间 AE 和 PR 的&lt;/p&gt;
+&lt;p&gt;因为喜欢玩 CS，所以剪过 CS 的抽帧特效视频，从过去就一直喜欢看静止系的 MAD，都是技术力强到爆炸的一些大佬啊&lt;/p&gt;
+&lt;p&gt;这些都是我比较喜欢的静止系 MAD，希望自己也有一天能达到这种水平&lt;/p&gt;
+&lt;p&gt;【静止画 MAD/有花无实】堇夜的约会
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1mwWGeYE6i&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/video/BV1mwWGeYE6i&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;【静止画 MAD】 hello, new world 【迎海踏浪般的终幕】
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1eb4y117HR&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/video/BV1eb4y117HR&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;早上好，维吉尔【静止系 MAD/风华回战 2023】
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1vw41187YW&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/video/BV1vw41187YW&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;【静止画/少年的深渊】 季节洄游
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Hf4y1G7NV&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/video/BV1Hf4y1G7NV&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
