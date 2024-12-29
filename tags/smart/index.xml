@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Smart on 念云的博客</title>
+        <link>http://localhost:1313/tags/smart/</link>
+        <description>Recent content in Smart on 念云的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>随.</copyright>
+        <lastBuildDate>Sun, 29 Dec 2024 17:53:27 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/smart/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>smart-doc在spring boot中的使用（替代swagger，无注入）</title>
+        <link>http://localhost:1313/p/smart-doc%E5%9C%A8spring-boot%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9B%BF%E4%BB%A3swagger%E6%97%A0%E6%B3%A8%E5%85%A5/</link>
+        <pubDate>Sun, 29 Dec 2024 17:53:27 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/smart-doc%E5%9C%A8spring-boot%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9B%BF%E4%BB%A3swagger%E6%97%A0%E6%B3%A8%E5%85%A5/</guid>
+        <description>&lt;h2 id=&#34;附录&#34;&gt;附录
+&lt;/h2&gt;&lt;h3 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h3&gt;&lt;h3 id=&#34;版权信息&#34;&gt;版权信息
+&lt;/h3&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

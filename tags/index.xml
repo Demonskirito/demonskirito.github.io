@@ -7,20 +7,44 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Thu, 19 Dec 2024 17:00:16 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Gateway</title>
-        <link>http://localhost:1313/tags/gateway/</link>
-        <pubDate>Thu, 19 Dec 2024 17:00:16 +0800</pubDate>
+        <lastBuildDate>Sun, 29 Dec 2024 17:53:27 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Smart-Doc</title>
+        <link>http://localhost:1313/tags/smart-doc/</link>
+        <pubDate>Sun, 29 Dec 2024 17:53:27 +0800</pubDate>
         
-        <guid>http://localhost:1313/tags/gateway/</guid>
+        <guid>http://localhost:1313/tags/smart-doc/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Spring Boot</title>
+        <link>http://localhost:1313/tags/spring-boot/</link>
+        <pubDate>Sun, 29 Dec 2024 17:53:27 +0800</pubDate>
+        
+        <guid>http://localhost:1313/tags/spring-boot/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>RabbitMQ</title>
+        <link>http://localhost:1313/tags/rabbitmq/</link>
+        <pubDate>Sun, 29 Dec 2024 17:37:11 +0800</pubDate>
+        
+        <guid>http://localhost:1313/tags/rabbitmq/</guid>
         <description></description>
         </item>
         <item>
         <title>Spring Cloud</title>
         <link>http://localhost:1313/tags/spring-cloud/</link>
-        <pubDate>Thu, 19 Dec 2024 17:00:16 +0800</pubDate>
+        <pubDate>Sun, 29 Dec 2024 17:37:11 +0800</pubDate>
         
         <guid>http://localhost:1313/tags/spring-cloud/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Gateway</title>
+        <link>http://localhost:1313/tags/gateway/</link>
+        <pubDate>Thu, 19 Dec 2024 17:00:16 +0800</pubDate>
+        
+        <guid>http://localhost:1313/tags/gateway/</guid>
         <description></description>
         </item>
         <item>
@@ -69,14 +93,6 @@
         <pubDate>Mon, 16 Dec 2024 21:38:47 +0800</pubDate>
         
         <guid>http://localhost:1313/tags/phpmyadmin/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Spring Boot</title>
-        <link>http://localhost:1313/tags/spring-boot/</link>
-        <pubDate>Mon, 16 Dec 2024 21:38:47 +0800</pubDate>
-        
-        <guid>http://localhost:1313/tags/spring-boot/</guid>
         <description></description>
         </item>
         <item>
