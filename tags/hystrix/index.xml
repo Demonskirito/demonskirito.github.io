@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Hystrix on 念云的博客</title>
-        <link>http://localhost:1313/tags/hystrix/</link>
+        <link>https://demonskirito.github.io/tags/hystrix/</link>
         <description>Recent content in Hystrix on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Thu, 19 Dec 2024 16:42:34 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/hystrix/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 Dec 2024 16:42:34 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/hystrix/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Spring Cloud Hystrix熔断器的使用（服务降级）</title>
-        <link>http://localhost:1313/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</link>
+        <link>https://demonskirito.github.io/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</link>
         <pubDate>Thu, 19 Dec 2024 16:42:34 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</guid>
+        <guid>https://demonskirito.github.io/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</guid>
         <description>&lt;p&gt;在消费者中加入依赖&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

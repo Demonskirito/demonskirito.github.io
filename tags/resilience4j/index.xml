@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Resilience4j on 念云的博客</title>
-        <link>http://localhost:1313/tags/resilience4j/</link>
+        <link>https://demonskirito.github.io/tags/resilience4j/</link>
         <description>Recent content in Resilience4j on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Thu, 19 Dec 2024 16:53:03 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/resilience4j/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 Dec 2024 16:53:03 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/resilience4j/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Spring Cloud的服务熔断（resilience4j）</title>
-        <link>http://localhost:1313/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</link>
+        <link>https://demonskirito.github.io/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</link>
         <pubDate>Thu, 19 Dec 2024 16:53:03 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</guid>
+        <guid>https://demonskirito.github.io/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</guid>
         <description>&lt;p&gt;为什么我会将 Hystrix 的熔断器换成 resilience4j，因为尝试了半天发现虽然 Hystrix 的熔断器可以正常使服务降级，单个 api 接口可以返回 fallback 错误信息，但是不能使得服务熔断，具体原因可能就是注解失效，被放弃了，所以后面边将熔断器换成了当前的熔断器 resilience4j&lt;/p&gt;
 &lt;p&gt;具体可以看看这篇博客，这篇博客详细写了如何使用 resilience4j 熔断器去使服务下降和服务熔断。 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/m0_73849719/article/details/136580419?spm=1001.2014.3001.5502&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;OpenFeign 熔断与降级_openfeign 熔断降级-CSDN 博客&lt;/a&gt;&lt;/p&gt;

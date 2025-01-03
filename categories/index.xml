@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on 念云的博客</title>
-        <link>http://localhost:1313/categories/</link>
+        <link>https://demonskirito.github.io/categories/</link>
         <description>Recent content in Categories on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Fri, 03 Jan 2025 13:35:58 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 03 Jan 2025 13:35:58 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Redis</title>
-        <link>http://localhost:1313/categories/redis/</link>
+        <link>https://demonskirito.github.io/categories/redis/</link>
         <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
         
-        <guid>http://localhost:1313/categories/redis/</guid>
+        <guid>https://demonskirito.github.io/categories/redis/</guid>
         <description></description>
         </item>
         <item>
         <title>Sa-Token</title>
-        <link>http://localhost:1313/categories/sa-token/</link>
+        <link>https://demonskirito.github.io/categories/sa-token/</link>
         <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
         
-        <guid>http://localhost:1313/categories/sa-token/</guid>
+        <guid>https://demonskirito.github.io/categories/sa-token/</guid>
         <description></description>
         </item>
         <item>
         <title>Spring Boot</title>
-        <link>http://localhost:1313/categories/spring-boot/</link>
+        <link>https://demonskirito.github.io/categories/spring-boot/</link>
         <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
         
-        <guid>http://localhost:1313/categories/spring-boot/</guid>
+        <guid>https://demonskirito.github.io/categories/spring-boot/</guid>
         <description></description>
         </item>
         <item>
         <title>学习笔记</title>
-        <link>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <link>https://demonskirito.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Sun, 29 Dec 2024 17:53:27 +0800</pubDate>
         
-        <guid>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <guid>https://demonskirito.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
         <description></description>
         </item>
         <item>
         <title>建站技术</title>
-        <link>http://localhost:1313/categories/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF/</link>
+        <link>https://demonskirito.github.io/categories/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF/</link>
         <pubDate>Mon, 16 Dec 2024 10:30:44 +0800</pubDate>
         
-        <guid>http://localhost:1313/categories/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF/</guid>
+        <guid>https://demonskirito.github.io/categories/%E5%BB%BA%E7%AB%99%E6%8A%80%E6%9C%AF/</guid>
         <description></description>
         </item>
         

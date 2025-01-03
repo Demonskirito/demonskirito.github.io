@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Gateway on 念云的博客</title>
-        <link>http://localhost:1313/tags/gateway/</link>
+        <link>https://demonskirito.github.io/tags/gateway/</link>
         <description>Recent content in Gateway on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Thu, 19 Dec 2024 17:00:16 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/gateway/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 Dec 2024 17:00:16 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/gateway/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Spring Cloud Gateway的使用</title>
-        <link>http://localhost:1313/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+        <link>https://demonskirito.github.io/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Thu, 19 Dec 2024 17:00:16 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+        <guid>https://demonskirito.github.io/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
         <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;紧接上文的熔断器，往 spring cloud 项目中写入网关模块&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/19/OJlchjEWBLqzm3A.png&#34;

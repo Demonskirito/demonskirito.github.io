@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Spring Cloud on 念云的博客</title>
-        <link>http://localhost:1313/tags/spring-cloud/</link>
+        <link>https://demonskirito.github.io/tags/spring-cloud/</link>
         <description>Recent content in Spring Cloud on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Sun, 29 Dec 2024 17:37:11 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/spring-cloud/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 29 Dec 2024 17:37:11 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/spring-cloud/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>简单示范RabbitMQ在Spring Cloud中的使用</title>
-        <link>http://localhost:1313/p/%E7%AE%80%E5%8D%95%E7%A4%BA%E8%8C%83rabbitmq%E5%9C%A8spring-cloud%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+        <link>https://demonskirito.github.io/p/%E7%AE%80%E5%8D%95%E7%A4%BA%E8%8C%83rabbitmq%E5%9C%A8spring-cloud%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Sun, 29 Dec 2024 17:37:11 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/%E7%AE%80%E5%8D%95%E7%A4%BA%E8%8C%83rabbitmq%E5%9C%A8spring-cloud%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+        <guid>https://demonskirito.github.io/p/%E7%AE%80%E5%8D%95%E7%A4%BA%E8%8C%83rabbitmq%E5%9C%A8spring-cloud%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
         <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
 &lt;/h2&gt;&lt;p&gt;在 spring cloud 的项目中使用 RabbitMQ 之前得先给自己的电脑配置 RabbitMQ&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.aliyun.com/article/769883&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -406,10 +406,10 @@
         </item>
         <item>
         <title>Spring Cloud Gateway的使用</title>
-        <link>http://localhost:1313/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+        <link>https://demonskirito.github.io/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Thu, 19 Dec 2024 17:00:16 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+        <guid>https://demonskirito.github.io/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
         <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;紧接上文的熔断器，往 spring cloud 项目中写入网关模块&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/19/OJlchjEWBLqzm3A.png&#34;
@@ -723,10 +723,10 @@
         </item>
         <item>
         <title>Spring Cloud的服务熔断（resilience4j）</title>
-        <link>http://localhost:1313/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</link>
+        <link>https://demonskirito.github.io/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</link>
         <pubDate>Thu, 19 Dec 2024 16:53:03 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</guid>
+        <guid>https://demonskirito.github.io/p/spring-cloud%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%ADresilience4j/</guid>
         <description>&lt;p&gt;为什么我会将 Hystrix 的熔断器换成 resilience4j，因为尝试了半天发现虽然 Hystrix 的熔断器可以正常使服务降级，单个 api 接口可以返回 fallback 错误信息，但是不能使得服务熔断，具体原因可能就是注解失效，被放弃了，所以后面边将熔断器换成了当前的熔断器 resilience4j&lt;/p&gt;
 &lt;p&gt;具体可以看看这篇博客，这篇博客详细写了如何使用 resilience4j 熔断器去使服务下降和服务熔断。 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/m0_73849719/article/details/136580419?spm=1001.2014.3001.5502&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;OpenFeign 熔断与降级_openfeign 熔断降级-CSDN 博客&lt;/a&gt;&lt;/p&gt;
@@ -978,10 +978,10 @@
         </item>
         <item>
         <title>Spring Cloud Hystrix熔断器的使用（服务降级）</title>
-        <link>http://localhost:1313/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</link>
+        <link>https://demonskirito.github.io/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</link>
         <pubDate>Thu, 19 Dec 2024 16:42:34 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</guid>
+        <guid>https://demonskirito.github.io/p/spring-cloud-hystrix%E7%86%94%E6%96%AD%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/</guid>
         <description>&lt;p&gt;在消费者中加入依赖&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1139,10 +1139,10 @@
         </item>
         <item>
         <title>SpringCloud Fegin的使用</title>
-        <link>http://localhost:1313/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+        <link>https://demonskirito.github.io/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Tue, 17 Dec 2024 14:40:37 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+        <guid>https://demonskirito.github.io/p/springcloud-fegin%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;紧接我的上一篇博客&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/m0_73938805/article/details/143267515?spm=1001.2014.3001.5501&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1364,10 +1364,10 @@
         </item>
         <item>
         <title>SpringCloud Nacos&#43;ribbon的实现方法</title>
-        <link>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</link>
+        <link>https://demonskirito.github.io/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</link>
         <pubDate>Mon, 16 Dec 2024 21:46:08 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</guid>
+        <guid>https://demonskirito.github.io/p/springcloud-nacos-ribbon%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</guid>
         <description>&lt;h2 id=&#34;前提&#34;&gt;前提
 &lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_43466788/article/details/112968827&#34; title=&#34;【SpringCloud】IDEA如何创建一个SpringCloud项目_idea新建一个springcloud项目-CSDN博客&#34;&gt; 【SpringCloud】IDEA 如何创建一个 SpringCloud 项目_idea 新建一个 springcloud 项目-CSDN 博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;根据该博客先创建一个微服务的大体框架&lt;/p&gt;

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Sa-Token on 念云的博客</title>
-        <link>http://localhost:1313/categories/sa-token/</link>
+        <link>https://demonskirito.github.io/categories/sa-token/</link>
         <description>Recent content in Sa-Token on 念云的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>随.</copyright>
-        <lastBuildDate>Fri, 03 Jan 2025 13:35:58 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/sa-token/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 03 Jan 2025 13:35:58 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/categories/sa-token/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Spring Boot &#43; Redis &#43; Sa-Token</title>
-        <link>http://localhost:1313/p/spring-boot--redis--sa-token/</link>
+        <link>https://demonskirito.github.io/p/spring-boot--redis--sa-token/</link>
         <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/spring-boot--redis--sa-token/</guid>
+        <guid>https://demonskirito.github.io/p/spring-boot--redis--sa-token/</guid>
         <description>&lt;h1 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h1&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.tencent.com/developer/article/2218452&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Sa-Token 实现分布式登录鉴权（Redis 集成 前后端分离）-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
@@ -146,8 +146,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过实现 &lt;code&gt;StpInterface&lt;/code&gt;，你可以根据实际业务需求来定制用户认证、登录状态、权限验证等操作。&lt;/p&gt;
-&lt;h1 id=&#34;基于原有的基础--创建-mysql-表单存储权限&#34;&gt;基于原有的基础 | 创建 MySQL 表单存储权限
-&lt;/h1&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;基于原有的基础--创建-mysql-表单存储权限&#34;&gt;基于原有的基础 | 创建 MySQL 表单存储权限
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -511,8 +511,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这里我把 controller 中的模拟数据改成了 mysql 数据库的数据并将密码进行加密，注册时也可以通过相应的方法对明文密码进行加密处理后存储至数据库中，使得数据更加安全。&lt;/p&gt;
 &lt;p&gt;完成后的图例应该如下图所示：&lt;/p&gt;
-&lt;p&gt;数据库的用户表单（角色，权限，具体信息，绑定关系&amp;hellip;&amp;hellip;）
-&lt;img src=&#34;https://s2.loli.net/2025/01/03/6GVz4rsDcLaSwh2.png&#34;
+&lt;p&gt;数据库的用户表单（角色，权限，具体信息，绑定关系&amp;hellip;&amp;hellip;）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2025/01/03/6GVz4rsDcLaSwh2.png&#34;
 	
 	
 	
@@ -522,8 +522,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;在原本代码的基础上和-mysql-连接并完成权限认证与登录&#34;&gt;在原本代码的基础上和 MySQL 连接并完成权限认证与登录
-&lt;/h1&gt;&lt;p&gt;其它的表单的实体类都可以直接使用 mybatis-plus 去完成增删改查，但 permissions 表单的实体类得在 mapper 中添加一个方法使用。&lt;/p&gt;
+&lt;h3 id=&#34;在原本代码的基础上和-mysql-连接并完成权限认证与登录&#34;&gt;在原本代码的基础上和 MySQL 连接并完成权限认证与登录
+&lt;/h3&gt;&lt;p&gt;其它的表单的实体类都可以直接使用 mybatis-plus 去完成增删改查，但 permissions 表单的实体类得在 mapper 中添加一个方法使用。&lt;/p&gt;
 &lt;p&gt;PermissionMapper
 完成对权限的使用&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
