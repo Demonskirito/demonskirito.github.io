@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参考文献 Sa-Token 实现分布式登录鉴权（Redis 集成 前后端分离）-腾讯云开发者社区-腾讯云 介绍 StpInterface 是 Sa-Token 框架中的一个接口，属于 Sa-Token 身份认证与授权框架的一部分。该接口提供了一些方法来实现自定义的身份认证和授权管理功能，特别是针对自定义的权限验证。 StpInterface 类的主要功能 StpInterface 用于定义 Sa-Token 中与用户身份相关的核心操作接口。通过实现这个接口，用户可以自定义如何获取用户信息、验证用户身份、判断是否有权限等。 主要方法 StpInterface 主要包括以下几个常用的方法： getLoginId()：获取当前登录用户的唯一标识（例如用户 ID）。 String getLoginId(); isLogin()：判断当前是否已登录。 boolean isLogin(); login(Object loginId)：登录方法，传入一个唯一标识来进行用户登录。 void login(Object loginId); logout()：登出方法，清除用户的登录状态。 void logout(); hasPermission(String permission)：判断当前登录用户是否具有某个权限。 boolean hasPermission(String permission); hasRole(String role)：判断当前登录用户是否拥有某个角色。 boolean hasRole(String role); 使用场景 自定义身份认证：如果需要自定义登录逻辑或用户身份验证，可以实现 StpInterface 接口来替代 Sa-Token 默认的用户认证方式。 角色与权限管理：通过 hasRole 和 hasPermission 等方法，进行角色与权限的验证，保证应用中的授权机制符合业务需求。 示例 以下是一个简单的实现例子，展示了如何实现 StpInterface 接口来定制认证与授权逻辑： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 import cn.">
+<title>Spring Boot &#43; Redis &#43; Sa-Token</title>
+
+<link rel='canonical' href='http://localhost:1313/p/spring-boot--redis--sa-token/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Spring Boot + Redis + Sa-Token">
+<meta property='og:description' content="参考文献 Sa-Token 实现分布式登录鉴权（Redis 集成 前后端分离）-腾讯云开发者社区-腾讯云 介绍 StpInterface 是 Sa-Token 框架中的一个接口，属于 Sa-Token 身份认证与授权框架的一部分。该接口提供了一些方法来实现自定义的身份认证和授权管理功能，特别是针对自定义的权限验证。 StpInterface 类的主要功能 StpInterface 用于定义 Sa-Token 中与用户身份相关的核心操作接口。通过实现这个接口，用户可以自定义如何获取用户信息、验证用户身份、判断是否有权限等。 主要方法 StpInterface 主要包括以下几个常用的方法： getLoginId()：获取当前登录用户的唯一标识（例如用户 ID）。 String getLoginId(); isLogin()：判断当前是否已登录。 boolean isLogin(); login(Object loginId)：登录方法，传入一个唯一标识来进行用户登录。 void login(Object loginId); logout()：登出方法，清除用户的登录状态。 void logout(); hasPermission(String permission)：判断当前登录用户是否具有某个权限。 boolean hasPermission(String permission); hasRole(String role)：判断当前登录用户是否拥有某个角色。 boolean hasRole(String role); 使用场景 自定义身份认证：如果需要自定义登录逻辑或用户身份验证，可以实现 StpInterface 接口来替代 Sa-Token 默认的用户认证方式。 角色与权限管理：通过 hasRole 和 hasPermission 等方法，进行角色与权限的验证，保证应用中的授权机制符合业务需求。 示例 以下是一个简单的实现例子，展示了如何实现 StpInterface 接口来定制认证与授权逻辑： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 import cn.">
+<meta property='og:url' content='http://localhost:1313/p/spring-boot--redis--sa-token/'>
+<meta property='og:site_name' content='念云的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='学习笔记' /><meta property='article:published_time' content='2025-01-03T13:35:58&#43;08:00'/><meta property='article:modified_time' content='2025-01-03T13:35:58&#43;08:00'/>
+<meta name="twitter:title" content="Spring Boot + Redis + Sa-Token">
+<meta name="twitter:description" content="参考文献 Sa-Token 实现分布式登录鉴权（Redis 集成 前后端分离）-腾讯云开发者社区-腾讯云 介绍 StpInterface 是 Sa-Token 框架中的一个接口，属于 Sa-Token 身份认证与授权框架的一部分。该接口提供了一些方法来实现自定义的身份认证和授权管理功能，特别是针对自定义的权限验证。 StpInterface 类的主要功能 StpInterface 用于定义 Sa-Token 中与用户身份相关的核心操作接口。通过实现这个接口，用户可以自定义如何获取用户信息、验证用户身份、判断是否有权限等。 主要方法 StpInterface 主要包括以下几个常用的方法： getLoginId()：获取当前登录用户的唯一标识（例如用户 ID）。 String getLoginId(); isLogin()：判断当前是否已登录。 boolean isLogin(); login(Object loginId)：登录方法，传入一个唯一标识来进行用户登录。 void login(Object loginId); logout()：登出方法，清除用户的登录状态。 void logout(); hasPermission(String permission)：判断当前登录用户是否具有某个权限。 boolean hasPermission(String permission); hasRole(String role)：判断当前登录用户是否拥有某个角色。 boolean hasRole(String role); 使用场景 自定义身份认证：如果需要自定义登录逻辑或用户身份验证，可以实现 StpInterface 接口来替代 Sa-Token 默认的用户认证方式。 角色与权限管理：通过 hasRole 和 hasPermission 等方法，进行角色与权限的验证，保证应用中的授权机制符合业务需求。 示例 以下是一个简单的实现例子，展示了如何实现 StpInterface 接口来定制认证与授权逻辑： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 import cn.">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu512d5369da382453356d0e68539a8fce_82572_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">念云的博客</a></h1>
+            <h2 class="site-description">随.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/268011948'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250799343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5636" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 0 1 60.373333 60.373333L700.330667 256H789.333333A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.856L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="5637" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:wh2919907118@gamil.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250776188" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4517" width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z m-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="4518" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Demonskirito'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254173120" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6663" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M682.215454 981.446137c-25.532318 0-42.553863-17.021545-42.553864-42.553864v-165.960067c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181 0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112 0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976 0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545 0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545 0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748 0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499 0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454 0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="6664" data-spm-anchor-id="a313x.search_index.0.i18.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254218488" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7714" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4 35.4-21.1 62.3-54.4 75-94-32.7 19.5-69.7 33.8-108.2 41.2C765.4 194.6 721.1 174 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5-14.8 25.4-23.2 54.4-23.2 86.1 0 59.2 30.1 111.4 76 142.1-28-1.1-54.4-9-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4-14.3 3.7-29.6 5.8-44.9 5.8-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-0.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-0.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z" p-id="7715" data-spm-anchor-id="a313x.search_index.0.i22.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#stpinterface-类的主要功能">StpInterface 类的主要功能</a></li>
+        <li><a href="#主要方法">主要方法</a></li>
+        <li><a href="#使用场景">使用场景</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#基于原有的基础--创建-mysql-表单存储权限">基于原有的基础 | 创建 MySQL 表单存储权限</a></li>
+        <li><a href="#在原本代码的基础上和-mysql-连接并完成权限认证与登录">在原本代码的基础上和 MySQL 连接并完成权限认证与登录</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/spring-boot/" >
+                Spring Boot
+            </a>
+        
+            <a href="/categories/sa-token/" >
+                Sa-Token
+            </a>
+        
+            <a href="/categories/redis/" >
+                Redis
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/spring-boot--redis--sa-token/">Spring Boot &#43; Redis &#43; Sa-Token</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="参考文献">参考文献
+</h1><p><a class="link" href="https://cloud.tencent.com/developer/article/2218452"  target="_blank" rel="noopener"
+    >Sa-Token 实现分布式登录鉴权（Redis 集成 前后端分离）-腾讯云开发者社区-腾讯云</a></p>
+<h1 id="介绍">介绍
+</h1><p><code>StpInterface</code> 是 Sa-Token 框架中的一个接口，属于 Sa-Token 身份认证与授权框架的一部分。该接口提供了一些方法来实现自定义的身份认证和授权管理功能，特别是针对自定义的权限验证。</p>
+<h3 id="stpinterface-类的主要功能">StpInterface 类的主要功能
+</h3><p><code>StpInterface</code> 用于定义 Sa-Token 中与用户身份相关的核心操作接口。通过实现这个接口，用户可以自定义如何获取用户信息、验证用户身份、判断是否有权限等。</p>
+<h3 id="主要方法">主要方法
+</h3><p><code>StpInterface</code> 主要包括以下几个常用的方法：</p>
+<ol>
+<li>
+<p><strong><code>getLoginId()</code></strong>：获取当前登录用户的唯一标识（例如用户 ID）。</p>
+<p><code>String getLoginId();</code></p>
+</li>
+<li>
+<p><strong><code>isLogin()</code></strong>：判断当前是否已登录。</p>
+<p><code>boolean isLogin();</code></p>
+</li>
+<li>
+<p><strong><code>login(Object loginId)</code></strong>：登录方法，传入一个唯一标识来进行用户登录。</p>
+<p><code>void login(Object loginId);</code></p>
+</li>
+<li>
+<p><strong><code>logout()</code></strong>：登出方法，清除用户的登录状态。</p>
+<p><code>void logout();</code></p>
+</li>
+<li>
+<p><strong><code>hasPermission(String permission)</code></strong>：判断当前登录用户是否具有某个权限。</p>
+<p><code>boolean hasPermission(String permission);</code></p>
+</li>
+<li>
+<p><strong><code>hasRole(String role)</code></strong>：判断当前登录用户是否拥有某个角色。</p>
+<p><code>boolean hasRole(String role);</code></p>
+</li>
+</ol>
+<h3 id="使用场景">使用场景
+</h3><ul>
+<li><strong>自定义身份认证</strong>：如果需要自定义登录逻辑或用户身份验证，可以实现 <code>StpInterface</code> 接口来替代 Sa-Token 默认的用户认证方式。</li>
+<li><strong>角色与权限管理</strong>：通过 <code>hasRole</code> 和 <code>hasPermission</code> 等方法，进行角色与权限的验证，保证应用中的授权机制符合业务需求。</li>
+</ul>
+<h3 id="示例">示例
+</h3><p>以下是一个简单的实现例子，展示了如何实现 <code>StpInterface</code> 接口来定制认证与授权逻辑：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import cn.dev33.satoken.stp.StpInterface;
+</span></span><span class="line"><span class="cl">import org.springframework.stereotype.Component;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@Component
+</span></span><span class="line"><span class="cl">public class MyStpInterface implements StpInterface {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public String getLoginId() {
+</span></span><span class="line"><span class="cl">        // 返回当前登录用户的ID
+</span></span><span class="line"><span class="cl">        return &#34;123&#34;; // 假设返回用户ID为123
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public boolean isLogin() {
+</span></span><span class="line"><span class="cl">        // 判断当前用户是否登录
+</span></span><span class="line"><span class="cl">        return true; // 假设用户已登录
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public void login(Object loginId) {
+</span></span><span class="line"><span class="cl">        // 实现用户登录逻辑
+</span></span><span class="line"><span class="cl">        // 这里可以根据传入的loginId来设置用户的登录状态
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public void logout() {
+</span></span><span class="line"><span class="cl">        // 实现登出逻辑
+</span></span><span class="line"><span class="cl">        // 清除用户的登录状态
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public boolean hasPermission(String permission) {
+</span></span><span class="line"><span class="cl">        // 判断用户是否有某个权限
+</span></span><span class="line"><span class="cl">        return &#34;admin&#34;.equals(permission); // 假设只有管理员有权限
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public boolean hasRole(String role) {
+</span></span><span class="line"><span class="cl">        // 判断用户是否有某个角色
+</span></span><span class="line"><span class="cl">        return &#34;admin&#34;.equals(role); // 假设只有管理员有该角色
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过实现 <code>StpInterface</code>，你可以根据实际业务需求来定制用户认证、登录状态、权限验证等操作。</p>
+<h3 id="基于原有的基础--创建-mysql-表单存储权限">基于原有的基础 | 创建 MySQL 表单存储权限
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-- 角色表
+</span></span><span class="line"><span class="cl">CREATE TABLE roles (
+</span></span><span class="line"><span class="cl">    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+</span></span><span class="line"><span class="cl">    role_name VARCHAR(50) NOT NULL
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-- 权限表
+</span></span><span class="line"><span class="cl">CREATE TABLE permissions (
+</span></span><span class="line"><span class="cl">    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+</span></span><span class="line"><span class="cl">    permission_name VARCHAR(50) NOT NULL
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-- 用户角色关联表
+</span></span><span class="line"><span class="cl">CREATE TABLE users_roles (
+</span></span><span class="line"><span class="cl">    user_id BIGINT NOT NULL,
+</span></span><span class="line"><span class="cl">    role_id BIGINT NOT NULL,
+</span></span><span class="line"><span class="cl">    FOREIGN KEY (user_id) REFERENCES users(id),
+</span></span><span class="line"><span class="cl">    FOREIGN KEY (role_id) REFERENCES roles(id)
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-- 角色权限关联表
+</span></span><span class="line"><span class="cl">CREATE TABLE roles_permissions (
+</span></span><span class="line"><span class="cl">    role_id BIGINT NOT NULL,
+</span></span><span class="line"><span class="cl">    permission_id BIGINT NOT NULL,
+</span></span><span class="line"><span class="cl">    FOREIGN KEY (role_id) REFERENCES roles(id),
+</span></span><span class="line"><span class="cl">    FOREIGN KEY (permission_id) REFERENCES permissions(id)
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-- 用户表
+</span></span><span class="line"><span class="cl">CREATE TABLE users (
+</span></span><span class="line"><span class="cl">    id BIGINT AUTO_INCREMENT PRIMARY KEY,        -- 用户唯一标识（主键）
+</span></span><span class="line"><span class="cl">    username VARCHAR(50) NOT NULL UNIQUE,       -- 用户名（唯一）
+</span></span><span class="line"><span class="cl">    password VARCHAR(255) NOT NULL,             -- 密码（加密存储）
+</span></span><span class="line"><span class="cl">    email VARCHAR(100) DEFAULT NULL,            -- 邮箱（可选）
+</span></span><span class="line"><span class="cl">    phone VARCHAR(20) DEFAULT NULL,             -- 手机号（可选）
+</span></span><span class="line"><span class="cl">    status TINYINT DEFAULT 1,                   -- 用户状态（1=启用, 0=禁用）
+</span></span><span class="line"><span class="cl">    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 创建时间
+</span></span><span class="line"><span class="cl">    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 更新时间
+</span></span><span class="line"><span class="cl">    last_login_time TIMESTAMP NULL DEFAULT NULL -- 上次登录时间
+</span></span><span class="line"><span class="cl">);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">INSERT INTO users (username, password, email, phone, status, create_time, last_login_time) VALUES
+</span></span><span class="line"><span class="cl">(&#39;zhangsan&#39;, &#39;$2a$10$eC9yWZaMjMEbfBOAAsXHg.SUz3aHtYZJ/riMjHJ.TOu3NHsMFTm.a&#39;, &#39;zhangsan@example.com&#39;, &#39;1234567890&#39;, 1, NOW(), NULL),
+</span></span><span class="line"><span class="cl">(&#39;lisi&#39;, &#39;$2a$10$txB4zY7lqr9Kx.XHcGB5ruMiOBpFMHLF9rljN5iGtZ1o26g/.Agxe&#39;, &#39;lisi@example.com&#39;, &#39;0987654321&#39;, 1, NOW(), NULL);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">INSERT INTO roles (id, role_name) VALUES
+</span></span><span class="line"><span class="cl">(1, &#39;ADMIN&#39;),
+</span></span><span class="line"><span class="cl">(2, &#39;USER&#39;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">INSERT INTO permissions (id, permission_name) VALUES
+</span></span><span class="line"><span class="cl">(1, &#39;user.add&#39;),
+</span></span><span class="line"><span class="cl">(2, &#39;user.delete&#39;),
+</span></span><span class="line"><span class="cl">(3, &#39;user.update&#39;),
+</span></span><span class="line"><span class="cl">(4, &#39;user.view&#39;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">INSERT INTO users_roles (user_id, role_id) VALUES
+</span></span><span class="line"><span class="cl">(1, 1), -- zhangsan -&gt; ADMIN
+</span></span><span class="line"><span class="cl">(2, 2); -- lisi -&gt; USER
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">INSERT INTO roles_permissions (role_id, permission_id) VALUES
+</span></span><span class="line"><span class="cl">(1, 1), -- ADMIN 拥有 user.add 权限
+</span></span><span class="line"><span class="cl">(1, 2), -- ADMIN 拥有 user.delete 权限
+</span></span><span class="line"><span class="cl">(1, 3), -- ADMIN 拥有 user.update 权限
+</span></span><span class="line"><span class="cl">(1, 4), -- ADMIN 拥有 user.view 权限
+</span></span><span class="line"><span class="cl">(2, 4); -- USER 只拥有 user.view 权限
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：密码已经使用 <strong>bcrypt</strong> 加密，明文分别为：</p>
+<ul>
+<li>zhangsan: <code>password123</code></li>
+<li>lisi: <code>mypassword</code></li>
+</ul>
+<p><strong>UserController</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">satokendemo</span><span class="p">.</span><span class="nx">controller</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">cn</span><span class="p">.</span><span class="nx">dev33</span><span class="p">.</span><span class="nx">satoken</span><span class="p">.</span><span class="nx">stp</span><span class="p">.</span><span class="nx">SaTokenInfo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">cn</span><span class="p">.</span><span class="nx">dev33</span><span class="p">.</span><span class="nx">satoken</span><span class="p">.</span><span class="nx">stp</span><span class="p">.</span><span class="nx">StpUtil</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">cn</span><span class="p">.</span><span class="nx">dev33</span><span class="p">.</span><span class="nx">satoken</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">SaResult</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">baomidou</span><span class="p">.</span><span class="nx">mybatisplus</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">conditions</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">QueryWrapper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">satokendemo</span><span class="p">.</span><span class="nx">mapper</span><span class="p">.</span><span class="nx">UserMapper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">satokendemo</span><span class="p">.</span><span class="nx">mapper</span><span class="p">.</span><span class="nx">PermissionMapper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">satokendemo</span><span class="p">.</span><span class="nx">pojo</span><span class="p">.</span><span class="nx">User</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">satokendemo</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">PasswordUtil</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">org</span><span class="p">.</span><span class="nx">springframework</span><span class="p">.</span><span class="nx">beans</span><span class="p">.</span><span class="nx">factory</span><span class="p">.</span><span class="nx">annotation</span><span class="p">.</span><span class="nx">Autowired</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">org</span><span class="p">.</span><span class="nx">springframework</span><span class="p">.</span><span class="nx">web</span><span class="p">.</span><span class="nx">bind</span><span class="p">.</span><span class="nx">annotation</span><span class="p">.</span><span class="nx">GetMapping</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">org</span><span class="p">.</span><span class="nx">springframework</span><span class="p">.</span><span class="nx">web</span><span class="p">.</span><span class="nx">bind</span><span class="p">.</span><span class="nx">annotation</span><span class="p">.</span><span class="nx">RequestMapping</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">org</span><span class="p">.</span><span class="nx">springframework</span><span class="p">.</span><span class="nx">web</span><span class="p">.</span><span class="nx">bind</span><span class="p">.</span><span class="nx">annotation</span><span class="p">.</span><span class="nx">RestController</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">java</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">List</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">RestController</span>
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nf">RequestMapping</span><span class="p">(</span><span class="s">&#34;/user&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">public</span> <span class="nx">class</span> <span class="nx">UserController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nx">Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">UserMapper</span> <span class="nx">userMapper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nx">Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">PermissionMapper</span> <span class="nx">permissionMapper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 用户登录
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nf">RequestMapping</span><span class="p">(</span><span class="s">&#34;/doLogin&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">public</span> <span class="nx">SaResult</span> <span class="nf">doLogin</span><span class="p">(</span><span class="nx">String</span> <span class="nx">username</span><span class="p">,</span> <span class="nx">String</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 第1步：从数据库查询用户信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">QueryWrapper</span><span class="p">&lt;</span><span class="nx">User</span><span class="p">&gt;</span> <span class="nx">queryWrapper</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">QueryWrapper</span><span class="p">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">queryWrapper</span><span class="p">.</span><span class="nf">eq</span><span class="p">(</span><span class="s">&#34;username&#34;</span><span class="p">,</span> <span class="nx">username</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">User</span> <span class="nx">user</span> <span class="p">=</span> <span class="nx">userMapper</span><span class="p">.</span><span class="nf">selectOne</span><span class="p">(</span><span class="nx">queryWrapper</span><span class="p">);</span>  <span class="c1">// 查询用户
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">user</span> <span class="o">==</span> <span class="nx">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;用户不存在&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;找到用户: &#34;</span> <span class="o">+</span> <span class="nx">user</span><span class="p">.</span><span class="nf">getUsername</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="nx">PasswordUtil</span><span class="p">.</span><span class="nf">verify</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nf">getPassword</span><span class="p">()))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;用户输入密码: &#34;</span> <span class="o">+</span> <span class="nx">password</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;数据库存储的加密密码: &#34;</span> <span class="o">+</span> <span class="nx">user</span><span class="p">.</span><span class="nf">getPassword</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;密码校验失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 如果用户不存在或者密码不匹配，返回登录失败
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nx">user</span> <span class="o">==</span> <span class="nx">null</span> <span class="o">||</span> <span class="p">!</span><span class="nx">PasswordUtil</span><span class="p">.</span><span class="nf">verify</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nf">getPassword</span><span class="p">()))</span> <span class="p">{</span> <span class="c1">// 使用加密策略校验密码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="nx">SaResult</span><span class="p">.</span><span class="nb">error</span><span class="p">(</span><span class="s">&#34;用户名或密码错误&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 第2步：登录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nf">getId</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 第3步：加载用户信息和权限信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">getSession</span><span class="p">().</span><span class="nf">set</span><span class="p">(</span><span class="s">&#34;loginInfo&#34;</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 加载用户权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">List</span><span class="p">&lt;</span><span class="nx">String</span><span class="p">&gt;</span> <span class="nx">authList</span> <span class="p">=</span> <span class="nx">permissionMapper</span><span class="p">.</span><span class="nf">getPermissionsByUserId</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nf">getId</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">getSession</span><span class="p">().</span><span class="nf">set</span><span class="p">(</span><span class="s">&#34;authList&#34;</span><span class="p">,</span> <span class="nx">authList</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 第4步：获取 Token 相关参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">SaTokenInfo</span> <span class="nx">tokenInfo</span> <span class="p">=</span> <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">getTokenInfo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 第5步：返回给前端
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="nx">SaResult</span><span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="nx">tokenInfo</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 查询登录状态
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nf">RequestMapping</span><span class="p">(</span><span class="s">&#34;/isLogin&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">public</span> <span class="nx">String</span> <span class="nf">isLogin</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;当前会话是否登录：&#34;</span> <span class="o">+</span> <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">isLogin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 获取当前登录用户信息
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nf">RequestMapping</span><span class="p">(</span><span class="s">&#34;/getUserInfo&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">public</span> <span class="nx">User</span> <span class="nf">getUserInfo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="nx">User</span><span class="p">)</span> <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">getSession</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="s">&#34;loginInfo&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 测试方法：校验权限 - 添加操作
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nf">GetMapping</span><span class="p">(</span><span class="s">&#34;/add&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">public</span> <span class="nx">String</span> <span class="nf">add</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">checkPermission</span><span class="p">(</span><span class="s">&#34;user.add&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;ok&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 测试方法：校验权限 - 更新操作
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nf">GetMapping</span><span class="p">(</span><span class="s">&#34;/update&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">public</span> <span class="nx">String</span> <span class="nf">update</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">StpUtil</span><span class="p">.</span><span class="nf">checkPermission</span><span class="p">(</span><span class="s">&#34;user.update&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;ok&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我把 controller 中的模拟数据改成了 mysql 数据库的数据并将密码进行加密，注册时也可以通过相应的方法对明文密码进行加密处理后存储至数据库中，使得数据更加安全。</p>
+<p>完成后的图例应该如下图所示：</p>
+<p>数据库的用户表单（角色，权限，具体信息，绑定关系&hellip;&hellip;）</p>
+<p><img src="https://s2.loli.net/2025/01/03/6GVz4rsDcLaSwh2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-02_23-02-35.png"
+	
+	
+></p>
+<h3 id="在原本代码的基础上和-mysql-连接并完成权限认证与登录">在原本代码的基础上和 MySQL 连接并完成权限认证与登录
+</h3><p>其它的表单的实体类都可以直接使用 mybatis-plus 去完成增删改查，但 permissions 表单的实体类得在 mapper 中添加一个方法使用。</p>
+<p>PermissionMapper
+完成对权限的使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">public</span> <span class="n">interface</span> <span class="n">PermissionMapper</span> <span class="k">extends</span> <span class="n">BaseMapper</span><span class="o">&lt;</span><span class="n">Permission</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">获取用户的所有权限名称</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="n">Select</span><span class="p">(</span><span class="s2">&#34;SELECT p.permission_name &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;FROM permissions p &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;JOIN roles_permissions rp ON p.id = rp.permission_id &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;JOIN users_roles ur ON rp.role_id = ur.role_id &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;WHERE ur.user_id = #{userId}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="ne">String</span><span class="o">&gt;</span> <span class="n">getPermissionsByUserId</span><span class="p">(</span><span class="err">@</span><span class="n">Param</span><span class="p">(</span><span class="s2">&#34;userId&#34;</span><span class="p">)</span> <span class="n">Long</span> <span class="n">userId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后是我 yml 的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server:
+</span></span><span class="line"><span class="cl">  # 端口
+</span></span><span class="line"><span class="cl">  port: 8081
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">spring:
+</span></span><span class="line"><span class="cl">  datasource:
+</span></span><span class="line"><span class="cl">    username: root
+</span></span><span class="line"><span class="cl">    password: 20050101
+</span></span><span class="line"><span class="cl">    url: jdbc:mysql://localhost:3306/sa_token?serverTimezone=UTC&amp;userUnicode=true&amp;characterEncoding=utf-8
+</span></span><span class="line"><span class="cl">    driver-class-name: com.mysql.cj.jdbc.Driver
+</span></span><span class="line"><span class="cl">  # redis配置
+</span></span><span class="line"><span class="cl">  redis:
+</span></span><span class="line"><span class="cl">    # Redis数据库索引（默认为0）
+</span></span><span class="line"><span class="cl">    database: 0
+</span></span><span class="line"><span class="cl">    # Redis服务器地址
+</span></span><span class="line"><span class="cl">    host: 127.0.0.1
+</span></span><span class="line"><span class="cl">    # Redis服务器连接端口
+</span></span><span class="line"><span class="cl">    port: 6379
+</span></span><span class="line"><span class="cl">    # Redis服务器连接密码（默认为空）
+</span></span><span class="line"><span class="cl">    # password:
+</span></span><span class="line"><span class="cl">    # 连接超时时间
+</span></span><span class="line"><span class="cl">    timeout: 10s
+</span></span><span class="line"><span class="cl">    lettuce:
+</span></span><span class="line"><span class="cl">      pool:
+</span></span><span class="line"><span class="cl">        # 连接池最大连接数
+</span></span><span class="line"><span class="cl">        max-active: 200
+</span></span><span class="line"><span class="cl">        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+</span></span><span class="line"><span class="cl">        max-wait: -1ms
+</span></span><span class="line"><span class="cl">        # 连接池中的最大空闲连接
+</span></span><span class="line"><span class="cl">        max-idle: 10
+</span></span><span class="line"><span class="cl">        # 连接池中的最小空闲连接
+</span></span><span class="line"><span class="cl">        min-idle: 0
+</span></span><span class="line"><span class="cl">  jpa:
+</span></span><span class="line"><span class="cl">    open-in-view: false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mybatis:
+</span></span><span class="line"><span class="cl">  mapper-locations: classpath:mapper/*.xml
+</span></span><span class="line"><span class="cl">  type-aliases-package: com.example.satokendemo.pojo
+</span></span><span class="line"><span class="cl">############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
+</span></span><span class="line"><span class="cl">sa-token:
+</span></span><span class="line"><span class="cl">  # token名称 (同时也是cookie名称)
+</span></span><span class="line"><span class="cl">  token-name: satoken
+</span></span><span class="line"><span class="cl">  # token有效期，单位s 默认30天, -1代表永不过期
+</span></span><span class="line"><span class="cl">  timeout: 2592000
+</span></span><span class="line"><span class="cl">  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+</span></span><span class="line"><span class="cl">  activity-timeout: -1
+</span></span><span class="line"><span class="cl">  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+</span></span><span class="line"><span class="cl">  is-concurrent: true
+</span></span><span class="line"><span class="cl">  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+</span></span><span class="line"><span class="cl">  is-share: true
+</span></span><span class="line"><span class="cl">  # token风格
+</span></span><span class="line"><span class="cl">  token-style: uuid
+</span></span><span class="line"><span class="cl">  # 是否输出操作日志
+</span></span><span class="line"><span class="cl">  is-log: false
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://s2.loli.net/2025/01/03/pk3UILMb7qGT1t9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-02_23-02-06.png"
+	
+	
+></p>
+<p>这是 spring boot 项目的大体框架，可以按照我这个来。</p>
+<p>之后启动项目
+通过 api 工具 postman 进行登录测试，例如：http://localhost:8082/user/doLogin?username=lisi&amp;password=mypassword</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/**
+</span></span><span class="line"><span class="cl"> * 示例代码：生成加密密码（可用于初始化数据库）
+</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl">public static void main(String[] args) {
+</span></span><span class="line"><span class="cl">    String userPassword = &#34;password123&#34;; // 明文密码
+</span></span><span class="line"><span class="cl">    String storedPassword = &#34;$2a$10$eC9yWZaMjMEbfBOAAsXHg.SUz3aHtYZJ/riMjHJ.TOu3NHsMFTm.a&#34;; // 从数据库获取的加密密码
+</span></span><span class="line"><span class="cl">    boolean isValid = PasswordUtil.verify(userPassword, storedPassword);
+</span></span><span class="line"><span class="cl">    System.out.println(&#34;密码验证结果: &#34; + isValid);
+</span></span><span class="line"><span class="cl">    String encryptedPassword = PasswordUtil.encrypt(userPassword);
+</span></span><span class="line"><span class="cl">    System.out.println(&#34;加密后的密码: &#34; + encryptedPassword);
+</span></span><span class="line"><span class="cl">    System.out.println(&#34;加密后的密码与数据库中的密码是否匹配: &#34; + PasswordUtil.verify(userPassword, encryptedPassword
+</span></span><span class="line"><span class="cl">    )); // 再次验证加密后的密码
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>记得用这个工具类去改一下数据库的加密密码</p>
+<p>使用 postman 测试后可以得到以下信息</p>
+<p><img src="https://s2.loli.net/2025/01/03/biRUKhTopmZ8VQW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-02_23-02-16.png"
+	
+	
+></p>
+<p>在 redis 中也可以看到我们的数据已经传递成功了
+<img src="https://s2.loli.net/2025/01/03/uyH2KDBopdS9AVb.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-02_23-01-33.png"
+	
+	
+></p>
+<p>无论是权限还是相关的用户信息都是已经成功传到 redis 缓存了，之后就是携带 token 去测试接口调用看是否符合我们的权限。</p>
+<p>不携带 token 去访问接口 http://localhost:8081/user/add</p>
+<p><img src="https://s2.loli.net/2025/01/03/YB3EojUuhRc67WM.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-03_13-15-22.png"
+	
+	
+></p>
+<p>携带 token 访问</p>
+<p><img src="https://s2.loli.net/2025/01/03/U1OdPDAqzQyn3Fu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-03_13-15-52.png"
+	
+	
+></p>
+<p>没有相应的权限的用户携带 token 去访问</p>
+<p><img src="https://s2.loli.net/2025/01/03/8DTv1OMzFBVbaZ3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-01-03_13-16-31.png"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+    
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili","https://npm.elemecdn.com/@waline/emojis@1.1.0/bmoji","https://npm.elemecdn.com/@waline/emojis@1.1.0/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null,"sofa":"还没有人评论哦！快来抢沙发吧~"},"placeholder":"欢迎留下宝贵的评论！","requiredMeta":["name","email","url"],"serverURL":"https://blog-waline-f2nc4salg-demons-kiritos-projects.vercel.app/","visitor":false});
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 随.
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

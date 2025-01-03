@@ -23,25 +23,25 @@
 &lt;p&gt;我们随便找一个 SpringBoot 的项目就可以使用，所以非常方便。&lt;/p&gt;
 &lt;p&gt;接下来我就拿我自己的一个项目举例子。&lt;/p&gt;
 &lt;p&gt;这是我生成完后的大体框架，一个简单的 springboot 项目&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/direct/03ccc7f1ca634961a397df0e1a15d6ed.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/29/8m7DfPknjAvecuO.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;img&#34;
+		alt=&#34;03ccc7f1ca634961a397df0e1a15d6ed.png&#34;
 	
 	
 &gt;&lt;/p&gt;
 &lt;p&gt; 为了使用 smart-doc 这个插件我们得先做好源代码的准备：&lt;/p&gt;
 &lt;h2 id=&#34;书写注解&#34;&gt;书写注解
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/direct/3c7f02fe2b074092b8cf49853edceaa4.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/29/CeJAG1SLT2vMnVH.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;img&#34;
+		alt=&#34;3c7f02fe2b074092b8cf49853edceaa4.png&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -278,24 +278,24 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;创建完后我们便可以去 maven 里找到了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/direct/27d86bf83f9a412cb29eb34aa85aafe8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/29/k168lsxXQjoOYnr.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;img&#34;
+		alt=&#34;27d86bf83f9a412cb29eb34aa85aafe8.png&#34;
 	
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;启动 smart-doc:html 后我们可以在 resource 的资源路径下得到一堆文件，其中打开 index.html 我们便能得到以下文档&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/direct/91b75b0543b64f02a6c24929b50310c4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/12/29/MU7wJO2LDChEf5H.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;img&#34;
+		alt=&#34;91b75b0543b64f02a6c24929b50310c4.png&#34;
 	
 	
 &gt; &lt;/p&gt;
