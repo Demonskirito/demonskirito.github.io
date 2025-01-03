@@ -8,11 +8,27 @@
         <language>en-us</language>
         <copyright>随.</copyright>
         <lastBuildDate>Fri, 03 Jan 2025 13:35:58 +0800</lastBuildDate><atom:link href="https://demonskirito.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>学习笔记</title>
-        <link>https://demonskirito.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <title>Redis</title>
+        <link>https://demonskirito.github.io/tags/redis/</link>
         <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
         
-        <guid>https://demonskirito.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <guid>https://demonskirito.github.io/tags/redis/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Sa-Token</title>
+        <link>https://demonskirito.github.io/tags/sa-token/</link>
+        <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
+        
+        <guid>https://demonskirito.github.io/tags/sa-token/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Spring Boot</title>
+        <link>https://demonskirito.github.io/tags/spring-boot/</link>
+        <pubDate>Fri, 03 Jan 2025 13:35:58 +0800</pubDate>
+        
+        <guid>https://demonskirito.github.io/tags/spring-boot/</guid>
         <description></description>
         </item>
         <item>
@@ -21,14 +37,6 @@
         <pubDate>Sun, 29 Dec 2024 17:53:27 +0800</pubDate>
         
         <guid>https://demonskirito.github.io/tags/smart-doc/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Spring Boot</title>
-        <link>https://demonskirito.github.io/tags/spring-boot/</link>
-        <pubDate>Sun, 29 Dec 2024 17:53:27 +0800</pubDate>
-        
-        <guid>https://demonskirito.github.io/tags/spring-boot/</guid>
         <description></description>
         </item>
         <item>
