@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参考文献 TCP 三次握手中 SYN，ACK，seq ack 的含义_syn seq ack-CSDN 博客 socket 网络编程——多进程、多线程处理并发_socket 客户端多线程并发-CSDN 博客 高性能网络编程（一）&mdash;-accept 建立连接-CSDN 博客 socket 原理详解 - zengzy - 博客园 Socket Socket 是计算机网络编程中一个非常重要的概念，它提供了一种在网络中进行通信的接口，通常用于在客户端和服务器之间传输数据。我们可以把 Socket 看作是应用程序和网络之间的中介，利用它可以实现不同主机或同一主机上不同进程之间的通信。 1. Socket 基本概念 Socket 是一个抽象层，封装了 TCP/IP 协议栈中用于数据传输的底层实现。它为应用程序提供了一套网络通信接口，程序通过 Socket 发送和接收数据。 Socket 主要有以下几个部分： IP 地址：唯一标识网络中一台设备（例如，192.168.1.1）。 端口号：标识设备上某个特定的应用程序或服务（例如，HTTP 使用端口 80，MySQL 使用端口 3306）。 协议：指示 Socket 使用的传输协议，常见的有 TCP 和 UDP。 2. Socket 类型 根据传输协议的不同，Socket 可以分为以下几种类型： 流套接字（Stream Socket）：基于 TCP 协议，提供可靠、有序、双向的通信。 数据报套接字（Datagram Socket）：基于 UDP 协议，提供不可靠、无连接、单向或双向的通信。 常见的类型是 流套接字，它通过 TCP 协议实现可靠的数据传输。 3. Socket 编程模型 Socket 编程通常是基于客户端/服务器的模型，涉及到两个主要步骤：创建套接字、绑定和监听（服务器端），连接和数据交换（客户端）。以下是这个模型的工作流程：">
+<title>网络编程</title>
+
+<link rel='canonical' href='https://demonskirito.github.io/p/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="网络编程">
+<meta property='og:description' content="参考文献 TCP 三次握手中 SYN，ACK，seq ack 的含义_syn seq ack-CSDN 博客 socket 网络编程——多进程、多线程处理并发_socket 客户端多线程并发-CSDN 博客 高性能网络编程（一）&mdash;-accept 建立连接-CSDN 博客 socket 原理详解 - zengzy - 博客园 Socket Socket 是计算机网络编程中一个非常重要的概念，它提供了一种在网络中进行通信的接口，通常用于在客户端和服务器之间传输数据。我们可以把 Socket 看作是应用程序和网络之间的中介，利用它可以实现不同主机或同一主机上不同进程之间的通信。 1. Socket 基本概念 Socket 是一个抽象层，封装了 TCP/IP 协议栈中用于数据传输的底层实现。它为应用程序提供了一套网络通信接口，程序通过 Socket 发送和接收数据。 Socket 主要有以下几个部分： IP 地址：唯一标识网络中一台设备（例如，192.168.1.1）。 端口号：标识设备上某个特定的应用程序或服务（例如，HTTP 使用端口 80，MySQL 使用端口 3306）。 协议：指示 Socket 使用的传输协议，常见的有 TCP 和 UDP。 2. Socket 类型 根据传输协议的不同，Socket 可以分为以下几种类型： 流套接字（Stream Socket）：基于 TCP 协议，提供可靠、有序、双向的通信。 数据报套接字（Datagram Socket）：基于 UDP 协议，提供不可靠、无连接、单向或双向的通信。 常见的类型是 流套接字，它通过 TCP 协议实现可靠的数据传输。 3. Socket 编程模型 Socket 编程通常是基于客户端/服务器的模型，涉及到两个主要步骤：创建套接字、绑定和监听（服务器端），连接和数据交换（客户端）。以下是这个模型的工作流程：">
+<meta property='og:url' content='https://demonskirito.github.io/p/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/'>
+<meta property='og:site_name' content='念云的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='网络编程' /><meta property='article:tag' content='I/O' /><meta property='article:published_time' content='2025-01-18T16:30:12&#43;08:00'/><meta property='article:modified_time' content='2025-01-18T16:30:12&#43;08:00'/>
+<meta name="twitter:title" content="网络编程">
+<meta name="twitter:description" content="参考文献 TCP 三次握手中 SYN，ACK，seq ack 的含义_syn seq ack-CSDN 博客 socket 网络编程——多进程、多线程处理并发_socket 客户端多线程并发-CSDN 博客 高性能网络编程（一）&mdash;-accept 建立连接-CSDN 博客 socket 原理详解 - zengzy - 博客园 Socket Socket 是计算机网络编程中一个非常重要的概念，它提供了一种在网络中进行通信的接口，通常用于在客户端和服务器之间传输数据。我们可以把 Socket 看作是应用程序和网络之间的中介，利用它可以实现不同主机或同一主机上不同进程之间的通信。 1. Socket 基本概念 Socket 是一个抽象层，封装了 TCP/IP 协议栈中用于数据传输的底层实现。它为应用程序提供了一套网络通信接口，程序通过 Socket 发送和接收数据。 Socket 主要有以下几个部分： IP 地址：唯一标识网络中一台设备（例如，192.168.1.1）。 端口号：标识设备上某个特定的应用程序或服务（例如，HTTP 使用端口 80，MySQL 使用端口 3306）。 协议：指示 Socket 使用的传输协议，常见的有 TCP 和 UDP。 2. Socket 类型 根据传输协议的不同，Socket 可以分为以下几种类型： 流套接字（Stream Socket）：基于 TCP 协议，提供可靠、有序、双向的通信。 数据报套接字（Datagram Socket）：基于 UDP 协议，提供不可靠、无连接、单向或双向的通信。 常见的类型是 流套接字，它通过 TCP 协议实现可靠的数据传输。 3. Socket 编程模型 Socket 编程通常是基于客户端/服务器的模型，涉及到两个主要步骤：创建套接字、绑定和监听（服务器端），连接和数据交换（客户端）。以下是这个模型的工作流程：">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu512d5369da382453356d0e68539a8fce_82572_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">念云的博客</a></h1>
+            <h2 class="site-description">随.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/268011948'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250799343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5636" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 0 1 60.373333 60.373333L700.330667 256H789.333333A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.856L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="5637" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:wh2919907118@gamil.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250776188" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4517" width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z m-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="4518" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Demonskirito'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254173120" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6663" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M682.215454 981.446137c-25.532318 0-42.553863-17.021545-42.553864-42.553864v-165.960067c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181 0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112 0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976 0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545 0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545 0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748 0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499 0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454 0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="6664" data-spm-anchor-id="a313x.search_index.0.i18.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254218488" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7714" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4 35.4-21.1 62.3-54.4 75-94-32.7 19.5-69.7 33.8-108.2 41.2C765.4 194.6 721.1 174 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5-14.8 25.4-23.2 54.4-23.2 86.1 0 59.2 30.1 111.4 76 142.1-28-1.1-54.4-9-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4-14.3 3.7-29.6 5.8-44.9 5.8-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-0.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-0.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z" p-id="7715" data-spm-anchor-id="a313x.search_index.0.i22.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#1-socket-基本概念">1. <strong>Socket 基本概念</strong></a></li>
+        <li><a href="#2-socket-类型">2. <strong>Socket 类型</strong></a></li>
+        <li><a href="#3-socket-编程模型">3. <strong>Socket 编程模型</strong></a>
+          <ol>
+            <li><a href="#31-服务器端工作流程">3.1 服务器端工作流程</a></li>
+            <li><a href="#32-客户端工作流程">3.2 客户端工作流程</a></li>
+          </ol>
+        </li>
+        <li><a href="#4-数据传输">4. <strong>数据传输</strong></a></li>
+        <li><a href="#5-tcpip-套接字的工作原理">5. <strong>TCP/IP 套接字的工作原理</strong></a>
+          <ol>
+            <li><a href="#51-tcp-三次握手建立连接">5.1 TCP 三次握手（建立连接）</a></li>
+            <li><a href="#52-tcp-四次挥手断开连接">5.2 TCP 四次挥手（断开连接）</a></li>
+          </ol>
+        </li>
+        <li><a href="#6-socket-的应用场景">6. <strong>Socket 的应用场景</strong></a></li>
+        <li><a href="#7-示例代码基于-socket-的客户端服务器通信">7. <strong>示例代码：基于 Socket 的客户端/服务器通信</strong></a></li>
+        <li><a href="#8-socket-详细内部机制">8. <strong>Socket 详细内部机制</strong></a>
+          <ol>
+            <li><a href="#81-socket-的内部结构">8.1 <strong>Socket 的内部结构</strong></a></li>
+            <li><a href="#82-如何建立和关闭连接">8.2 <strong>如何建立和关闭连接</strong></a></li>
+            <li><a href="#83-tcp-的流量控制与拥塞控制">8.3 <strong>TCP 的流量控制与拥塞控制</strong></a></li>
+            <li><a href="#84-socket-的缓冲区和数据包">8.4 <strong>Socket 的缓冲区和数据包</strong></a></li>
+            <li><a href="#85-socket-中的-io-模型">8.5 <strong>Socket 中的 I/O 模型</strong></a></li>
+            <li><a href="#工作原理"><strong>工作原理</strong></a></li>
+            <li><a href="#工作原理-1"><strong>工作原理</strong></a></li>
+            <li><a href="#常见的异步-io-实现"><strong>常见的异步 I/O 实现</strong></a></li>
+            <li><a href="#应用场景"><strong>应用场景</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#9-socket-的并发处理">9. <strong>Socket 的并发处理</strong></a>
+          <ol>
+            <li><a href="#91-多进程multiprocessing">9.1 <strong>多进程（Multiprocessing）</strong></a></li>
+            <li><a href="#92-多线程multithreading">9.2 <strong>多线程（Multithreading）</strong></a></li>
+            <li><a href="#93-事件驱动event-driven">9.3 <strong>事件驱动（Event-driven）</strong></a></li>
+            <li><a href="#94-基于协程coroutine">9.4 <strong>基于协程（Coroutine）</strong></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 18, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="参考文献">参考文献
+</h1><p><a class="link" href="https://blog.csdn.net/Gabriel576282253/article/details/116392228"  target="_blank" rel="noopener"
+    >TCP 三次握手中 SYN，ACK，seq ack 的含义_syn seq ack-CSDN 博客</a></p>
+<p><a class="link" href="https://blog.csdn.net/yi_chengyu/article/details/120467256"  target="_blank" rel="noopener"
+    >socket 网络编程——多进程、多线程处理并发_socket 客户端多线程并发-CSDN 博客</a></p>
+<p><a class="link" href="https://blog.csdn.net/russell_tao/article/details/9111769"  target="_blank" rel="noopener"
+    >高性能网络编程（一）&mdash;-accept 建立连接-CSDN 博客</a></p>
+<p><a class="link" href="https://www.cnblogs.com/zengzy/p/5107516.html"  target="_blank" rel="noopener"
+    >socket 原理详解 - zengzy - 博客园</a></p>
+<h1 id="socket">Socket
+</h1><p><strong>Socket</strong> 是计算机网络编程中一个非常重要的概念，它提供了一种在网络中进行通信的接口，通常用于在客户端和服务器之间传输数据。我们可以把 Socket 看作是应用程序和网络之间的中介，利用它可以实现不同主机或同一主机上不同进程之间的通信。</p>
+<h3 id="1-socket-基本概念">1. <strong>Socket 基本概念</strong>
+</h3><p>Socket 是一个抽象层，封装了 TCP/IP 协议栈中用于数据传输的底层实现。它为应用程序提供了一套网络通信接口，程序通过 Socket 发送和接收数据。</p>
+<p>Socket 主要有以下几个部分：</p>
+<ul>
+<li><strong>IP 地址</strong>：唯一标识网络中一台设备（例如，<code>192.168.1.1</code>）。</li>
+<li><strong>端口号</strong>：标识设备上某个特定的应用程序或服务（例如，HTTP 使用端口 80，MySQL 使用端口 3306）。</li>
+<li><strong>协议</strong>：指示 Socket 使用的传输协议，常见的有 <strong>TCP</strong> 和 <strong>UDP</strong>。</li>
+</ul>
+<h3 id="2-socket-类型">2. <strong>Socket 类型</strong>
+</h3><p>根据传输协议的不同，Socket 可以分为以下几种类型：</p>
+<ul>
+<li><strong>流套接字（Stream Socket）</strong>：基于 TCP 协议，提供可靠、有序、双向的通信。</li>
+<li><strong>数据报套接字（Datagram Socket）</strong>：基于 UDP 协议，提供不可靠、无连接、单向或双向的通信。</li>
+</ul>
+<p>常见的类型是 <strong>流套接字</strong>，它通过 TCP 协议实现可靠的数据传输。</p>
+<h3 id="3-socket-编程模型">3. <strong>Socket 编程模型</strong>
+</h3><p>Socket 编程通常是基于客户端/服务器的模型，涉及到两个主要步骤：创建套接字、绑定和监听（服务器端），连接和数据交换（客户端）。以下是这个模型的工作流程：</p>
+<h4 id="31-服务器端工作流程">3.1 服务器端工作流程
+</h4><ol>
+<li><strong>创建 Socket</strong>： 服务器端首先需要创建一个 Socket，这样它才能在网络中接收和发送数据。</li>
+<li><strong>绑定地址和端口</strong>： 通过 <code>bind()</code> 函数将套接字与本机的某个 IP 地址和端口号绑定在一起。例如，绑定到 <code>127.0.0.1:12345</code>，这样其他计算机就可以通过这个 IP 地址和端口连接到该服务器。</li>
+<li><strong>监听连接</strong>： 通过 <code>listen()</code> 函数，服务器端告诉操作系统它准备好接受连接请求了。监听的队列大小是一个可以配置的值，表示最大能同时处理的客户端连接数。</li>
+<li><strong>接受连接</strong>： 使用 <code>accept()</code> 函数接受客户端的连接请求。此函数会阻塞，直到有客户端发起连接。</li>
+<li><strong>数据传输</strong>： 一旦连接建立，服务器就可以使用 <code>recv()</code> 接收客户端发送的数据，使用 <code>send()</code> 或 <code>sendall()</code> 发送响应数据。</li>
+<li><strong>关闭连接</strong>： 通过 <code>close()</code> 关闭 Socket，释放资源。</li>
+</ol>
+<h4 id="32-客户端工作流程">3.2 客户端工作流程
+</h4><ol>
+<li><strong>创建 Socket</strong>： 客户端与服务器一样，也需要创建一个 Socket。</li>
+<li><strong>连接到服务器</strong>： 客户端通过 <code>connect()</code> 函数向服务器发起连接请求。需要指定服务器的 IP 地址和端口号。</li>
+<li><strong>数据传输</strong>： 一旦连接成功，客户端可以通过 <code>send()</code> 发送数据，通过 <code>recv()</code> 接收服务器的响应。</li>
+<li><strong>关闭连接</strong>： 通过 <code>close()</code> 函数关闭与服务器的连接。</li>
+</ol>
+<h3 id="4-数据传输">4. <strong>数据传输</strong>
+</h3><p>Socket 允许在客户端和服务器之间交换数据。具体来说：</p>
+<ul>
+<li><strong>TCP 协议</strong>：
+<ul>
+<li><strong>可靠</strong>：TCP 确保数据传输的可靠性，确保数据包按顺序到达，不丢失。</li>
+<li><strong>流式数据传输</strong>：TCP 通过流的方式进行数据传输，不以固定大小的数据包为单位。</li>
+<li><strong>面向连接</strong>：TCP 在数据传输之前需要建立连接（通过三次握手），且通信结束后需要断开连接（四次挥手）。</li>
+</ul>
+</li>
+<li><strong>UDP 协议</strong>：
+<ul>
+<li><strong>不可靠</strong>：UDP 不保证数据传输的可靠性，也不保证数据的顺序。</li>
+<li><strong>数据报文</strong>：UDP 通过数据报的方式进行数据传输，每个数据报大小固定。</li>
+<li><strong>无连接</strong>：UDP 不需要建立连接，发送数据时直接发给目标地址。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-tcpip-套接字的工作原理">5. <strong>TCP/IP 套接字的工作原理</strong>
+</h3><h4 id="51-tcp-三次握手建立连接">5.1 TCP 三次握手（建立连接）
+</h4><p>当客户端和服务器需要建立 TCP 连接时，它们需要进行三次握手：</p>
+<ol>
+<li><strong>客户端发送 SYN 包</strong>：客户端向服务器发送一个带有 SYN 标志的数据包，表示客户端希望建立连接。</li>
+<li><strong>服务器响应 SYN-ACK 包</strong>：服务器接收到 SYN 包后，向客户端发送一个带有 SYN 和 ACK 标志的数据包，表示接受连接请求。</li>
+<li><strong>客户端响应 ACK 包</strong>：客户端收到服务器的 SYN-ACK 包后，向服务器发送一个带有 ACK 标志的数据包，表示连接成功。</li>
+</ol>
+<p>此时，客户端和服务器之间的连接建立起来，可以开始数据传输。</p>
+<h4 id="52-tcp-四次挥手断开连接">5.2 TCP 四次挥手（断开连接）
+</h4><p>当客户端或服务器要关闭连接时，必须通过四次挥手来断开连接：</p>
+<ol>
+<li><strong>发送 FIN 包</strong>：发送方发送一个 FIN 包，表示没有数据要发送了。</li>
+<li><strong>回应 ACK 包</strong>：接收方确认收到 FIN 包，并发送 ACK 包。</li>
+<li><strong>发送 FIN 包</strong>：接收方在完成数据传输后，发送自己的 FIN 包。</li>
+<li><strong>回应 ACK 包</strong>：发送方确认接收到 FIN 包，并回复 ACK 包，连接断开。</li>
+</ol>
+<h3 id="6-socket-的应用场景">6. <strong>Socket 的应用场景</strong>
+</h3><p>Socket 技术广泛应用于以下场景：</p>
+<ul>
+<li><strong>Web 服务</strong>：客户端（浏览器）通过 HTTP 协议与服务器通信，HTTP 通常通过 TCP 套接字进行数据传输。</li>
+<li><strong>即时通讯软件</strong>：如 QQ、微信等，通过 Socket 实现点对点的实时消息传输。</li>
+<li><strong>文件传输</strong>：通过 Socket 实现文件的上传和下载。</li>
+<li><strong>分布式系统</strong>：在微服务架构中，服务之间通常通过 Socket 或基于 Socket 的协议进行通信。</li>
+</ul>
+<h3 id="7-示例代码基于-socket-的客户端服务器通信">7. <strong>示例代码：基于 Socket 的客户端/服务器通信</strong>
+</h3><p>服务器端（Python）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import socket
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 创建TCP/IP套接字
+</span></span><span class="line"><span class="cl">server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 绑定IP地址和端口
+</span></span><span class="line"><span class="cl">server_socket.bind((&#39;localhost&#39;, 12345))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 开始监听连接
+</span></span><span class="line"><span class="cl">server_socket.listen(1)
+</span></span><span class="line"><span class="cl">print(&#34;服务器在等待连接...&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 接受客户端连接
+</span></span><span class="line"><span class="cl">client_socket, client_address = server_socket.accept()
+</span></span><span class="line"><span class="cl">print(f&#34;连接来自: {client_address}&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 接收数据
+</span></span><span class="line"><span class="cl">data = client_socket.recv(1024)
+</span></span><span class="line"><span class="cl">print(f&#34;接收到的数据: {data.decode()}&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 发送数据
+</span></span><span class="line"><span class="cl">client_socket.sendall(b&#34;Hello from server!&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 关闭连接
+</span></span><span class="line"><span class="cl">client_socket.close()
+</span></span><span class="line"><span class="cl">server_socket.close()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>客户端（Python）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import socket
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 创建TCP/IP套接字
+</span></span><span class="line"><span class="cl">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 连接到服务器
+</span></span><span class="line"><span class="cl">client_socket.connect((&#39;localhost&#39;, 12345))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 发送数据
+</span></span><span class="line"><span class="cl">client_socket.sendall(b&#34;Hello from client!&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 接收服务器响应
+</span></span><span class="line"><span class="cl">data = client_socket.recv(1024)
+</span></span><span class="line"><span class="cl">print(f&#34;接收到的数据: {data.decode()}&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 关闭连接
+</span></span><span class="line"><span class="cl">client_socket.close()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="8-socket-详细内部机制">8. <strong>Socket 详细内部机制</strong>
+</h3><p>为了更深入地理解 Socket 的工作原理，下面我们讨论一下 Socket 的一些更细节的工作机制，包括连接、数据传输、处理并发等方面。</p>
+<h4 id="81-socket-的内部结构">8.1 <strong>Socket 的内部结构</strong>
+</h4><p>Socket 是对网络协议栈的一个抽象，其本质上是一个与协议栈交互的接口。大多数操作系统都有一个内核层来管理网络连接和数据传输，Socket 是应用程序通过该接口与内核进行交互的桥梁。</p>
+<p>具体来说，Socket 的操作大致分为三个部分：</p>
+<ol>
+<li><strong>套接字操作接口（API）</strong>：这部分是应用程序开发者使用的接口，常见的接口包括 <code>socket()</code>, <code>bind()</code>, <code>listen()</code>, <code>accept()</code>, <code>connect()</code>, <code>send()</code>, <code>recv()</code> 等。</li>
+<li><strong>协议栈（TCP/IP 栈）</strong>：操作系统提供的协议栈负责协议的处理，包括数据的分段、流量控制、错误校验等。</li>
+<li><strong>网络接口</strong>：通过底层的网络硬件（如网卡），与物理网络进行通信。</li>
+</ol>
+<h4 id="82-如何建立和关闭连接">8.2 <strong>如何建立和关闭连接</strong>
+</h4><h5 id="连接建立三次握手"><strong>连接建立（三次握手）</strong>
+</h5><ol>
+<li><strong>SYN：客户端发送连接请求</strong><br>
+客户端首先通过发送一个 TCP 数据包（SYN 包）到服务器端，表明它希望与服务器建立连接。此时，客户端进入 <strong>SYN_SENT</strong> 状态。</li>
+<li><strong>SYN-ACK：服务器响应</strong><br>
+服务器接收到客户端的 SYN 包后，会向客户端返回一个包含 SYN 和 ACK 标志的数据包，表示服务器同意建立连接。服务器进入 <strong>SYN_RCVD</strong> 状态。</li>
+<li><strong>ACK：客户端确认</strong><br>
+客户端接收到服务器的 SYN-ACK 包后，会再次发送一个 ACK 包给服务器，确认连接建立。此时，客户端和服务器都进入 <strong>ESTABLISHED</strong> 状态，可以开始数据传输。</li>
+</ol>
+<p><strong>三次握手的目的是：</strong></p>
+<ul>
+<li>确认客户端和服务器都能够接收到数据包。</li>
+<li>确保客户端和服务器之间的连接可以在数据传输过程中保持稳定和可靠。</li>
+</ul>
+<h5 id="连接断开四次挥手"><strong>连接断开（四次挥手）</strong>
+</h5><ol>
+<li><strong>FIN：发送端请求断开</strong><br>
+一方（通常是客户端）发送一个带有 FIN 标志的数据包，表明它已经没有数据要发送了，准备关闭连接。</li>
+<li><strong>ACK：接收端确认</strong><br>
+接收端收到 FIN 包后，会发送一个 ACK 包进行确认，表明它已经接收到断开请求。此时，客户端进入 <strong>FIN_WAIT_2</strong> 状态。</li>
+<li><strong>FIN：接收端请求断开</strong><br>
+接收端发送一个 FIN 包，表明它也没有数据要发送了。</li>
+<li><strong>ACK：发送端确认</strong><br>
+发送端收到 FIN 包后，会回复一个 ACK 包，确认连接完全断开。此时，连接关闭。</li>
+</ol>
+<p><strong>四次挥手的目的是：</strong></p>
+<ul>
+<li>确保数据能够完整地传输到对方。</li>
+<li>双方都能够在确认没有数据传输的情况下安全断开连接。</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/01/18/UHuf79KcZ2qhG5d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="733402-20160107201721075-1061362000.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/01/18/hVjQNt2OavGLlzy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="733402-20160107202442450-451372966.png"
+	
+	
+></p>
+<h4 id="83-tcp-的流量控制与拥塞控制">8.3 <strong>TCP 的流量控制与拥塞控制</strong>
+</h4><p>在进行大量数据传输时，TCP 会使用一些机制来避免网络拥堵和确保数据传输的稳定性。这些机制包括：</p>
+<ul>
+<li><strong>流量控制（Flow Control）</strong>：
+<ul>
+<li><strong>滑动窗口</strong>：TCP 通过滑动窗口机制控制发送端的数据流量，避免接收端的缓冲区溢出。</li>
+<li>每个连接都有一个发送窗口，发送端只能向接收端发送窗口大小内的数据，直到接收端确认接收到的数据后，发送窗口才会滑动。</li>
+</ul>
+</li>
+<li><strong>拥塞控制（Congestion Control）</strong>：
+<ul>
+<li><strong>慢启动（Slow Start）</strong>：当一个新的连接开始时，TCP 会以非常小的发送窗口进行数据传输，以避免网络一开始就被过多数据压垮。</li>
+<li><strong>拥塞避免（Congestion Avoidance）</strong>：随着数据的传输，TCP 会动态调整窗口大小，确保网络的稳定。</li>
+<li><strong>快速重传和快速恢复（Fast Retransmit and Fast Recovery）</strong>：当数据包丢失时，TCP 会快速重传丢失的包，而不是等待超时，从而提高效率。</li>
+</ul>
+</li>
+</ul>
+<p>这些机制保证了 TCP 连接在长时间、高数据量的传输过程中，仍能保持稳定和高效。</p>
+<h4 id="84-socket-的缓冲区和数据包">8.4 <strong>Socket 的缓冲区和数据包</strong>
+</h4><p>在进行数据传输时，Socket 会使用操作系统的内核缓冲区来暂存数据。操作系统会将这些数据分成多个数据包来进行发送。这些数据包的大小通常由以下几个因素决定：</p>
+<ul>
+<li><strong>操作系统的默认设置</strong>：不同操作系统的默认缓冲区大小不同，一般可以在系统配置中修改。</li>
+<li><strong>网络带宽和延迟</strong>：根据网络的带宽和延迟，操作系统会调整数据包的大小。</li>
+<li><strong>TCP/IP 协议栈的最大传输单元（MTU）</strong>：MTU 限制了每个数据包的最大大小，超过 MTU 的数据包会被分段。</li>
+</ul>
+<p>这些数据包会通过网络层（例如以太网、Wi-Fi）传输，最终到达目标设备并重新组装成完整的数据。</p>
+<h4 id="85-socket-中的-io-模型">8.5 <strong>Socket 中的 I/O 模型</strong>
+</h4><p>Socket 提供了多种 I/O 模型来进行数据处理，这些模型决定了如何处理大量的并发连接。常见的 I/O 模型有：</p>
+<ul>
+<li><strong>阻塞 I/O（Blocking I/O）</strong>：
+<ul>
+<li>默认模式下，Socket 操作是阻塞的。客户端和服务器都需要等待操作完成后才能继续执行下一步。</li>
+<li>例如，<code>recv()</code> 会阻塞，直到接收到数据。</li>
+</ul>
+</li>
+<li><strong>非阻塞 I/O（Non-blocking I/O）</strong>：
+<ul>
+<li>在非阻塞模式下，Socket 操作不会等待数据的到达，而是立即返回。如果数据未准备好，函数会返回一个错误码（例如 <code>EAGAIN</code> 或 <code>EWOULDBLOCK</code>），表示需要稍后重试。</li>
+</ul>
+</li>
+<li><strong>I/O 多路复用（Multiplexing I/O）</strong>：
+<ul>
+<li>使用 <strong><code>select()</code></strong>、<strong><code>poll()</code></strong> 或 <strong><code>epoll()</code></strong> 等系统调用，允许在单个线程或进程中同时处理多个 Socket 连接。当某个连接有数据可读时，操作系统会通知应用程序进行处理。</li>
+<li>适用于高并发的服务器应用。</li>
+</ul>
+</li>
+<li><strong>异步 I/O（Asynchronous I/O）</strong>：
+<ul>
+<li>通过回调机制，应用程序可以在数据准备好时通知应用程序，而无需阻塞等待。</li>
+<li>异步 I/O 在高性能应用中非常有用，但其实现复杂。</li>
+</ul>
+</li>
+</ul>
+<p>在网络编程中，套接字的 <strong>阻塞模式</strong>（Blocking Mode）和 <strong>非阻塞模式</strong>（Non-blocking Mode）对应用程序的行为有很大的影响。下面我们将深入讨论这两种模式以及它们在不同应用程序中的行为。</p>
+<p>在 <strong>阻塞模式</strong>下，套接字操作（例如 <code>accept()</code>、<code>recv()</code>、<code>send()</code> 等）会一直等待直到完成相应操作。如果没有数据可读或没有连接请求，调用这些函数的线程会被阻塞，直到满足条件（例如接收到数据或客户端连接）。</p>
+<h5 id="适用的应用程序"><strong>适用的应用程序：</strong>
+</h5><p>阻塞模式适用于大多数传统的 <strong>单线程或简单应用程序</strong>，例如：</p>
+<ul>
+<li><strong>传统的服务器</strong>：例如，HTTP 服务器（如 Apache），它每次处理一个请求时，都会阻塞等待客户端连接。每当有新的连接请求，服务器会通过 <code>accept()</code> 接收连接，然后通过 <code>recv()</code> 读取客户端请求。</li>
+<li><strong>简单的客户端</strong>：客户端程序也通常在发送数据或接收数据时使用阻塞模式，尤其是在单次请求响应场景下。例如，一个简单的 <strong>TCP 客户端</strong>，在发送请求后，它会阻塞并等待服务器的响应。</li>
+</ul>
+<p>阻塞模式的优点是：</p>
+<ul>
+<li><strong>简单易用</strong>：因为操作是阻塞的，程序员不需要考虑事件通知或轮询。</li>
+<li><strong>适合单线程或少量并发的应用</strong>：适合并发量不高、没有复杂并发控制需求的应用。</li>
+</ul>
+<p>阻塞模式的缺点是：</p>
+<ul>
+<li><strong>低效</strong>：如果程序需要处理大量并发连接，使用阻塞模式会导致每个连接都被单独阻塞，浪费系统资源，导致性能问题。</li>
+<li><strong>延迟较高</strong>：每次都需要等待 I/O 操作完成，可能导致响应延迟较高，特别是在高并发情况下。</li>
+</ul>
+<p>代码示例（阻塞模式）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import socket
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 创建套接字
+</span></span><span class="line"><span class="cl">server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 绑定端口
+</span></span><span class="line"><span class="cl">server_socket.bind((&#39;localhost&#39;, 8080))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 设置监听
+</span></span><span class="line"><span class="cl">server_socket.listen(5)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">print(&#34;Server listening on port 8080...&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 阻塞等待客户端连接
+</span></span><span class="line"><span class="cl">client_socket, client_address = server_socket.accept()  # 阻塞
+</span></span><span class="line"><span class="cl">print(&#34;Accepted connection from&#34;, client_address)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 接收数据
+</span></span><span class="line"><span class="cl">data = client_socket.recv(1024)  # 阻塞，直到收到数据
+</span></span><span class="line"><span class="cl">print(&#34;Received data:&#34;, data)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 关闭连接
+</span></span><span class="line"><span class="cl">client_socket.close()
+</span></span><span class="line"><span class="cl">server_socket.close()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <strong>非阻塞模式</strong>下，套接字的操作不会阻塞程序。如果操作不能立即完成，相关函数（例如 <code>accept()</code>、<code>recv()</code>）会立刻返回，而不会等待或停滞。通常，非阻塞模式会返回一个错误码（如 <code>EAGAIN</code> 或 <code>EWOULDBLOCK</code>），表示没有可用的数据或没有客户端连接。</p>
+<h5 id="适用的应用程序-1"><strong>适用的应用程序：</strong>
+</h5><p>非阻塞模式适用于 <strong>高并发、事件驱动的应用程序</strong>，特别是需要同时处理多个连接的场景。例如：</p>
+<ul>
+<li><strong>高并发的网络服务器</strong>：如 <strong>WebSocket 服务器</strong> 或 <strong>高并发 HTTP 服务器</strong>，这些应用程序需要同时处理大量的客户端连接。为了避免阻塞，通常会使用非阻塞模式结合 <strong>I/O 多路复用</strong>（如 <code>select()</code>、<code>poll()</code> 或 <code>epoll()</code>）来高效地处理多个连接。</li>
+<li><strong>异步网络应用</strong>：例如，异步框架（如 Node.js、asyncio）中常常会使用非阻塞模式。这样，应用程序在等待 I/O 时可以执行其他任务，提高并发处理能力。</li>
+<li><strong>实时数据传输系统</strong>：如即时通讯软件、流媒体应用等，需要实时处理并发连接的请求。</li>
+</ul>
+<p>Java 实现 WebSocket：
+<a class="link" href="https://blog.csdn.net/fens/article/details/84634994?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-84634994-blog-116306528.235%5Ev43%5Epc_blog_bottom_relevance_base9&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-84634994-blog-116306528.235%5Ev43%5Epc_blog_bottom_relevance_base9&amp;utm_relevant_index=5"  target="_blank" rel="noopener"
+    >Java 现实 WebSocket-CSDN 博客</a></p>
+<p>非阻塞模式的优点是：</p>
+<ul>
+<li><strong>高效</strong>：可以同时处理多个连接，避免了线程或进程的创建和销毁带来的开销。</li>
+<li><strong>更好的并发性</strong>：能够高效地轮询大量连接，响应速度快。</li>
+</ul>
+<p>非阻塞模式的缺点是：</p>
+<ul>
+<li><strong>复杂的编程模型</strong>：程序员需要显式地处理没有数据的情况，通常需要结合 I/O 多路复用技术，如 <code>select()</code>、<code>poll()</code> 或 <code>epoll()</code>，这些技术有一定的学习曲线。</li>
+<li><strong>需要额外的错误处理</strong>：非阻塞操作返回时通常需要检查错误码并处理这种情况。</li>
+</ul>
+<p>代码示例（非阻塞模式）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import socket
+</span></span><span class="line"><span class="cl">import errno
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 创建套接字
+</span></span><span class="line"><span class="cl">server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 绑定端口
+</span></span><span class="line"><span class="cl">server_socket.bind((&#39;localhost&#39;, 8080))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 设置监听
+</span></span><span class="line"><span class="cl">server_socket.listen(5)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 设置为非阻塞模式
+</span></span><span class="line"><span class="cl">server_socket.setblocking(False)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">print(&#34;Server listening on port 8080...&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">while True:
+</span></span><span class="line"><span class="cl">    try:
+</span></span><span class="line"><span class="cl">        # 非阻塞等待客户端连接
+</span></span><span class="line"><span class="cl">        client_socket, client_address = server_socket.accept()  # 非阻塞
+</span></span><span class="line"><span class="cl">        print(&#34;Accepted connection from&#34;, client_address)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        # 接收数据
+</span></span><span class="line"><span class="cl">        data = client_socket.recv(1024)  # 非阻塞
+</span></span><span class="line"><span class="cl">        if data:
+</span></span><span class="line"><span class="cl">            print(&#34;Received data:&#34;, data)
+</span></span><span class="line"><span class="cl">            client_socket.sendall(b&#34;Hello, Client&#34;)
+</span></span><span class="line"><span class="cl">        else:
+</span></span><span class="line"><span class="cl">            print(&#34;No data received.&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        # 关闭连接
+</span></span><span class="line"><span class="cl">        client_socket.close()
+</span></span><span class="line"><span class="cl">    except BlockingIOError:
+</span></span><span class="line"><span class="cl">        # 如果没有数据或者连接，则跳过
+</span></span><span class="line"><span class="cl">        pass
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>选择使用 <strong>阻塞模式</strong> 还是 <strong>非阻塞模式</strong> 主要取决于应用程序的需求和并发性能的考虑：</p>
+<h5 id="选择阻塞模式的情况"><strong>选择阻塞模式的情况</strong>：
+</h5><ul>
+<li><strong>简单应用程序</strong>：如基本的客户端-服务器应用，或并发量较小的场景。</li>
+<li><strong>单线程应用</strong>：如果应用程序不需要同时处理多个连接，阻塞模式更简单且更易于实现。</li>
+<li><strong>没有高并发要求</strong>：对于流量较低的应用，阻塞模式可以很好地满足需求，且开发复杂度较低。</li>
+</ul>
+<h5 id="选择非阻塞模式的情况"><strong>选择非阻塞模式的情况</strong>：
+</h5><ul>
+<li><strong>高并发服务器</strong>：如高流量网站、WebSocket 服务器、消息队列系统等，通常需要同时处理多个连接。非阻塞模式配合 <strong>I/O 多路复用</strong>（如 <code>select()</code>、<code>poll()</code>、<code>epoll()</code>）能够有效提升性能。</li>
+<li><strong>异步应用程序</strong>：例如异步框架（如 <code>asyncio</code>、Node.js 等），这些程序需要在没有数据或事件时不阻塞，而是执行其他任务，从而提高响应能力。</li>
+<li><strong>实时系统</strong>：如游戏服务器、聊天系统，通常要求实时处理大量并发连接和事件，非阻塞模式能够避免因等待 I/O 而造成的延迟。</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/01/18/oGkHeIyCUgxL7iM.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="20130624185912656.jpg"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/01/18/5yqGWQcunvpJMCI.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="20130624185927531.jpg"
+	
+	
+></p>
+<p>I/O 多路复用是指通过一个或少数几个线程/进程来同时管理多个 I/O 操作的技术。它使得程序能够同时监视多个 I/O 操作（如文件、套接字等）的状态，知道何时可以执行读取、写入等操作，避免阻塞，提升系统的并发性。</p>
+<p><a class="link" href="https://blog.csdn.net/Crocodile1006/article/details/140085411"  target="_blank" rel="noopener"
+    >【Linux】IO 多路复用——select，poll，epoll 的概念和使用，三种模型的特点和优缺点，epoll 的工作模式_io 多路复用 select epoll-CSDN 博客</a></p>
+<h4 id="工作原理"><strong>工作原理</strong>
+</h4><p>I/O 多路复用的核心思想是 <strong>“等待多个 I/O 操作的事件，直到某个操作准备好，再去执行相关操作”</strong>。通过 <strong><code>select()</code></strong>、<strong><code>poll()</code></strong> 和 <strong><code>epoll()</code></strong> 等系统调用，程序可以同时监视多个文件描述符（通常是套接字）的状态。</p>
+<p>当某个 I/O 操作就绪时（如有数据可读或可写），系统会通知应用程序。应用程序可以选择执行这些就绪操作，而不需要不断轮询检查各个套接字</p>
+<p>代码示例：<code>select()</code> 模型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import socket
+</span></span><span class="line"><span class="cl">import select
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 创建监听套接字
+</span></span><span class="line"><span class="cl">server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+</span></span><span class="line"><span class="cl">server_socket.bind((&#39;localhost&#39;, 8080))
+</span></span><span class="line"><span class="cl">server_socket.listen(5)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 设置非阻塞
+</span></span><span class="line"><span class="cl">server_socket.setblocking(False)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 用来监视的文件描述符列表
+</span></span><span class="line"><span class="cl">inputs = [server_socket]
+</span></span><span class="line"><span class="cl">outputs = []
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">while True:
+</span></span><span class="line"><span class="cl">    # 使用 select 来监听可读和可写的事件
+</span></span><span class="line"><span class="cl">    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    for s in readable:
+</span></span><span class="line"><span class="cl">        if s is server_socket:
+</span></span><span class="line"><span class="cl">            # 接受新的连接
+</span></span><span class="line"><span class="cl">            client_socket, client_address = server_socket.accept()
+</span></span><span class="line"><span class="cl">            client_socket.setblocking(False)
+</span></span><span class="line"><span class="cl">            inputs.append(client_socket)
+</span></span><span class="line"><span class="cl">        else:
+</span></span><span class="line"><span class="cl">            # 处理客户端请求
+</span></span><span class="line"><span class="cl">            data = s.recv(1024)
+</span></span><span class="line"><span class="cl">            if data:
+</span></span><span class="line"><span class="cl">                s.send(data)  # 发送回客户端
+</span></span><span class="line"><span class="cl">            else:
+</span></span><span class="line"><span class="cl">                # 客户端关闭连接
+</span></span><span class="line"><span class="cl">                inputs.remove(s)
+</span></span><span class="line"><span class="cl">                s.close()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>优缺点</strong></p>
+<ul>
+<li><strong>优点</strong>：能够同时监控多个 I/O 操作，避免了每个连接都创建单独线程的开销。</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>对于大量文件描述符，<code>select()</code> 和 <code>poll()</code> 会遇到性能瓶颈（时间复杂度 O(n)）。</li>
+<li>需要手动管理事件和文件描述符集合，编程复杂度较高。</li>
+<li><code>select()</code> 有文件描述符数量限制</li>
+</ul>
+</li>
+</ul>
+<p>异步 I/O 通过 <strong>回调机制</strong>和 <strong>事件循环</strong>，允许应用程序在等待 I/O 操作完成时进行其他任务，避免了阻塞。异步 I/O 不需要每次都轮询文件描述符，而是依赖操作系统或框架提供的事件驱动机制，在 I/O 操作完成时通知应用程序。</p>
+<h4 id="工作原理-1"><strong>工作原理</strong>
+</h4><p><a class="link" href="https://blog.csdn.net/XMJYever/article/details/111560976"  target="_blank" rel="noopener"
+    >同步 I/O，异步 I/O 的理解_同步 io 和异步 io-CSDN 博客</a></p>
+<p><a class="link" href="https://cloud.tencent.com/developer/article/1684951"  target="_blank" rel="noopener"
+    >理解一下 5 种 IO 模型、阻塞 IO 和非阻塞 IO、同步 IO 和异步 IO-腾讯云开发者社区-腾讯云</a></p>
+<p>异步 I/O 的核心是 <strong>“发起 I/O 操作，立即返回，不阻塞程序执行。操作完成时，通过回调通知程序进行后续处理”</strong>。与 I/O 多路复用不同，异步 I/O 是通过一个 <strong>事件驱动</strong>机制来管理多个并发操作，而不需要手动轮询文件描述符。</p>
+<p>在异步 I/O 模型下，操作系统或应用框架负责管理 I/O 操作的状态，当某个 I/O 操作完成时，会触发回调函数或事件通知机制，应用程序继续执行后续操作。</p>
+<h4 id="常见的异步-io-实现"><strong>常见的异步 I/O 实现</strong>
+</h4><ol>
+<li><strong>基于事件驱动的异步 I/O</strong>：
+<ul>
+<li>例如，Python 中的 <strong><code>asyncio</code></strong>，Node.js 等异步框架，都是通过事件循环和回调来处理并发操作。</li>
+</ul>
+</li>
+<li><strong>操作系统提供的异步 I/O 支持</strong>：
+<ul>
+<li>在一些操作系统中，提供了 <strong>异步 I/O</strong> 系统调用。例如，Linux 提供了 <code>io_uring</code>（一种高效的 I/O 操作机制）来实现内核级别的异步 I/O。</li>
+</ul>
+</li>
+</ol>
+<p>代码示例：Python 异步 I/O（<code>asyncio</code>）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import asyncio
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">async def handle_client(reader, writer):
+</span></span><span class="line"><span class="cl">    data = await reader.read(100)
+</span></span><span class="line"><span class="cl">    message = data.decode()
+</span></span><span class="line"><span class="cl">    addr = writer.get_extra_info(&#39;peername&#39;)
+</span></span><span class="line"><span class="cl">    print(f&#34;Received {message} from {addr}&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    writer.write(data)
+</span></span><span class="line"><span class="cl">    await writer.drain()
+</span></span><span class="line"><span class="cl">    print(&#34;Closing the connection&#34;)
+</span></span><span class="line"><span class="cl">    writer.close()
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">async def main():
+</span></span><span class="line"><span class="cl">    server = await asyncio.start_server(
+</span></span><span class="line"><span class="cl">        handle_client, &#39;localhost&#39;, 8080)
+</span></span><span class="line"><span class="cl">    addr = server.sockets[0].getsockname()
+</span></span><span class="line"><span class="cl">    print(f&#39;Serving on {addr}&#39;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    async with server:
+</span></span><span class="line"><span class="cl">        await server.serve_forever()
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">asyncio.run(main())
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="应用场景"><strong>应用场景</strong>
+</h4><p>异步 I/O 适用于：</p>
+<ul>
+<li><strong>高并发 I/O 密集型应用</strong>：如聊天系统、WebSocket 服务、实时数据流应用等。</li>
+<li><strong>无阻塞应用</strong>：如异步爬虫、实时数据处理系统。</li>
+<li><strong>事件驱动框架</strong>：如 <strong>Node.js</strong>（非阻塞 I/O）和 Python 的 <code>asyncio</code> 框架</li>
+</ul>
+<p>深度了解 I/O 多路复用和异步 I/O</p>
+<p><strong>I/O 多路复用</strong> 是一种技术，它允许程序在单个线程中同时监控多个 I/O 操作的状态，避免了每个连接都需要一个独立线程的问题。</p>
+<ul>
+<li>
+<p><strong>I/O 多路复用</strong> 主要与 <strong>非阻塞模式</strong> 配合使用。通过使用 <code>select()</code>、<code>poll()</code> 或 <code>epoll()</code> 等系统调用，程序可以在等待多个套接字的 I/O 操作时，避免阻塞每个操作。当某个套接字可读或可写时，系统会通知应用程序，应用程序再去进行相应的操作。</p>
+</li>
+<li>
+<p><strong>I/O 多路复用</strong> 使用 <strong>非阻塞套接字</strong>，因为它需要能够检查每个套接字的状态，而不希望阻塞程序执行。如果套接字当前没有数据，程序不会卡住，而是继续检查其他套接字或进行其他操作。</p>
+<p><strong>I/O 多路复用与非阻塞模式</strong>：</p>
+</li>
+<li>
+<p>在非阻塞模式下，I/O 多路复用技术（如 <code>select()</code>、<code>epoll()</code>）通常会检查多个套接字的状态，以确定哪些套接字准备好进行读写操作。</p>
+</li>
+<li>
+<p>通过 <strong>非阻塞模式 + I/O 多路复用</strong>，程序能够高效地处理大量并发连接，在没有数据时不阻塞，避免了传统阻塞模式的性能瓶颈。</p>
+</li>
+</ul>
+<p><strong>异步 I/O</strong>（Asynchronous I/O）和 <strong>非阻塞模式</strong>是两种不同的概念，但它们常常一起使用，以提供更加高效的并发处理。</p>
+<ul>
+<li>
+<p><strong>异步 I/O</strong> 是一种编程模式，在这种模式下，应用程序发起 I/O 操作后，立即返回，程序可以继续执行其他任务，而不是等待 I/O 操作完成。当 I/O 操作完成时，系统会通过 <strong>回调函数</strong> 或 <strong>事件通知机制</strong> 来告知程序，从而处理已完成的 I/O 操作。</p>
+</li>
+<li>
+<p><strong>非阻塞模式</strong> 则是套接字的一种状态，表示当 I/O 操作不能立即完成时，它不会阻塞进程或线程。非阻塞模式通常需要与 I/O 多路复用或事件驱动机制结合使用</p>
+<p><strong>异步 I/O 与非阻塞模式</strong>：</p>
+</li>
+<li>
+<p>异步 I/O 不一定要求套接字是非阻塞的，但通常会与 <strong>非阻塞模式</strong> 配合使用，因为非阻塞套接字可以让程序立即返回并继续执行其他任务，而不会被阻塞。</p>
+</li>
+<li>
+<p>异步 I/O 通过回调机制或事件通知来处理 I/O 操作完成的事件，而不是通过轮询套接字的状态。因此，异步 I/O 的设计思想比 I/O 多路复用更加高效，尤其在处理高并发任务时。</p>
+<p><strong>异步 I/O 与阻塞模式的对比</strong>：</p>
+</li>
+<li>
+<p><strong>阻塞模式</strong>：在阻塞模式下，程序会阻塞等待 I/O 操作完成，直到得到数据或连接，这可能导致效率低下。</p>
+</li>
+<li>
+<p><strong>异步 I/O</strong>：在异步 I/O 模式下，应用程序无需等待 I/O 操作完成，允许程序在 I/O 完成之前继续执行其他任务。</p>
+</li>
+</ul>
+<p><strong>异步 I/O 与非阻塞模式的对比</strong></p>
+<p>异步 IO 与非阻塞 IO 的区别在于，当用户线程发起一次 IO 操作不需要在此去确认内核是否准备好数据。异步 IO 中内核准备好数据后会将数据从内核空间自动拷贝到用户空间。</p>
+<ul>
+<li><strong>I/O 多路复用</strong>：程序通常会使用 <strong>非阻塞模式</strong> 和 <strong>select() / poll() / epoll()</strong> 来检测多个 I/O 操作是否准备好。当一个 I/O 操作准备好时，程序才会去执行该操作。
+<ul>
+<li>I/O 多路复用通过轮询技术实现。</li>
+<li>它是通过主动检查多个文件描述符的状态，来决定哪些 I/O 操作可以继续执行。</li>
+</ul>
+</li>
+<li><strong>异步 I/O</strong>：在异步 I/O 模型中，操作系统或应用框架负责管理 I/O 操作。当 I/O 操作完成时，操作系统或框架会通过事件回调或信号机制通知程序。程序无需轮询文件描述符的状态。
+<ul>
+<li>异步 I/O 是通过事件驱动和回调机制实现的，不需要轮询。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/01/18/BYDGgapWMEi8AP6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="th1phcx2qx.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/01/18/1FwRn7kDmlJxgXI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="2iv4y5otku.png"
+	
+	
+></p>
+<h3 id="9-socket-的并发处理">9. <strong>Socket 的并发处理</strong>
+</h3><p><a class="link" href="https://blog.csdn.net/yi_chengyu/article/details/120467256"  target="_blank" rel="noopener"
+    >socket 网络编程——多进程、多线程处理并发_socket 客户端多线程并发-CSDN 博客</a></p>
+<p>为了处理多个客户端同时连接并且进行数据交换，服务器需要处理并发连接。常见的并发处理方法有：</p>
+<h4 id="91-多进程multiprocessing">9.1 <strong>多进程（Multiprocessing）</strong>
+</h4><ul>
+<li>每当有新的客户端连接时，服务器会派发一个子进程来处理该连接。</li>
+<li>优点：各个进程之间相互独立，互不干扰。</li>
+<li>缺点：进程创建和销毁的开销较大，特别是在高并发情况下效率低下。</li>
+</ul>
+<h4 id="92-多线程multithreading">9.2 <strong>多线程（Multithreading）</strong>
+</h4><ul>
+<li>服务器通过创建多个线程来处理并发连接。每个线程处理一个连接。</li>
+<li>优点：线程之间的通信相对简单，系统开销较小。</li>
+<li>缺点：线程间共享内存和资源，需要加锁机制，可能导致线程安全问题。</li>
+</ul>
+<h4 id="93-事件驱动event-driven">9.3 <strong>事件驱动（Event-driven）</strong>
+</h4><ul>
+<li>通过事件循环来处理并发请求，例如使用 <strong><code>select()</code></strong>、<strong><code>poll()</code></strong> 或 <strong><code>epoll()</code></strong> 等机制。</li>
+<li>适用于高并发、低延迟的应用，如 Web 服务器、即时通讯软件。</li>
+<li>优点：资源占用小，不需要为每个连接创建新线程或进程。</li>
+<li>缺点：编程模型较复杂，需要理解事件循环和非阻塞 I/O。</li>
+</ul>
+<h4 id="94-基于协程coroutine">9.4 <strong>基于协程（Coroutine）</strong>
+</h4><ul>
+<li>通过协程来处理并发任务。协程是轻量级的线程，可以在单个线程内并发执行多个任务，避免了传统线程的创建开销。</li>
+<li>Python 中的 <strong><code>asyncio</code></strong> 就是基于协程的并发框架。</li>
+<li>优点：高效、灵活，适用于 I/O 密集型任务。</li>
+<li>缺点：与传统的多进程、多线程相比，调试和错误追踪更为复杂。</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
+        
+            <a href="/tags/i/o/">I/O</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/dbeaver-xampp-ubuntu/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dbeaver&#43;Xampp&#43;Ubuntu</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/spring-boot--redis--sa-token/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring Boot &#43; Redis &#43; Sa-Token</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/smart-doc%E5%9C%A8spring-boot%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9B%BF%E4%BB%A3swagger%E6%97%A0%E6%B3%A8%E5%85%A5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">smart-doc在spring boot中的使用（替代swagger，无注入）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E7%AE%80%E5%8D%95%E7%A4%BA%E8%8C%83rabbitmq%E5%9C%A8spring-cloud%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">简单示范RabbitMQ在Spring Cloud中的使用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/spring-cloud-gateway%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring Cloud Gateway的使用</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+    
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili","https://npm.elemecdn.com/@waline/emojis@1.1.0/bmoji","https://npm.elemecdn.com/@waline/emojis@1.1.0/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null,"sofa":"还没有人评论哦！快来抢沙发吧~"},"placeholder":"欢迎留下宝贵的评论！","requiredMeta":["name","email","url"],"serverURL":"https://blog-waline-f2nc4salg-demons-kiritos-projects.vercel.app/","visitor":false});
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 随.
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
