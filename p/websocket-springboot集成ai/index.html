@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是 KIMI 的 api 接口，可以注册账号后获取 APIKey 在这里进行相应的测试 1 2 3 4 curl -X POST https://api.moonshot.cn/v1/chat/completions \\ -H &#34;Authorization: Bearer 你的KimiAPIKey&#34; \\ -H &#34;Content-Type: application/json&#34; \\ -d &#34;{\\&#34;model\\&#34;: \\&#34;moonshot-v1-8k\\&#34;, \\&#34;messages\\&#34;: [{\\&#34;role\\&#34;: \\&#34;user\\&#34;, \\&#34;content\\&#34;: \\&#34;Hello, Kimi!\\&#34;}], \\&#34;max_tokens\\&#34;: 150}&#34; 上面的 shell 命令中已经包含了我们需要请求的 api 接口和需要的 APIKey 之后就是我们传递至 api 接口的 json 串样式 1 2 3 4 5 6 7 8 9 10 { &#34;model&#34;: &#34;moonshot-v1-8k&#34;, &#34;messages&#34;: [ { &#34;role&#34;: &#34;system&#34;, &#34;content&#34;: &#34;你是 Kimi，由 Moonshot AI 提供的人工智能助手，你更擅长中文和英文的对话.">
+<title>WebSocket&#43;SpringBoot集成AI</title>
+
+<link rel='canonical' href='https://demonskirito.github.io/p/websocket-springboot%E9%9B%86%E6%88%90ai/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="WebSocket+SpringBoot集成AI">
+<meta property='og:description' content="这是 KIMI 的 api 接口，可以注册账号后获取 APIKey 在这里进行相应的测试 1 2 3 4 curl -X POST https://api.moonshot.cn/v1/chat/completions \\ -H &#34;Authorization: Bearer 你的KimiAPIKey&#34; \\ -H &#34;Content-Type: application/json&#34; \\ -d &#34;{\\&#34;model\\&#34;: \\&#34;moonshot-v1-8k\\&#34;, \\&#34;messages\\&#34;: [{\\&#34;role\\&#34;: \\&#34;user\\&#34;, \\&#34;content\\&#34;: \\&#34;Hello, Kimi!\\&#34;}], \\&#34;max_tokens\\&#34;: 150}&#34; 上面的 shell 命令中已经包含了我们需要请求的 api 接口和需要的 APIKey 之后就是我们传递至 api 接口的 json 串样式 1 2 3 4 5 6 7 8 9 10 { &#34;model&#34;: &#34;moonshot-v1-8k&#34;, &#34;messages&#34;: [ { &#34;role&#34;: &#34;system&#34;, &#34;content&#34;: &#34;你是 Kimi，由 Moonshot AI 提供的人工智能助手，你更擅长中文和英文的对话.">
+<meta property='og:url' content='https://demonskirito.github.io/p/websocket-springboot%E9%9B%86%E6%88%90ai/'>
+<meta property='og:site_name' content='念云的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Ai' /><meta property='article:tag' content='Kimi' /><meta property='article:tag' content='Vue' /><meta property='article:tag' content='Java' /><meta property='article:tag' content='WebSocket' /><meta property='article:published_time' content='2025-02-15T10:59:12&#43;08:00'/><meta property='article:modified_time' content='2025-02-15T10:59:12&#43;08:00'/>
+<meta name="twitter:title" content="WebSocket+SpringBoot集成AI">
+<meta name="twitter:description" content="这是 KIMI 的 api 接口，可以注册账号后获取 APIKey 在这里进行相应的测试 1 2 3 4 curl -X POST https://api.moonshot.cn/v1/chat/completions \\ -H &#34;Authorization: Bearer 你的KimiAPIKey&#34; \\ -H &#34;Content-Type: application/json&#34; \\ -d &#34;{\\&#34;model\\&#34;: \\&#34;moonshot-v1-8k\\&#34;, \\&#34;messages\\&#34;: [{\\&#34;role\\&#34;: \\&#34;user\\&#34;, \\&#34;content\\&#34;: \\&#34;Hello, Kimi!\\&#34;}], \\&#34;max_tokens\\&#34;: 150}&#34; 上面的 shell 命令中已经包含了我们需要请求的 api 接口和需要的 APIKey 之后就是我们传递至 api 接口的 json 串样式 1 2 3 4 5 6 7 8 9 10 { &#34;model&#34;: &#34;moonshot-v1-8k&#34;, &#34;messages&#34;: [ { &#34;role&#34;: &#34;system&#34;, &#34;content&#34;: &#34;你是 Kimi，由 Moonshot AI 提供的人工智能助手，你更擅长中文和英文的对话.">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu512d5369da382453356d0e68539a8fce_82572_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">念云的博客</a></h1>
+            <h2 class="site-description">随.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/268011948'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250799343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5636" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 0 1 60.373333 60.373333L700.330667 256H789.333333A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.856L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="5637" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:wh2919907118@gamil.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250776188" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4517" width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z m-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="4518" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Demonskirito'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254173120" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6663" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M682.215454 981.446137c-25.532318 0-42.553863-17.021545-42.553864-42.553864v-165.960067c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181 0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112 0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976 0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545 0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545 0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748 0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499 0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454 0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="6664" data-spm-anchor-id="a313x.search_index.0.i18.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254218488" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7714" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4 35.4-21.1 62.3-54.4 75-94-32.7 19.5-69.7 33.8-108.2 41.2C765.4 194.6 721.1 174 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5-14.8 25.4-23.2 54.4-23.2 86.1 0 59.2 30.1 111.4 76 142.1-28-1.1-54.4-9-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4-14.3 3.7-29.6 5.8-44.9 5.8-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-0.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-0.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z" p-id="7715" data-spm-anchor-id="a313x.search_index.0.i22.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/websocket-springboot%E9%9B%86%E6%88%90ai/">WebSocket&#43;SpringBoot集成AI</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 15, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>这是 KIMI 的 api 接口，可以注册账号后获取 APIKey 在这里进行相应的测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl -X POST https://api.moonshot.cn/v1/chat/completions <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     -H <span class="s2">&#34;Authorization: Bearer 你的KimiAPIKey&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     -d <span class="s2">&#34;{\&#34;model\&#34;: \&#34;moonshot-v1-8k\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;Hello, Kimi!\&#34;}], \&#34;max_tokens\&#34;: 150}&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的 shell 命令中已经包含了我们需要请求的 api 接口和需要的 APIKey</p>
+<p>之后就是我们传递至 api 接口的 json 串样式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;model&#34;</span><span class="p">:</span> <span class="s2">&#34;moonshot-v1-8k&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;messages&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;你是 Kimi，由 Moonshot AI 提供的人工智能助手，你更擅长中文和英文的对话...&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mf">0.3</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过官方文档中的示例请求我们可以知道该 api 接口所需要的 json 串样式如上所示</p>
+<p>知道这些后如果我们想制作一个类似 chatgpt 交流页面的应用，我们就必须得使用上有关通信的协议
+我们知道在通信的协议中我们已经有了 Http 协议，那我们为什么还要使用 WebSocket 呢？</p>
+<p>想要了解有关通信的可以看看相关文章
+web 通讯的四种方式，短轮询、长轮询(comet)、长连接(SSE)、WebSocket</p>
+<p>HTTP 协议是非持久化的，单向的网络协议，在建立连接后只允许浏览器向服务器发出请求后，服务器才能返回相应的数据。当需要即时通讯时，通过轮询在特定的时间间隔（如 1 秒），由浏览器向服务器发送 Request 请求，然后将最新的数据返回给浏览器。这样的方法最明显的缺点就是需要不断的发送请求，而且通常 HTTP request 的 Header 是非常长的，为了传输一个很小的数据 需要付出巨大的代价，是很不合算的，占用了很多的宽带。</p>
+<p>轮询与长轮询都是基于 HTTP 的，两者本身存在着缺陷:轮询需要更快的处理速度；长轮询则更要求处理并发的能力;两者都是“被动型服务器”的体现:服务器不会主动推送信息，而是在客户端发送 ajax 请求后进行返回的响应。而理想的模型是&quot;在服务器端数据有了变化后，可以主动推送给客户端&quot;,这种&quot;主动型&quot;服务器是解决这类问题的很好的方案。</p>
+<p><strong>短轮询</strong></p>
+<p>短轮询是服务器收到请求不管是否有数据都直接响应请求
+受到响应隔一段时间在发送同样的请求查询是否有数据;</p>
+<p>缺点:
+实时性低</p>
+<p><strong>长轮询</strong></p>
+<p>长轮询是服务器收到请求后如果有数据, 立刻响应请求;
+如果没有数据就会 hold 一段时间,这段时间内如果有数据立刻响应请求;
+如果时间到了还没有数据, 则响应 http 请求;浏览器受到 http 响应后立在发送一个同样 http 请求查询是否有数据;</p>
+<p>缺点:
+浏览器端对统一服务器同时连接有最大限制, 最好同一用户只存在一个长轮询;
+服务器端没有数据 hold 住连接时会造成浪费, 容易产生服务器瓶颈;</p>
+<p><img src="https://s2.loli.net/2025/02/14/c967X8w21KPyjNk.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="1277687-20200728170528262-14489580692.png"
+	
+	
+></p>
+<p>如果说这个是长轮询的话，短轮询会进行更多的 http 请求，会浪费更多的资源。</p>
+<p><strong>短连接</strong><br>
+所谓短连接，及连接只保持在数据传输过程，请求发起，连接建立，数据返回，连接关闭。它适用于一些实时数据请求，配合轮询来进行新旧数据的更替。
+<strong>长连接</strong><br>
+长连接便是在连接发起后，在请求关闭连接前客户端与服务端都保持连接，实质是保持这个通信管道，之后便可以对其进行复用。<br>
+它适用于涉及消息推送，请求频繁的场景（直播，流媒体）。连接建立后，在该连接下的所有请求都可以重用这个长连接管道，避免了频繁了连接请求，提升了效率。</p>
+<p>多个 http 请求共用一个 tcp 连接; 这样可以减少多次临近 http 请求导致 tcp 建立关闭所产生的时间消耗.</p>
+<p>http 1.1 中在请求头和相应头中用  <code>connection</code>字段标识是否是 http 长连接, connection: keep-alive, 表明是 http 长连接; connection:closed, 表明服务器关闭 tcp 连接</p>
+<p>与 connection 对应的一个字段是  <code>keep-live</code>, http 响应头中出现, 他的格式是  <code>timeout=30,max=5</code>, timeout 是两次 http 请求保持的时间(s), , max 是这个 tcp 连接最多为几个 http 请求重用</p>
+<p>以上描述的短连接、长连接、短轮询、长轮询
+缺点：会导致过多不必要的请求，浪费流量和服务器资源，每一次请求、应答，都浪费了一定流量在相同的头部信息上</p>
+<p>然而 WebSocket 的出现可以弥补这一缺点。在 WebSocket 中，只需要服务器和浏览器通过 HTTP 协议进行一个握手的动作，然后单独建立一条 TCP 的通信通道进行数据的传送。</p>
+<p><strong>WebSocket 与 HTTP 的关系</strong></p>
+<p>相同点</p>
+<p>1.都是一样基于 TCP 的，都是可靠性传输协议。 2.都是应用层协议。</p>
+<p>不同点</p>
+<p>1.WebSocket 是双向通信协议，模拟 Socket 协议，可以双向发送或接受信息。HTTP 是单向的。
+2.WebSocket 是需要握手进行建立连接的</p>
+<p>WebSocket 的加护机制如图所示</p>
+<p><img src="https://s2.loli.net/2025/02/14/V6XgdDL5AlxSqoR.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="f9744d72364bac7ab1af4d431cfeb586.png"
+	
+	
+></p>
+<p>相对于传统 HTTP 每次请求-应答都需要客户端与服务端建立连接的模式，WebSocket 是类似 Socket 的 TCP 长连接的通讯模式，一旦 WebSocket 连接建立后，后续数据都以帧序列的形式传输。在客户端断开 WebSocket 连接或  Server  端断掉连接前，不需要客户端和服务端重新发起连接请求。</p>
+<p>使用 WebSocket 建立相应的客户端和服务器
+客户端的建立可以使用 vue 等前端去实现
+而服务器我们可以使用 springboot 去建立隧道</p>
+<p>现在我们主要来说一下使用 vue 建立客户端</p>
+<p><img src="https://s2.loli.net/2025/02/14/CWUdIm2fjTXHcgN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_09-33-29.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/14/QeqnYMxCVcD4f5J.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_09-33-49.png"
+	
+	
+></p>
+<p>当建立客户端的时候为了考虑 websocket 的断线重连
+通过查阅资料了解到 nginx 代理的 websocket 转发，无消息连接会出现超时断开问题。网上资料提到解决方案两种，一种是修改 nginx 配置信息，第二种是 websocket 发送心跳包。</p>
+<p>websocket 超时没有消息自动断开连接，应对措施：这时候我们就需要知道服务端设置的超时时长是多少，在小于超时时间内发送心跳包，有 2 中方案:一种是客户端主动发送上行心跳包，另一种方案是服务端主动发送下行心跳包。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">ws</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>          <span class="c1">// WebSocket 实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">retryCount</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>     <span class="c1">// 当前重试次数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">maxRetries</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>    <span class="c1">// 最大重试次数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">isConnected</span><span class="o">:</span> <span class="kc">false</span> <span class="c1">// WebSocket 连接状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">createWebSocket</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s1">&#39;ws://your-websocket-url&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to WebSocket&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">isConnected</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">retryCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 成功连接时重置重试计数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">isConnected</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;WebSocket closed&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">retryCount</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">maxRetries</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">this</span><span class="p">.</span><span class="nx">retryCount</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Attempting to reconnect... Retry #</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">retryCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">setTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">createWebSocket</span><span class="p">,</span> <span class="mi">5000</span><span class="p">);</span> <span class="c1">// 重连延迟5秒
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Max retry attempts reached. Giving up.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;WebSocket error: &#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Received message: &#39;</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">createWebSocket</span><span class="p">();</span> <span class="c1">// 在组件挂载时创建 WebSocket 连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beforeDestroy</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span> <span class="c1">// 在组件销毁时关闭 WebSocket 连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>据代码所示：解决方案为客户端主动发送上行心跳包并当重新连接至一定次数后直至主动断开连接</p>
+<p>这也仅仅只是完成了客户端的构建，我们还需要一个 WebSocket 服务器去承载客户端的请求并获取大模型的返回值，这里就要用到一开始咱们提到的 api 接口和 request 请求体（指将数据格式获取后以统一格式返回给大模型获取输出值）</p>
+<p>在完成 websocket 的服务器搭建前，我们也得配置一些有关的信息，例如我们 springboot 所需要的依赖</p>
+<p><img src="https://s2.loli.net/2025/02/14/h7sg3GPqj2K9Ldp.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_10-41-00.png"
+	
+	
+></p>
+<p>还有我们需要指定的 yml，方便我们打印日志并且返回具体信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">allowed-origins</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;http://localhost:8080&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="c"># 设置应用的端口号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">websocket</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># 如果需要设置特定的 WebSocket 配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.springframework.web.socket</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w"> </span><span class="c"># 启用 WebSocket 的日志级别（可选）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.springframework</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.apache.ibatis</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后便是配置具体的 kimi 的响应 URL 和 APIKey</p>
+<p><img src="https://s2.loli.net/2025/02/14/Vt7evZhTFcOU2N9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_10-44-50.png"
+	
+	
+></p>
+<p>并将请求体的格式配置出来，再利用前端传递过来的参数进行替换，将最后得出的请求体用来访问 api 接口</p>
+<p><img src="https://s2.loli.net/2025/02/14/4u2S5YoJ1zMpCbn.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_10-44-40.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/14/9yRHYdCmVbcv4x7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_10-45-31.png"
+	
+	
+></p>
+<p>为了允许前端对后端 api 的调用我们也得设置一下配置类 WebSocketConfig，使得其接收所有来源的请求</p>
+<p><img src="https://s2.loli.net/2025/02/14/hD37FrcYIGLU6T1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_13-09-00.png"
+	
+	
+></p>
+<p>这里的后端处理运用了大量的 WebSocket 提供的方法类，可以带大家看一下并了解有关方法的实现及作用</p>
+<p><img src="https://s2.loli.net/2025/02/14/eBR9OzKW5buvywE.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_13-19-19.png"
+	
+	
+></p>
+<p><strong>afterConnectionEstablished</strong></p>
+<p><strong>作用</strong>：在 WebSocket 连接建立之后被调用。通常用于在客户端连接建立后执行一些初始化操作，如认证、注册、资源分配等。
+<strong>参数</strong>：WebSocketSession 表示当前的 WebSocket 会话，它包含了有关连接的详细信息。
+<strong>异常</strong>：如果出现异常，方法可以抛出 Exception，比如连接错误等</p>
+<p><strong>handleMessage</strong></p>
+<p><strong>作用</strong>：处理客户端发送的消息。根据消息的类型（文本、二进制、Ping/Pong 等），具体的消息处理逻辑会被执行。实现该方法时，需要根据不同消息类型（如 TextMessage、BinaryMessage 等）来处理不同的消息内容。
+<strong>参数</strong>：
+session：当前的 WebSocket 会话对象，包含关于客户端连接的所有信息。
+message：客户端发送的 WebSocket 消息，它可以是文本消息、二进制消息或其他类型的消息。</p>
+<p>文本消息（TextMessage）
+文本消息用于传输字符串数据，WebSocket 允许通过 UTF-8 编码的文本消息交换数据。通常用于传输 JSON 数据、HTML 内容、聊天信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TextMessage textMessage = new TextMessage(&#34;Hello,how are you?&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>二进制消息（BinaryMessage）
+二进制消息用于传输二进制数据（例如图片、文件、音频等）。WebSocket 协议通过 ByteBuffer 或 byte[]来传递二进制数据。二进制消息可以传输更复杂的数据类型，比如图像、视频、音频文件等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">byte[] imageData = Files.readAllBytes(Path.get(&#34;path/to/image.jpg&#34;));
+</span></span><span class="line"><span class="cl">BinaryMessage binaryMessage = new BinaryMessage(imageData);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>服务器收到后，会调用 handleBinaryMessage 方法来处理这个二进制消息。</p>
+<p>Ping/Pong 消息（PingMessage 和 PongMessage）
+Ping/Pong 消息用于 WebSocket 连接的心跳机制。PingMessage 由客户端发送，PongMessage 由服务器响应。它们用于检查连接是否仍然活跃，以避免连接超时。</p>
+<p>Ping：客户端可以定期发送 PingMessage，询问服务器是否还在线。
+Pong：服务器响应 PingMessage，以表明它仍然可用。</p>
+<p>PingMessage：客户端向服务器发送一个 PingMessage:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PingMessage pingMessage = new PingMessage();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>PongMessage:服务器响应客户端的 PingMessage。返回 PongMessage：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PongMessage pongMessage = new PongMessage();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://s2.loli.net/2025/02/14/z4527ATmSeFDLNR.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_13-59-27.png"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void handleMessage(WebSocketSession session, WebSocketMessage&lt;?&gt; message) throws Exception;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>根据方法进行 logger.info 第一行是 session，第二行是 TextMessage</p>
+<p>WebSocketHandler 中处理不同类型的消息</p>
+<p>在官方的 AbstractWebSocketHandler 类中提供了继承 WebSocketHandler 的方法去处理不同类型的信息
+<img src="https://s2.loli.net/2025/02/14/Glgq2iTUakMZF38.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_14-23-27.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/14/Efqc657CYJSRyHL.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_14-23-43.png"
+	
+	
+></p>
+<p><strong>handleTransportError</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void handleTransportError(WebSocketSession session, Throwable exception) throws Exception;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>作用</strong>：处理 WebSocket 连接中的错误，如网络错误或协议错误等。这个方法通常用于捕获 WebSocket 连接中的传输错误。
+<strong>参数</strong>：
+<code>session</code>：当前 WebSocket 会话对象，包含了连接信息。
+<code>exception</code>：具体的错误或异常信息。
+<strong>异常</strong>：如果出现异常，方法可以抛出 <code>Exception</code>，例如在处理错误时发生的其他问题。</p>
+<p><img src="https://s2.loli.net/2025/02/14/RhcE8YwnXkovDSB.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_14-30-53.png"
+	
+	
+></p>
+<p>这里我们重写的话就将网络的错误请求打印至日志和控制台即可</p>
+<p><strong>afterConnectionClosed</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>作用</strong>：在 WebSocket 连接关闭之后被调用，通常用于执行连接关闭后的清理工作，如释放资源、注销用户、更新状态等。
+<strong>参数</strong>：
+session：当前 WebSocket 会话对象。
+closeStatus：关闭状态，提供了关闭连接时的一些信息（如是否正常关闭）。
+<strong>异常</strong>：如果出现异常，方法可以抛出 <code>Exception</code>，例如在连接关闭后进行清理时发生错误。</p>
+<p><strong>supportsPartialMessages</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">boolean supportsPartialMessages();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>作用</strong>：指示 WebSocket 是否支持处理部分消息。通常，WebSocket 消息是完整的，但有时消息可能会分成多个小部分传输（例如，发送大文件时）。该方法返回 true 表示支持部分消息，false 表示不支持。
+<strong>返回值</strong>：
+true：支持处理部分消息。
+false：不支持部分消息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">supportsPartialMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">  </span><span class="c1">// 表示支持部分消息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleMessage</span><span class="p">(</span><span class="n">WebSocketSession</span><span class="w"> </span><span class="n">session</span><span class="p">,</span><span class="w"> </span><span class="n">WebSocketMessage</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">BinaryMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">BinaryMessage</span><span class="w"> </span><span class="n">binaryMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BinaryMessage</span><span class="p">)</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 处理二进制数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Received binary data, length: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">binaryMessage</span><span class="p">.</span><span class="na">getPayload</span><span class="p">().</span><span class="na">length</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 假设这是一个分段上传的大文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">fileData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">binaryMessage</span><span class="p">.</span><span class="na">getPayload</span><span class="p">().</span><span class="na">array</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 将文件数据拼接（假设这是分段上传过程中的一部分）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 假设有一个持久化存储，用于将不同段的数据拼接成完整文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">appendToFileStorage</span><span class="p">(</span><span class="n">session</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">fileData</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果 <code>supportsPartialMessages</code> 返回 <code>true</code>，WebSocket 会支持将大消息分成多个小部分进行传输，适用于大文件传输或数据流式处理。
+如果返回 <code>false</code>，WebSocket 只能一次性传输完整的消息，不支持将消息拆分成多个部分。</p>
+<p><img src="https://s2.loli.net/2025/02/14/VnycuRAkDBqtQIO.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-14_13-55-09.png"
+	
+	
+></p>
+<p>完成代码后的界面如图所示，可以完整实现与 ai 的交流通道</p>
+<p>如果需要源代码可以关注公众号&quot;念小云&quot;，回复&quot;Kimi&quot;即可。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">Ai</a>
+        
+            <a href="/tags/kimi/">Kimi</a>
+        
+            <a href="/tags/vue/">Vue</a>
+        
+            <a href="/tags/java/">Java</a>
+        
+            <a href="/tags/websocket/">WebSocket</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">利用宝塔面板快速部署前后端代码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ubuntu-nginx-%E9%85%8D%E7%BD%AE%E7%BD%91%E9%A1%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Ubuntu Nginx 配置网页</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/qt-vs%E5%BC%80%E5%8F%91%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Qt&#43;VS开发(连接数据库)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">网络编程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/dbeaver-xampp-ubuntu/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dbeaver&#43;Xampp&#43;Ubuntu</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+    
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili","https://npm.elemecdn.com/@waline/emojis@1.1.0/bmoji","https://npm.elemecdn.com/@waline/emojis@1.1.0/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null,"sofa":"还没有人评论哦！快来抢沙发吧~"},"placeholder":"欢迎留下宝贵的评论！","requiredMeta":["name","email","url"],"serverURL":"https://blog-waline-f2nc4salg-demons-kiritos-projects.vercel.app/","visitor":false});
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 随.
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
