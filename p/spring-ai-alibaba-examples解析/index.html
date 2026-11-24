@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Spring AI Alibaba -Examples解析">
+<title>Spring AI Alibaba -Examples解析</title>
+
+<link rel='canonical' href='https://demonskirito.github.io/p/spring-ai-alibaba-examples%E8%A7%A3%E6%9E%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Spring AI Alibaba -Examples解析">
+<meta property='og:description' content="Spring AI Alibaba -Examples解析">
+<meta property='og:url' content='https://demonskirito.github.io/p/spring-ai-alibaba-examples%E8%A7%A3%E6%9E%90/'>
+<meta property='og:site_name' content='念云的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Java' /><meta property='article:published_time' content='2026-11-24T16:14:32&#43;08:00'/><meta property='article:modified_time' content='2026-11-24T16:14:58&#43;08:00'/>
+<meta name="twitter:title" content="Spring AI Alibaba -Examples解析">
+<meta name="twitter:description" content="Spring AI Alibaba -Examples解析">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu512d5369da382453356d0e68539a8fce_82572_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">念云的博客</a></h1>
+            <h2 class="site-description">随.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/268011948'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250799343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5636" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 0 1 60.373333 60.373333L700.330667 256H789.333333A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.856L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="5637" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:wh2919907118@gamil.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734250776188" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4517" width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z m-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="4518" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Demonskirito'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254173120" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6663" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M682.215454 981.446137c-25.532318 0-42.553863-17.021545-42.553864-42.553864v-165.960067c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181 0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112 0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976 0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545 0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545 0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748 0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499 0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454 0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="6664" data-spm-anchor-id="a313x.search_index.0.i18.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1734254218488" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7714" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4 35.4-21.1 62.3-54.4 75-94-32.7 19.5-69.7 33.8-108.2 41.2C765.4 194.6 721.1 174 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5-14.8 25.4-23.2 54.4-23.2 86.1 0 59.2 30.1 111.4 76 142.1-28-1.1-54.4-9-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4-14.3 3.7-29.6 5.8-44.9 5.8-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-0.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-0.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z" p-id="7715" data-spm-anchor-id="a313x.search_index.0.i22.69403a81V9IOnp" class="selected" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/spring-ai-alibaba-examples%E8%A7%A3%E6%9E%90/">Spring AI Alibaba -Examples解析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Spring AI Alibaba -Examples解析
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 24, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="https://s2.loli.net/2025/02/19/pFjgyEKCrIuARsH.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_14-54-17.png"
+	
+	
+></p>
+<p><strong>用户界面（User Interface）</strong>：这是与用户交互的界面，用户通过它发出请求并接收响应。</p>
+<p><strong>Spring AI</strong>：这部分包含了 AI 的核心功能模块：</p>
+<ul>
+<li><strong>System Prompt</strong>：定义了系统的提示，用于引导 AI 模型进行对话。</li>
+<li><strong>ConversationMemory</strong>：管理对话历史，帮助 AI 保持上下文并处理长对话。</li>
+<li><strong>RAG（Retrieval-Augmented Generation）</strong>：一种增强生成式对话的技术，它结合了检索和生成模型，提高回答准确性。</li>
+<li><strong>Function Calling</strong>：调用具体功能的能力，可以与外部服务进行交互。</li>
+</ul>
+<p><strong>Vector Store API</strong>：用于存储向量数据，AI 模型可以通过它来检索和存储向量化的数据（如文档或对话内容）。</p>
+<p><strong>生成式 AI（Generative AI）</strong>：指的是该系统使用的 AI 模型，用于生成回答和执行任务。</p>
+<p><strong>服务 APIs</strong>：这些是外部服务接口，可以让 AI 系统与其他服务进行交互，例如：</p>
+<ul>
+<li><strong>Flight Booking Service</strong>：提供航班预订相关的 API，如查询、修改和取消预订的接口。</li>
+<li><strong>Terms of Service</strong>：用于处理服务条款的相关操作。</li>
+</ul>
+<p><strong>Booking DB</strong>：存储航班预订相关的数据，AI 可以通过它获取用户的预订详情。</p>
+<p><strong>文档处理（Doc Ingestion）</strong>：</p>
+<ul>
+<li><strong>Document Writer</strong>：负责将文档写入系统。</li>
+<li><strong>Document Transformer</strong>：处理文档转换的功能，可能包括文本格式化或转换为向量表示。</li>
+<li><strong>Document Reader</strong>：读取文档，可能用于向 AI 模型提供上下文信息。</li>
+</ul>
+<p>这是代码的设计思路，之后作者通过代码将图中的功能进行实现，主要运用的技术是Spring AI
+Spring Boot 内存数据库 Vue</p>
+<p><img src="https://s2.loli.net/2025/02/19/fszSe1MH89di5Ob.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-03-42.png"
+	
+	
+></p>
+<p>实体类的设计，类似这样的实体类和使用类一共有三个</p>
+<p>之后他在pojo中也设计了响应的公用关键词，例如</p>
+<p><img src="https://s2.loli.net/2025/02/19/7ESRwJuIlWhZ4as.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-05-01.png"
+	
+	
+></p>
+<p>这里的三个关键词在该项目案例中代表着经济舱、高级经济舱、商务舱</p>
+<p>但这里也只是普通项目都会去实现的类名</p>
+<p>之后作者使用Spring AI框架的ChatClient类实现与AI大模型之间的交互，并基于当前框架在原本与AI大模型沟通只能返回数据（图片、文字、语言）的基础上对于项目内实现了方法类名的调用</p>
+<p><img src="https://s2.loli.net/2025/02/19/GJyVHh7qCM4ctla.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-09-54.png"
+	
+	
+></p>
+<p>好，看到这里出现了三个未知类，分别是ChatClient、VectorStore、ChatMemory</p>
+<p>我们先来分析这个最近最热门的AI大模型对话的缔造者ChatClient</p>
+<p><img src="https://s2.loli.net/2025/02/19/lhDauzp1fX7BnUM.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-17-09.png"
+	
+	
+></p>
+<p>这些静态方法用于创建 <code>ChatClient</code> 实例。你可以提供一个 <code>ChatModel</code> 来指定使用的聊天模型，<code>ObservationRegistry</code> 用于注册和跟踪观察事件。
+可以看到以下的实例：
+<img src="https://s2.loli.net/2025/02/19/1yZlPrGptYBHeTd.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-25-35.png"
+	
+	
+></p>
+<p>用ChatClient.create是非常容易就能创建出一个实时聊天的AI框架的</p>
+<p>这里假设我们使用了 GPT3ChatModel（假设这是一个实现了 <code>ChatModel</code> 接口的类），并提供了 API 密钥来访问 GPT-3 模型。ChatModel 是用于与聊天模型交互的核心组件，它负责与实际的聊天模型（如 GPT、BERT、T5 等）进行通信。</p>
+<p><img src="https://s2.loli.net/2025/02/19/xGw4zyA283RYdti.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-32-45.png"
+	
+	
+></p>
+<p><code>builder</code> 方法返回一个 <code>ChatClient.Builder</code> 实例，它允许你构建和配置 <code>ChatClient</code>。这使得配置变得灵活，你可以使用 <code>Builder</code> 模式一步步设置 <code>ChatClient</code> 的行为（例如设置默认的系统消息、用户消息等）。</p>
+<p><img src="https://s2.loli.net/2025/02/19/vrxKi9IzpAX3eTY.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-46-34.png"
+	
+	
+></p>
+<p><strong><code>defaultAdvisors(Advisor... advisor)</code></strong>：允许你设置一个或多个顾问（<code>Advisor</code>），顾问用于调整和定制聊天模型的行为。通过顾问，你可以影响对话的策略，例如，设置对话历史管理、增强问答能力等。</p>
+<p><strong><code>defaultAdvisors(Consumer&lt;ChatClient.AdvisorSpec&gt; advisorSpecConsumer)</code></strong>：通过接受一个 <code>Consumer&lt;ChatClient.AdvisorSpec&gt;</code> 类型的消费者，可以动态配置顾问的参数。例如，可以在这个消费者中设置顾问的特定参数或行为。</p>
+<p><strong><code>defaultAdvisors(List&lt;Advisor&gt; advisors)</code></strong>：与前面的参数相同，但允许你通过<code>List&lt;Advisor&gt;</code> 提供多个顾问。</p>
+<p><img src="https://s2.loli.net/2025/02/19/Yr3bSdn4eZj9t8U.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_15-49-50.png"
+	
+	
+></p>
+<p>该方法允许你设置聊天的默认选项（<code>ChatOptions</code>）。这些选项可能包括对话的主题、配置、策略等，取决于具体的聊天系统需求。</p>
+<p>因为这个在作者的业务内未配置使用，我们自己来详细描述一下</p>
+<p>我们假设有一个 <code>ChatOptions</code> 类，它包含了各种对话配置选项。这个类可以包括对话的主题、语言、最大输出长度、创意度等参数</p>
+<p><img src="https://s2.loli.net/2025/02/19/1cCoyZPX5jkQf78.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_16-06-41.png"
+	
+	
+></p>
+<p><strong>使用 <code>defaultOptions</code> 方法</strong></p>
+<p>在 <code>ChatClient.Builder</code> 中，我们可以使用 <code>defaultOptions</code> 方法来设置聊天的默认配置。例如，我们设置对话主题为“客户支持”，语言为中文，最大回复长度为 1000 字符，并且启用创意性生成。</p>
+<p><img src="https://s2.loli.net/2025/02/19/SY6IKrt9FkWRQJN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_16-06-58.png"
+	
+	
+></p>
+<p>一旦设置了 <code>ChatOptions</code>，你可以通过 <code>ChatClient</code> 来启动对话。</p>
+<p><img src="https://s2.loli.net/2025/02/19/ehxCEbuWk7jFiNy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_16-12-49.png"
+	
+	
+></p>
+<p><strong><code>defaultUser(String text)</code></strong>：设置默认的用户输入文本。所有的聊天请求都会默认以这个文本作为用户的输入。</p>
+<p><strong><code>defaultUser(Resource text, Charset charset)</code></strong>：如果用户输入是来自某个资源（例如文件），这个方法允许你指定资源并且设置字符集（<code>Charset</code>）。</p>
+<p><strong><code>defaultUser(Resource text)</code></strong>：类似于上面的设置，默认用户输入来自资源文件。</p>
+<p><strong><code>defaultUser(Consumer&lt;ChatClient.PromptUserSpec&gt; userSpecConsumer)</code></strong>：通过消费者设置更复杂的用户输入配置。你可以使用该消费者来动态配置 <code>PromptUserSpec</code>，它是用于指定用户输入细节的接口。</p>
+<p><img src="https://s2.loli.net/2025/02/19/HBmdPSgk1ETQYZy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_16-23-52.png"
+	
+	
+></p>
+<p><strong><code>defaultSystem(String text)</code></strong>：设置默认的系统级提示文本。系统级提示通常用于告诉聊天模型如何回应用户或设置其行为（如“你是一个友好的助手”）。</p>
+<p><strong><code>defaultSystem(Resource text, Charset charset)</code></strong>：设置默认的系统提示，来自于一个外部资源文件，且可以指定字符集。</p>
+<p><strong><code>defaultSystem(Resource text)</code></strong>：设置默认的系统提示，来自于资源文件。</p>
+<p><strong><code>defaultSystem(Consumer&lt;ChatClient.PromptSystemSpec&gt; systemSpecConsumer)</code></strong>：通过消费者动态配置系统级提示的详细内容，例如可以为系统级提示设置一些特定的参数</p>
+<p><img src="https://s2.loli.net/2025/02/19/GO3rFHwdSV6ypqz.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-19_22-54-51.png"
+	
+	
+></p>
+<p>这下我们来看一下ChatClient的核心用法prompt
+<code>prompt</code> 方法返回一个 <code>ChatClientRequestSpec</code>，它允许你配置聊天请求的具体细节（如消息、顾问、选项等）。你可以使用这个接口向聊天模型发送用户输入、系统提示等。</p>
+<p>你可以在prompt中定义String字符串内容和Prompt类的对象</p>
+<p><img src="https://s2.loli.net/2025/02/20/lkAdubI63vXoN4f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_00-47-18.png"
+	
+	
+></p>
+<p>在这里 String和ChatOptions就不再一一赘述，我们主要来看一下Message类，String类就是text文本的内容，ChatOptions就是上文中刚提到的聊天配置的默认选项</p>
+<p><code>Message</code> 类在 Spring AI 框架中通常用于表示一条消息，可能是用户发送的消息，也可能是系统、助手、工具等发送的消息。它是聊天系统中处理消息的核心类，通常会提供一些接口和方法来封装消息的内容、发送者、时间戳、类型等信息。</p>
+<p><img src="https://s2.loli.net/2025/02/20/D4rJG7NYcxjXvVf.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_09-01-24.png"
+	
+	
+></p>
+<p>在这里我们就演示一下如何使用Messsage类并包装成Prompt后传递至chatclient.prompt中使用的</p>
+<p><img src="https://s2.loli.net/2025/02/20/pjXUo28ZITbGzMy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_11-28-00.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/20/yUiH6VnzA725kLN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_11-29-55.png"
+	
+	
+></p>
+<p>在这里简单说一下这两个方法，第一个方法是继承Content类型，将字符串类型的值转化为Content类型的值以供Message使用，第二个方法就是使用刚才的Content类型的数据并且再添加上MessageType来指定当前数据的发送者是谁</p>
+<p>在使用方法之前得先定义以上的方法继承接口Message和Content类型，方便我们后面的String类型的值转换为最终的Prompt类型</p>
+<p>以下便是实例：
+<img src="https://s2.loli.net/2025/02/20/dJiDVHrXSug62k1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_11-38-19.png"
+	
+	
+></p>
+<p>看过Prompt类之后我们看一下以后应用场景可能会更广的几个方法，上面是当你在使用一个大模型的时候需要用到的必会底层
+<img src="https://s2.loli.net/2025/02/20/VtlzPRCmdgrKsco.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_14-13-42.png"
+	
+	
+></p>
+<p><code>defaultFunctions</code>：配置可用的功能名称，这些功能可以在对话中调用。例如，模型可以调用外部 API 或其他业务逻辑功能。
+<code>defaultToolContext</code>：为功能调用提供上下文信息。</p>
+<p>在我们项目的代码中也是运用到了以上的方法
+<img src="https://s2.loli.net/2025/02/20/Sjd9YQuc1Dxh8H6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_14-17-46.png"
+	
+	
+></p>
+<p>在这里定义了defaultFunctions方法，告诉AI大模型可以去调用三个在服务层中定义的三个方法名，作用分别为获取预定信息，更改预定信息，取消预订，之后再通过build方法去建立当前的LLM</p>
+<p>通过defaultFunctions方法，我们来仔细研究一下FunctionCallback这个类</p>
+<p><img src="https://s2.loli.net/2025/02/20/xcepoMOPdyqtFzu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_15-00-09.png"
+	
+	
+></p>
+<p>进入FunctionCallback类中可以看到其中定义的方法类</p>
+<p><img src="https://s2.loli.net/2025/02/20/hdq4K3CZRxrYsjm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_15-21-20.png"
+	
+	
+>
+稍微解释一下</p>
+<ul>
+<li>
+<p><strong><code>B description(String description)</code></strong> – 设置回调的描述信息，可能是一些文本说明。</p>
+</li>
+<li>
+<p><strong><code>B schemaType(FunctionCallback.SchemaType schemaType)</code></strong> – 设置回调的模式类型，这里使用 <code>FunctionCallback.SchemaType</code>，可能是某种枚举类型，用于指定数据结构的类型。</p>
+</li>
+<li>
+<p><strong><code>B responseConverter(Function&lt;Object, String&gt; responseConverter)</code></strong> – 设置一个响应转换器，接受一个对象并将其转换为字符串。这个函数提供了自定义处理回调响应的能力。</p>
+</li>
+<li>
+<p><strong><code>B inputTypeSchema(String inputTypeSchema)</code></strong> – 设置回调输入的数据模式，可能是一个 JSON 格式的字符串，用于定义输入数据的结构。</p>
+</li>
+<li>
+<p><strong><code>B objectMapper(ObjectMapper objectMapper)</code></strong> – 设置一个 <code>ObjectMapper</code>（通常是 Jackson 的类），用于序列化和反序列化数据。</p>
+</li>
+</ul>
+<p>SchemaType是官方提供了相对应的实体类名表示</p>
+<p><img src="https://s2.loli.net/2025/02/20/GNM7FD9dQc6fYhj.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_15-23-17.png"
+	
+	
+></p>
+<p>inputTypeSchema方法则是让用户自己输入对应的类型名</p>
+<p><img src="https://s2.loli.net/2025/02/20/Jh1NjmAf35B46Da.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_15-31-06.png"
+	
+	
+></p>
+<p>对于定义回调方法，接口一共提供了四个不同的接收方法，他们区别为输入与输出</p>
+<p><code>Function&lt;I, O&gt;</code>：一个输入一个输出。
+<code>BiFunction&lt;I, ToolContext, O&gt;</code>：两个输入（<code>I</code> 和 <code>ToolContext</code>）一个输出。
+<code>Supplier&lt;O&gt;</code>：无输入一个输出。
+<code>Consumer&lt;I&gt;</code>：一个输入无输出</p>
+<p>对于FunctionCallback.MethodInvokingSpec method这个方法来说，其实就是内置一个方法名，然后定义相对应的类型的.class，例如int.class
+但如果想要如下去实现这个方法关于ChatClient的内调用必须去添加一些新的方法，所以需要重写接口类
+例如在ChatClient类中我们需要再去定义一个新的方法handleRequest去实现内置方法
+但对于该方法的运用，现还给不出太好的运用场景
+<img src="https://s2.loli.net/2025/02/20/yQwuo8NKmHn6JGU.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-20_16-52-49.png"
+	
+	
+></p>
+<p>以上是建立大模型是对模型建立时使其按照你的需求进行建立，之后我们来看看调用大模型后又该如何使用ChatClient</p>
+<p><img src="https://s2.loli.net/2025/02/21/qxmChErFX98SMWg.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_10-46-14.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/21/lwUeRfyDBYknJFA.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_10-46-48.png"
+	
+	
+></p>
+<p><strong><code>this.chatClient.prompt()</code></strong></p>
+<p><code>prompt()</code> 是 <code>ChatClient</code> 提供的方法，用于启动一次新的聊天请求。它返回一个 <code>ChatClientRequestSpec</code>，可以通过它继续设置聊天的各种参数。</p>
+<p>记得我们之前已经提过了prompt这个方法了，我们现在看看通过prompt后继续可以设置哪些参数</p>
+<p><strong>system(s -&gt; s.param(&ldquo;current_date&rdquo;, LocalDate.now().toString()))</strong></p>
+<p>这个方法设置了系统级的参数，在这里它将当前的日期作为参数传递给系统。
+<code>s.param(&quot;current_date&quot;, LocalDate.now().toString())</code>：<code>current_date</code> 参数的值是当前日期的字符串表示形式（格式为 <code>yyyy-MM-dd</code>）。用于告诉模型今天的日期，从而根据日期生成特定的响应</p>
+<p><img src="https://s2.loli.net/2025/02/21/LON6WSD1oAhJzGB.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_11-04-21.png"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">chatClient</span><span class="p">.</span><span class="na">prompt</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">.</span><span class="na">system</span><span class="p">(</span><span class="s">&#34;You are a friendly assistant that helps users with their booking inquiries.&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">chatClient</span><span class="p">.</span><span class="na">prompt</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">.</span><span class="na">system</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ClassPathResource</span><span class="p">(</span><span class="s">&#34;system_prompt.txt&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">chatClient</span><span class="p">.</span><span class="na">prompt</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">.</span><span class="na">system</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ClassPathResource</span><span class="p">(</span><span class="s">&#34;system_prompt.txt&#34;</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">chatClient</span><span class="p">.</span><span class="na">prompt</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">.</span><span class="na">system</span><span class="p">(</span><span class="n">systemSpec</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">systemSpec</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&#34;You are a helpful assistant for booking flights.&#34;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&#34;lang&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;en&#34;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&#34;tone&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;friendly&#34;</span><span class="p">))</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>ChatClient.ChatClientRequestSpec system（String text）直接传递一个字符串作为系统提示。这个字符串通常用于描述模型的行为或目标，告诉模型在对话中应该扮演什么角色或采用何种语气。在这个例子中，系统提示是 &ldquo;You are a friendly assistant that helps users with their booking inquiries.&quot;，它告诉模型在与用户互动时应该保持友好，并专注于帮助用户处理预定问题。</p>
+<p>ChatClient.ChatClientRequestSpec system(Resource textResource, Charset charset)通过 Resource（通常是文件资源）传递系统级提示的内容，并指定字符集（Charset）。这里，系统级提示的内容来自一个资源文件 system_prompt.txt，并且明确指定了字符集（UTF-8）。文件中的内容可能是一些更详细的上下文，告诉模型如何与用户交互。</p>
+<p>ChatClient.ChatClientRequestSpec system(Resource text)通过 Resource 对象传递系统提示内容，Resource是一个代表外部文件或资源的抽象。这个方法与上一个方法类似，但没有明确指定字符集（Charset）</p>
+<p>ChatClient.ChatClientRequestSpec system(Consumer&lt;ChatClient.PromptSystemSpec&gt; consumer)使用 Consumer 传递配置，允许你动态地为系统级提示指定复杂的行为或参数。PromptSystemSpec 提供了多种配置选项，例如设置系统提示文本和其他参数（如 lang、tone等）。</p>
+<p>也可以通过param经过二次定义system将对应的一些需要给予大模型的数据传递至defaultSystem中</p>
+<p><img src="https://s2.loli.net/2025/02/21/pIfwunv1lbACN52.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_11-34-18.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/21/gc5O9EfTlx6V8Mh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_13-55-57.png"
+	
+	
+></p>
+<p>this.chatClient.prompt().user(userMessageContent)这个方法设置了用户消息内容，将 <code>userMessageContent</code> 作为消息传递给聊天模型。</p>
+<p>以上的四个传参和system的传参别无二致，可以对照着来理解就行user就是代表用户消息内容的意思</p>
+<p><img src="https://s2.loli.net/2025/02/21/hsFZVnE2tbP5i8D.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_14-01-01.png"
+	
+	
+></p>
+<p>advisors(Consumer&lt;ChatClient.AdvisorSpec&gt; consumer)的动态传递数据和上文提及的两个都差不多，就不再一一赘述了
+ChatClient.ChatClientRequestSpec advisors(Advisor&hellip; advisors)直接传入一个或多个 <code>Advisor</code> 对象，<code>Advisor</code> 可能是某些预定义的智能模块，比如：</p>
+<p><strong>知识库 Advisor</strong>（用于提供额外知识）
+<strong>对话记忆 Advisor</strong>（用于存储上下文）
+<strong>安全 Advisor</strong>（用于过滤敏感内容）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">Advisor</span><span class="w"> </span><span class="n">memoryAdvisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MemoryAdvisor</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Advisor</span><span class="w"> </span><span class="n">knowledgeBaseAdvisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseAdvisor</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">chatClient</span><span class="p">.</span><span class="na">prompt</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">.</span><span class="na">advisors</span><span class="p">(</span><span class="n">memoryAdvisor</span><span class="p">,</span><span class="w"> </span><span class="n">knowledgeBaseAdvisor</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">.</span><span class="na">user</span><span class="p">(</span><span class="s">&#34;Tell me something interesting about AI.&#34;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">.</span><span class="na">call</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">.</span><span class="na">content</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>传入 MemoryAdvisor（对话记忆）和 KnowledgeBaseAdvisor（知识库）两个 Advisor，让 AI 能够记住用户的对话并提供额外的 AI 知识。</p>
+<pre><code>advisors(List&lt;Advisor&gt; advisors)传递一个 List&lt;Advisor&gt;，与上一个方法类似，但适用于动态管理 Advisor 列表。
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Advisor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">advisorList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MemoryAdvisor</span><span class="p">(),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PersonalizationAdvisor</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">chatClient</span><span class="p">.</span><span class="na">prompt</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">advisors</span><span class="p">(</span><span class="n">advisorList</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">user</span><span class="p">(</span><span class="s">&#34;How do I improve my productivity?&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">call</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">content</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>还是比较好奇，所以去看了下Advisor类</p>
+<p><img src="https://s2.loli.net/2025/02/21/4MlAnE62v13qzJo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_14-21-37.png"
+	
+	
+></p>
+<p><strong>DEFAULT_CHAT_MEMORY_PRECEDENCE_ORDER</strong>这个值是一个极小的负数（-2147482648），表示 <strong>&ldquo;优先级很高&rdquo;</strong>（<strong>数值越小优先级越高</strong>）
+getName() 方法就是在开发人员重写这个方法时使用去返回 <strong>Advisor 的名称</strong>，可用于识别不同的 Advisor 实例。</p>
+<p>我这里举个例子并使用一下
+以下是官方的jdk17中提供的一些可供使用的具体类，都继承了Advisor
+<img src="https://s2.loli.net/2025/02/21/JMejHyQlPktKEZc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_14-51-07.png"
+	
+	
+></p>
+<p>我们在定义大模型的默认模型中使用过
+<img src="https://s2.loli.net/2025/02/21/lm3Gb2dkTPDMBOU.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_14-52-41.png"
+	
+	
+></p>
+<p>可以自定义MathModelingAdvisor一个类继承ChatAdvisor，但由于我的库中没有这个类可以继承，所以就使用Sublime将该代码贴出来，以供参考</p>
+<p><img src="https://s2.loli.net/2025/02/21/P3KZqLXSCmQMFox.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_15-19-39.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/02/21/Mx1E7ByutIAmreJ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-21_15-25-51.png"
+	
+	
+></p>
+<p>继承后的类既可以在大模型构建中去实例化，也可以在获取内容的时候去实例化</p>
+<p><strong>stream()</strong></p>
+<p><code>stream()</code> 方法表示请求流式响应。这个方法启动了一个异步流式聊天，会逐步输出模型的响应，而不是等待完整的响应返回。
+使用流式响应的好处是可以实时接收和处理模型的输出。例如，聊天机器人在生成长回复时可以逐步返回内容，而不是等待整个内容生成完成后再一起返回。</p>
+<p><strong>content()</strong></p>
+<p><code>content()</code> 方法从流中提取内容。这意味着它会从模型的响应流中提取聊天内容，并将其作为 <code>Flux&lt;String&gt;</code> 返回。每次聊天模型生成文本时，都会通过 <code>Flux&lt;String&gt;</code> 流式传输响应内容。
+<code>Flux&lt;String&gt;</code> 是一个 Reactor 类型，表示多个字符串的异步流。这允许调用者实时处理每次收到的聊天内容。</p>
+<p>讲完以上的chatclient中的类名的用法和其具体的操作，我们来讲一下VectorStore向量数据库
+了解之前我们可以看一下这篇文章，写的非常详尽，非常适合一开始不懂这个类用法的人了解
+<a class="link" href="https://blog.csdn.net/weixin_57128596/article/details/137361085?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-137361085-blog-138292243.235%5ev43%5epc_blog_bottom_relevance_base9&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=2"  target="_blank" rel="noopener"
+    >Spring AI使用向量数据库实现检索AI对话_spring ai 国内-CSDN博客</a></p>
+<p><a class="link" href="https://blog.csdn.net/qq_41481367/article/details/136073629"  target="_blank" rel="noopener"
+    >Spring AI - 使用向量数据库实现检索式AI对话_docker-compose安装pgvector-CSDN博客</a></p>
+<p>官方文档
+<a class="link" href="https://springdoc.cn/spring-ai-redis-rag-app/"  target="_blank" rel="noopener"
+    >使用 Redis 和 Spring AI 创建 RAG（检索增强生成）应用 - spring 中文网</a></p>
+<p>如果你精读了我建议你阅读的这三篇文章，你便能发现VectorStore是用于RAG（检索增强生成）应用。
+我们来看一下在实际应用中的源码分析
+由于Spring AI的框架已经续写好了相关的封装类，使得后续定义只需要在application.properties中定义就可以了，我们来瞅瞅</p>
+<p><img src="https://s2.loli.net/2025/02/24/81fl2FBpJYvaKHX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-24_16-23-31.png"
+	
+	
+></p>
+<p><a class="link" href="https://docs.spring.io/spring-ai/reference/api/vectordbs/pgvector.html"  target="_blank" rel="noopener"
+    >PGvector :: Spring AI Reference</a>官方提供的使用说明</p>
+<p><img src="https://s2.loli.net/2025/02/24/xpOcrEMoIUQdNjy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-24_16-57-04.png"
+	
+	
+></p>
+<p>以前没有研究源码的习惯，现在因为业务需求和自己本身的追求，需要多看看源码并了解其底层原理是如何实现的</p>
+<p><img src="https://s2.loli.net/2025/02/25/wPj9WgqluLk2zdo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-25_09-33-44.png"
+	
+	
+></p>
+<p><code>@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)</code>: 这个注解将以 <code>spring.datasource</code> 开头的配置属性自动绑定到 <code>DataSourceProperties</code> 类的字段上。它能实现自动注入配置文件中的值。</p>
+<p>因为一开始学习Java的时候就直接上手了mybatis-plus，所以对于过去有着相对悠久历史的框架了解并不深入，有空余时间大家也可以看看以前的前辈是如何使用以前的框架进行开发的
+<a class="link" href="https://liaoxuefeng.com/books/java/spring/database/hibernate/index.html"  target="_blank" rel="noopener"
+    >https://liaoxuefeng.com/books/java/spring/database/hibernate/index.html</a></p>
+<p>Hibernate 适合那些需要全自动 ORM 映射的应用，尤其是在数据库关系较复杂、对象之间有大量关联的场景下，例如eladmin。
+MyBatis-Plus 更适合那些需求简单、需要更多 SQL 控制的场景，特别是在与数据库交互时对 SQL 的优化要求较高的场景。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public DataSourceBuilder&lt;?&gt; initializeDataSourceBuilder() {  
+</span></span><span class="line"><span class="cl">return DataSourceBuilder
+</span></span><span class="line"><span class="cl">	.create(this.getClassLoader())
+</span></span><span class="line"><span class="cl">	.type(this.getType())
+</span></span><span class="line"><span class="cl">	.driverClassName(this.determineDriverClassName())
+</span></span><span class="line"><span class="cl">	.url(this.determineUrl())
+</span></span><span class="line"><span class="cl">	.username(this.determineUsername())
+</span></span><span class="line"><span class="cl">	.password(this.determinePassword());  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>initializeDataSourceBuilder()</code> 方法返回一个 <code>DataSourceBuilder</code> 实例，该构建器用于构建 <code>DataSource</code> 对象。构建过程中，它会使用当前配置中的属性（如 URL、用户名、密码等）来初始化数据库连接。</p>
+<p>算了，这个properties的底层还是单开吧，不然又扯多了</p>
+<p>关于ChatMemory，推荐可以看一下这篇文章，写的非常好，在重写ChatMemory的基础上实现了Redis的持久化开发</p>
+<p><a class="link" href="https://blog.csdn.net/wanganui/article/details/145593518"  target="_blank" rel="noopener"
+    >Spring AI进阶：AI聊天机器人之ChatMemory持久化（二）_springai chatclient 向量数据库-CSDN博客</a></p>
+<p><img src="https://s2.loli.net/2025/02/25/TjIDLCfr9ZvxPa2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-25_16-02-00.png"
+	
+	
+></p>
+<ul>
+<li>
+<p><strong>方法<code>add(String conversationId, Message message)</code></strong><br>
+这是一个默认方法，它接受一个对话ID和一个 <code>Message</code> 对象（即一条消息）。这个方法会将这条消息添加到指定的对话历史中，但它实际上是通过调用另一个重载方法（<code>add(String conversationId, List&lt;Message&gt; messages)</code>）来实现的。默认方法的作用是将单条消息包装成一个包含一条消息的列表传递给重载方法。</p>
+</li>
+<li>
+<p><strong>方法<code>add(String conversationId, List&lt;Message&gt; messages)</code></strong><br>
+这是一个抽象方法，用于将一组消息（列表）添加到指定的对话ID对应的聊天历史中。实现类需要提供具体的实现。</p>
+</li>
+<li>
+<p><strong>方法<code>get(String conversationId, int lastN)</code></strong><br>
+这个方法用于获取指定对话ID的最后 <code>lastN</code> 条消息。返回值是一个 <code>List&lt;Message&gt;</code>，它包含了对话ID对应的最近的聊天记录。实现类需要提供如何获取和返回这些记录的具体逻辑。</p>
+</li>
+<li>
+<p><strong>方法<code>clear(String conversationId)</code></strong><br>
+这个方法用于清除指定对话ID的所有聊天记录。它没有返回值，直接清空该对话的历史记录。</p>
+</li>
+</ul>
+<p><code>ChatMemory</code> 接口的作用是定义聊天记录的增、查、删操作。它提供了对聊天历史的管理功能，包括添加消息、获取指定数量的历史消息和清空聊天记录。不同的实现类可以根据需要存储消息的方式（例如，数据库、内存等）来提供具体的实现。</p>
+<p><img src="https://s2.loli.net/2025/02/25/MqAmyt75ZoDxR9c.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-25_22-43-00.png"
+	
+	
+></p>
+<p>因为比较好奇这个chatmemory的实际应用所以去调试了下chatgpt，果不其然，他们的存储方式都是一样的，然后再一一遍历出来，但在数据库中一定有相对应区分的词条来区分AI和人的QA</p>
+<p>在实体类中在定义一个sender就行了，上文提到使用redis实现持久化，但在文档业务逻辑里的话果然还是混用可能会更好一点，mysql用来存取QA，redis用来存取用户的权限（例如会员、高级会员、普通）和令牌，向量数据库PGvector用来调用上下文进行RAG（检索性增强）</p>
+<p>实体类 <code>ChatMessage</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">javax.persistence.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Entity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ChatMessage</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sender</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ChatMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Getters and Setters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="nf">getId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setId</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getConversationId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">conversationId</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setConversationId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">conversationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conversationId</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSender</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sender</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSender</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sender</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sender</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getContent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">content</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setContent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">content</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="nf">getTimestamp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setTimestamp</span><span class="p">(</span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>实现 <code>ChatMemory</code> 接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ai.chat.messages.Message</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ai.chat.memory.ChatMemory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.stream.Collectors</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ChatMemoryService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ChatMemory</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ChatMessageRepository</span><span class="w"> </span><span class="n">chatMessageRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span><span class="w"> </span><span class="n">messages</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ChatMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">chatMessages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">messages</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">msg</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ChatMessage</span><span class="w"> </span><span class="n">chatMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ChatMessage</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">chatMessage</span><span class="p">.</span><span class="na">setConversationId</span><span class="p">(</span><span class="n">conversationId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">chatMessage</span><span class="p">.</span><span class="na">setSender</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="na">getSender</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">chatMessage</span><span class="p">.</span><span class="na">setContent</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="na">getContent</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">chatMessage</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">chatMessageRepository</span><span class="p">.</span><span class="na">saveAll</span><span class="p">(</span><span class="n">chatMessages</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lastN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ChatMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">chatMessages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chatMessageRepository</span><span class="p">.</span><span class="na">findTopNByConversationIdOrderByTimestampDesc</span><span class="p">(</span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="n">lastN</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">chatMessages</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">msg</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Message</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Message</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">message</span><span class="p">.</span><span class="na">setSender</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="na">getSender</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">message</span><span class="p">.</span><span class="na">setContent</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="na">getContent</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">chatMessageRepository</span><span class="p">.</span><span class="na">deleteByConversationId</span><span class="p">(</span><span class="n">conversationId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建 <code>ChatMessageRepository</code> 接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ChatMessageRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">ChatMessage</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ChatMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findTopNByConversationIdOrderByTimestampDesc</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lastN</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteByConversationId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <code>ChatMemoryService</code> 进行操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/chat&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ChatController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ChatMemoryService</span><span class="w"> </span><span class="n">chatMemoryService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 保存聊天记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&#34;/save&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">saveChat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span><span class="w"> </span><span class="n">messages</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">chatMemoryService</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="n">messages</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;Messages saved successfully!&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 获取聊天记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/history&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getChatHistory</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lastN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">chatMemoryService</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">conversationId</span><span class="p">,</span><span class="w"> </span><span class="n">lastN</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 清除聊天记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@DeleteMapping</span><span class="p">(</span><span class="s">&#34;/clear&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">clearChat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">conversationId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">chatMemoryService</span><span class="p">.</span><span class="na">clear</span><span class="p">(</span><span class="n">conversationId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;Chat history cleared!&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置数据库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/chat_db?useSSL=false&amp;serverTimezone=UTC</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jpa.hibernate.ddl-auto</span><span class="o">=</span><span class="s">update</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jpa.show-sql</span><span class="o">=</span><span class="s">true</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>根据这串代码，我们可以去再创建两个类去包装一下对话，这样我们可以去实现新建对话和遍历过往对话，然后在当我们在对应的会话中去提问和AI返回值时去save数据，并操作新建的两个表即可，这两个表我没建了，但大家可以想象下（会话id、会话条数（save一次增加一次））（会话id（外键）、message_id(外键)），这就是MySQL的持久化操作，利用JPA和ChatMemory类实现。</p>
+<p><img src="https://s2.loli.net/2025/02/26/7sNrWRTg68JxvfK.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-02-26_10-21-53.png"
+	
+	
+></p>
+<p>vectorStore的补充策略（Embedding）</p>
+<p><a class="link" href="https://java2ai.com/docs/1.0.0-M5.1/tutorials/embedding/?spm=5176.29160081.0.0.2856aa5c1BjCfG"  target="_blank" rel="noopener"
+    >嵌入模型 (Embedding Model)-阿里云Spring AI Alibaba官网官网</a></p>
+<p><img src="https://s2.loli.net/2025/03/01/1boYpZLOxdCmwB3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-03-01_19-09-15.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/03/01/pLKJjWwVslyOm2v.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-03-01_19-09-55.png"
+	
+	
+></p>
+<p>两种嵌入模型的方式如上图所示</p>
+<p>计算文本的向量表示（可以自定义，也可以通过定义的方法计算）</p>
+<p><img src="https://s2.loli.net/2025/03/01/ENCoy1MKSzT3mwA.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-03-01_20-11-51.png"
+	
+	
+></p>
+<p><img src="https://s2.loli.net/2025/03/01/oS4erc8HYvkguyA.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-03-01_20-12-13.png"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Word2VecConfig</span><span class="w"> </span><span class="p">{</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Word2Vec</span><span class="w"> </span><span class="nf">word2Vec</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">File</span><span class="w"> </span><span class="n">gModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&#34;/Study/spring-ai-alibaba/spring-ai-alibaba-example/spring-ai-alibaba-examples-main/spring-ai-alibaba-agent-example/playground-flight-booking/src/main/resources/rag/word2vec-ruscorpora-300.gz&#34;</span><span class="p">);</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gModel</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&#34;❌ 模型文件不存在: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gModel</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">());</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Word2Vec</span><span class="w"> </span><span class="n">word2Vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WordVectorSerializer</span><span class="p">.</span><span class="na">readWord2VecModel</span><span class="p">(</span><span class="n">gModel</span><span class="p">);</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">word2Vec</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&#34;❌ 加载 Word2Vec 模型失败&#34;</span><span class="p">);</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;✅ Word2Vec 模型加载成功&#34;</span><span class="p">);</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">word2Vec</span><span class="p">;</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&#34;❌ 无法加载 Word2Vec 模型&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>加载word2vec模型
+将 <code>Word2Vec</code> 作为 <strong>Spring Bean</strong> 注册到 Spring 容器中，这样它就可以在其他类中通过 <strong><code>@Autowired</code></strong> 或 <strong>构造函数注入</strong> 来使用。
+<img src="https://s2.loli.net/2025/03/12/FYHGlJdak78NxCq.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Snipaste_2025-03-12_20-52-19.png"
+	
+	
+></p>
+<p>在spring-ai-alibab-example中集成多数据库的话，使用properties的配置类容易报错，所以可以使用config类去注册</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Configuration  
+</span></span><span class="line"><span class="cl">@MapperScan(basePackages = &#34;com.example.mapper&#34;, sqlSessionTemplateRef = &#34;mysqlSqlSessionTemplate&#34;)  
+</span></span><span class="line"><span class="cl">public class MyBatisConfig {  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">//    @Bean(name = &#34;mysqlDataSource&#34;)  
+</span></span><span class="line"><span class="cl">//    @ConfigurationProperties(prefix = &#34;spring.datasource.mysql&#34;)  
+</span></span><span class="line"><span class="cl">//    public DataSource mysqlDataSource() {  
+</span></span><span class="line"><span class="cl">//        return DataSourceBuilder.create().build();  
+</span></span><span class="line"><span class="cl">//    }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    @Bean(name = &#34;mysqlDataSource&#34;)  
+</span></span><span class="line"><span class="cl">    public DataSource mysqlDataSource() {  
+</span></span><span class="line"><span class="cl">        return DataSourceBuilder.create()  
+</span></span><span class="line"><span class="cl">                .url(&#34;jdbc:mysql://localhost:3306/mydb?useSSL=false&#34;)  
+</span></span><span class="line"><span class="cl">                .username(&#34;root&#34;)  
+</span></span><span class="line"><span class="cl">                .password(&#34;20050101&#34;)  
+</span></span><span class="line"><span class="cl">                .driverClassName(&#34;com.mysql.cj.jdbc.Driver&#34;)  
+</span></span><span class="line"><span class="cl">                .build();  
+</span></span><span class="line"><span class="cl">    }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    @Bean(name = &#34;mysqlSqlSessionFactory&#34;)  
+</span></span><span class="line"><span class="cl">    public SqlSessionFactory mysqlSqlSessionFactory(  
+</span></span><span class="line"><span class="cl">            @Qualifier(&#34;mysqlDataSource&#34;) DataSource dataSource) throws Exception {  
+</span></span><span class="line"><span class="cl">        MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();  
+</span></span><span class="line"><span class="cl">        bean.setDataSource(dataSource);  
+</span></span><span class="line"><span class="cl">        return bean.getObject();  
+</span></span><span class="line"><span class="cl">    }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    @Bean(name = &#34;mysqlSqlSessionTemplate&#34;)  
+</span></span><span class="line"><span class="cl">    public SqlSessionTemplate mysqlSqlSessionTemplate(  
+</span></span><span class="line"><span class="cl">            @Qualifier(&#34;mysqlSqlSessionFactory&#34;) SqlSessionFactory sqlSessionFactory) {  
+</span></span><span class="line"><span class="cl">        return new SqlSessionTemplate(sqlSessionFactory);  
+</span></span><span class="line"><span class="cl">    }  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Configuration  
+</span></span><span class="line"><span class="cl">public class PgVectorConfig {  
+</span></span><span class="line"><span class="cl">    @Primary  
+</span></span><span class="line"><span class="cl">    @Bean    public DataSource dataSource() {  
+</span></span><span class="line"><span class="cl">        return DataSourceBuilder.create()  
+</span></span><span class="line"><span class="cl">                .url(&#34;jdbc:postgresql://localhost:5432/postgres&#34;)  
+</span></span><span class="line"><span class="cl">                .username(&#34;postgres&#34;)  
+</span></span><span class="line"><span class="cl">                .password(&#34;20050101&#34;)  
+</span></span><span class="line"><span class="cl">                .driverClassName(&#34;org.postgresql.Driver&#34;)  
+</span></span><span class="line"><span class="cl">                .build();  
+</span></span><span class="line"><span class="cl">    }  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样就可以实现多数据库的配置并且存储数据</p>
+<p><a class="link" href="https://huggingface.co/models"  target="_blank" rel="noopener"
+    >https://huggingface.co/models</a></p>
+<p>比较好用的module的网站，一般的module都可以在这里找到</p>
+<p><img src="https://s2.loli.net/2025/03/12/ciXkJxV3pTnjEz4.webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="QKiDBrm9T3.webp"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">Java</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on Nov 24, 2026 16:14 CST
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/dubbo-zookeeper/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dubbo&#43;Zookeeper</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/websocket-springboot%E9%9B%86%E6%88%90ai/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">WebSocket&#43;SpringBoot集成AI</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ubuntu-nginx-%E9%85%8D%E7%BD%AE%E7%BD%91%E9%A1%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Ubuntu Nginx 配置网页</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/qt-vs%E5%BC%80%E5%8F%91%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Qt&#43;VS开发(连接数据库)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">网络编程</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+    
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili","https://npm.elemecdn.com/@waline/emojis@1.1.0/bmoji","https://npm.elemecdn.com/@waline/emojis@1.1.0/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null,"sofa":"还没有人评论哦！快来抢沙发吧~"},"placeholder":"欢迎留下宝贵的评论！","requiredMeta":["name","email","url"],"serverURL":"https://blog-waline-f2nc4salg-demons-kiritos-projects.vercel.app/","visitor":false});
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 随.
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
